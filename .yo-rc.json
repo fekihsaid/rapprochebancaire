@@ -1,0 +1,19 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.14.0",
+    "sdksVersions": {},
+    "version": "1.23.2",
+    "libraryName": "rapprochement-bancaire",
+    "libraryId": "29bf6741-24fa-4ecd-a120-13baf8a7a812",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "rapprochementBancaire",
+    "solutionShortDescription": "rapprochementBancaire description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

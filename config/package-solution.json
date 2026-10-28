@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "rapprochement-bancaire-client-side-solution",
+    "id": "29bf6741-24fa-4ecd-a120-13baf8a7a812",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.23.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "rapprochementBancaire description"
+      },
+      "longDescription": {
+        "default": "rapprochementBancaire description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "rapprochement-bancaire Feature",
+        "description": "The feature that activates elements of the rapprochement-bancaire solution.",
+        "id": "58a13e09-f6de-4192-ba18-4b1f44b19711",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/rapprochement-bancaire.sppkg"
+  }
+}
