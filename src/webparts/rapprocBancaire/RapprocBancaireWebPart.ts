@@ -28,7 +28,8 @@ export default class RapprocBancaireWebPart extends BaseClientSideWebPart<IRappr
         description: this.properties.description,
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
-        userDisplayName: this.context.pageContext.user.displayName
+        userDisplayName: this.context.pageContext.user.displayName,
+        siteAbsoluteUrl: this.context.pageContext.site.absoluteUrl
       }
     );
 

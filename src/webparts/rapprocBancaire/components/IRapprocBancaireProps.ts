@@ -3,4 +3,5 @@ export interface IRapprocBancaireProps {
   isDarkTheme: boolean;
   environmentMessage: string;
   userDisplayName: string;
+  siteAbsoluteUrl: string;
 }
