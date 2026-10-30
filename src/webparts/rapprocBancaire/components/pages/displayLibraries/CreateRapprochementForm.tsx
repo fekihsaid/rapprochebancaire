@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { Action, Role, Statut, TypeRapprochement } from '../../../../rapprochements/workflow/models';
+import { appliquerTransition } from '../../../../rapprochements/workflow/workflow';
 import styles from './CreateRapprochementForm.module.scss';
 import { GENRE_CHOICES, MONTH_CHOICES, YEAR_CHOICES } from './services/configuration';
 import type { IRapprochementService } from './services/IRapprochementService';
@@ -7,6 +9,7 @@ import type {
   PoleKey,
   RapprochementPeriod
 } from './services/models';
+import { toServiceUpdate } from './workflowAdapter';
 
 interface ICreateRapprochementFormProps {
   pole: PoleKey;
@@ -142,11 +145,20 @@ export const CreateRapprochementForm: React.FC<ICreateRapprochementFormProps> = 
 
     if (shouldSubmit && attachmentErrors.length === 0) {
       try {
-        await dataService.updateRapprochement(pole, itemId, {
-          status: 'Soumis au Signataire 1',
-          emitterId: currentUserId,
-          emissionDate: new Date().toISOString()
-        });
+        const transition = appliquerTransition(
+          {
+            statut: Statut.Brouillon,
+            type: period === 'mensuel' ? TypeRapprochement.Mensuel : TypeRapprochement.Trimestriel,
+            secondePasse: false
+          },
+          Action.Soumettre,
+          {
+            roles: [Role.Emetteur],
+            date: new Date().toISOString(),
+            ...(currentUserId === undefined ? {} : { utilisateurId: currentUserId })
+          }
+        );
+        await dataService.updateRapprochement(pole, itemId, toServiceUpdate(transition, false));
       } catch (error) {
         setErrorMessage(
           `Le rapprochement a été créé et ses pièces jointes ajoutées, mais la soumission a échoué : ${error instanceof Error ? error.message : String(error)}`

@@ -1,4 +1,11 @@
 import * as React from 'react';
+import { Action } from '../../../../rapprochements/workflow/models';
+import type {
+  IDonneesTransition,
+  IRapprochementWorkflow,
+  ValeurPayload
+} from '../../../../rapprochements/workflow/models/Rapprochement';
+import { appliquerTransition, getActionsDisponibles } from '../../../../rapprochements/workflow/workflow';
 import styles from './RapprochementDetail.module.scss';
 import type { IRapprochementService } from './services/IRapprochementService';
 import type {
@@ -8,6 +15,7 @@ import type {
   IUserAccess,
   PoleKey
 } from './services/models';
+import { toServiceUpdate, toWorkflowRapprochement, toWorkflowRoles } from './workflowAdapter';
 
 interface IRapprochementDetailProps {
   item: IRapprochement;
@@ -18,7 +26,6 @@ interface IRapprochementDetailProps {
   onUpdated: () => void;
 }
 
-type WorkflowAction = 'submit' | 'refuse' | 'validate';
 type EditableField = 'month' | 'year' | 'account' | 'company' | 'genre' | 'description';
 
 interface IEditableValues {
@@ -62,7 +69,7 @@ export const RapprochementDetail: React.FC<IRapprochementDetailProps> = ({
   onClose,
   onUpdated
 }) => {
-  const [pendingAction, setPendingAction] = React.useState<WorkflowAction | undefined>();
+  const [pendingAction, setPendingAction] = React.useState<Action | undefined>();
   const [comment, setComment] = React.useState<string>('');
   const [reason, setReason] = React.useState<string>('');
   const [isSaving, setIsSaving] = React.useState<boolean>(false);
@@ -78,6 +85,21 @@ export const RapprochementDetail: React.FC<IRapprochementDetailProps> = ({
     genre: item.genre,
     description: item.description || ''
   });
+  const workflowContextState = React.useMemo<{
+    context?: IRapprochementWorkflow;
+    error?: string;
+  }>(() => {
+    try {
+      return { context: toWorkflowRapprochement(item) };
+    } catch (error) {
+      return { error: error instanceof Error ? error.message : String(error) };
+    }
+  }, [item]);
+  const workflowRoles = toWorkflowRoles(userAccess.roles);
+  const availableActions = workflowContextState.context
+    ? getActionsDisponibles(workflowContextState.context, workflowRoles)
+    : [];
+  const canPerform = (action: Action): boolean => availableActions.indexOf(action) !== -1;
 
   React.useEffect(() => {
     let isCurrentRequest = true;
@@ -101,25 +123,6 @@ export const RapprochementDetail: React.FC<IRapprochementDetailProps> = ({
     };
   }, [dataService, item.id, item.period, pole]);
 
-  const isSigner1 = userAccess.roles.indexOf('signataire1') !== -1;
-  const isSigner2 = userAccess.roles.indexOf('signataire2') !== -1;
-  const canSubmit = userAccess.roles.indexOf('emetteur') !== -1
-    && (item.status === 'Brouillon' || item.status === 'Refusé');
-  const signer1Status = item.status === 'Soumis au Signataire 1'
-    || item.status === "En cours d'analyse par un Signataire 1";
-  const signer2Status = item.status === 'Soumis au Signataire 2'
-    || item.status === "En cours d'analyse par un Signataire 2";
-  const canReviewAsSigner1 = isSigner1 && signer1Status;
-  const canReviewAsSigner2 = isSigner2 && signer2Status;
-  const canTakeControl = (item.status === 'Soumis au Signataire 1' && isSigner1)
-    || (item.status === 'Soumis au Signataire 2' && isSigner2);
-  const canReleaseControl = (item.status === "En cours d'analyse par un Signataire 1" && isSigner1)
-    || (item.status === "En cours d'analyse par un Signataire 2" && isSigner2);
-  const canArchiveOnValidation = canReviewAsSigner2 || (canReviewAsSigner1 && item.period === 'mensuel');
-  const canPassToSigner2 = canReviewAsSigner1 && item.period !== 'mensuel';
-  const canEditItem = userAccess.canEdit
-    && (item.status === 'Brouillon' || item.status === 'Refusé');
-
   const saveChanges = async (changes: IRapprochementUpdate): Promise<boolean> => {
     setErrorMessage('');
     setIsSaving(true);
@@ -135,26 +138,37 @@ export const RapprochementDetail: React.FC<IRapprochementDetailProps> = ({
     }
   };
 
-  const updateStatus = async (status: string, changes: IRapprochementUpdate): Promise<void> => {
-    await saveChanges({ status, ...changes });
+  const applyWorkflowAction = async (
+    action: Action,
+    data: Omit<IDonneesTransition, 'roles'> = {}
+  ): Promise<boolean> => {
+    const workflowContext = workflowContextState.context;
+    if (!workflowContext) {
+      setErrorMessage(workflowContextState.error || 'Les actions sont indisponibles pour cet élément.');
+      return false;
+    }
+
+    try {
+      const transition = appliquerTransition(workflowContext, action, {
+        ...data,
+        roles: workflowRoles
+      });
+      return await saveChanges(toServiceUpdate(transition, workflowContext.secondePasse));
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : String(error));
+      return false;
+    }
   };
 
   const handleTakeControl = async (): Promise<void> => {
-    await updateStatus(
-      item.status === 'Soumis au Signataire 1'
-        ? "En cours d'analyse par un Signataire 1"
-        : "En cours d'analyse par un Signataire 2",
-      { beingAnalysedById: userAccess.currentUserId }
+    await applyWorkflowAction(
+      Action.PrendreLaMain,
+      userAccess.currentUserId === undefined ? {} : { utilisateurId: userAccess.currentUserId }
     );
   };
 
   const handleReleaseControl = async (): Promise<void> => {
-    await updateStatus(
-      item.status === "En cours d'analyse par un Signataire 1"
-        ? 'Soumis au Signataire 1'
-        : 'Soumis au Signataire 2',
-      { beingAnalysedById: null }
-    );
+    await applyWorkflowAction(Action.Liberer);
   };
 
   const handleConfirmAction = async (): Promise<void> => {
@@ -162,63 +176,22 @@ export const RapprochementDetail: React.FC<IRapprochementDetailProps> = ({
       return;
     }
 
-    const now = new Date().toISOString();
-    let status: string;
-    let changes: IRapprochementUpdate;
-    if (pendingAction === 'submit') {
-      status = 'Soumis au Signataire 1';
-      changes = {
-        emitterId: userAccess.currentUserId,
-        emissionDate: now,
-        emitterComment: comment,
-        useSecondPassFields: Boolean(item.secondPass)
-      };
-    } else if (pendingAction === 'refuse') {
+    if (pendingAction === Action.Refuser) {
       if (!reason.trim()) {
         setErrorMessage('Indiquez le motif du refus.');
         return;
       }
-      const isSecondSigner = signer2Status;
-      status = item.secondPass ? 'Bloqué' : 'Refusé';
-      changes = {
-        beingAnalysedById: null,
-        secondPass: true,
-        useSecondPassFields: Boolean(item.secondPass),
-        ...(isSecondSigner
-          ? {
-            signer2Id: userAccess.currentUserId,
-            refusalReason2: reason.trim(),
-            refusalComment2: comment
-          }
-          : {
-            signer1Id: userAccess.currentUserId,
-            refusalReason1: reason.trim(),
-            refusalComment1: comment
-          })
-      };
-    } else {
-      const isSecondSigner = signer2Status;
-      status = isSecondSigner || item.period === 'mensuel'
-        ? 'Archivé'
-        : 'Soumis au Signataire 2';
-      changes = isSecondSigner
-        ? {
-          beingAnalysedById: null,
-          signer2Id: userAccess.currentUserId,
-          signatureDate2: now,
-          signer2Comment: comment,
-          useSecondPassFields: Boolean(item.secondPass)
-        }
-        : {
-          beingAnalysedById: null,
-          signer1Id: userAccess.currentUserId,
-          signatureDate1: now,
-          signer1Comment: comment,
-          useSecondPassFields: Boolean(item.secondPass)
-        };
     }
 
-    await saveChanges({ status, ...changes });
+    const saved = await applyWorkflowAction(pendingAction, {
+      date: new Date().toISOString(),
+      commentaire: comment,
+      ...(pendingAction === Action.Refuser ? { motif: reason.trim() } : {}),
+      ...(userAccess.currentUserId === undefined ? {} : { utilisateurId: userAccess.currentUserId })
+    });
+    if (saved) {
+      setPendingAction(undefined);
+    }
   };
 
   const handleSaveEdit = async (): Promise<void> => {
@@ -226,7 +199,7 @@ export const RapprochementDetail: React.FC<IRapprochementDetailProps> = ({
     const year = editValues.year.trim();
     const month = editValues.month.trim();
     const account = editValues.account.trim();
-    const saved = await saveChanges({
+    const modifications: Record<string, ValeurPayload> = {
       title: [company, year, month, account].filter(Boolean).join(' - '),
       company,
       year,
@@ -234,13 +207,14 @@ export const RapprochementDetail: React.FC<IRapprochementDetailProps> = ({
       account,
       genre: editValues.genre.trim(),
       description: editValues.description.trim()
-    });
+    };
+    const saved = await applyWorkflowAction(Action.Modifier, { modifications });
     if (saved) {
       setIsEditing(false);
     }
   };
 
-  const startAction = (action: WorkflowAction): void => {
+  const startAction = (action: Action): void => {
     setErrorMessage('');
     setComment('');
     setReason('');
@@ -373,13 +347,13 @@ export const RapprochementDetail: React.FC<IRapprochementDetailProps> = ({
       {pendingAction && (
         <div className={styles.actionForm}>
           <h3>
-            {pendingAction === 'submit'
+            {pendingAction === Action.Soumettre
               ? 'Soumettre le rapprochement'
-              : pendingAction === 'refuse'
+              : pendingAction === Action.Refuser
                 ? 'Refuser le rapprochement'
                 : 'Valider le rapprochement'}
           </h3>
-          {pendingAction === 'refuse' && (
+          {pendingAction === Action.Refuser && (
             <label>
               Motif du refus
               <input value={reason} onChange={event => setReason(event.currentTarget.value)} />
@@ -400,6 +374,9 @@ export const RapprochementDetail: React.FC<IRapprochementDetailProps> = ({
         </div>
       )}
       {errorMessage && <p className={styles.error} role="alert">{errorMessage}</p>}
+      {workflowContextState.error && (
+        <p className={styles.error} role="alert">{workflowContextState.error}</p>
+      )}
 
       <footer className={styles.footer}>
         <div className={styles.metadata}>
@@ -433,39 +410,43 @@ export const RapprochementDetail: React.FC<IRapprochementDetailProps> = ({
             </>
           ) : (
             <>
-              {canEditItem && (
+              {canPerform(Action.Modifier) && (
                 <button type="button" disabled={isSaving} onClick={() => setIsEditing(true)}>
                   Modifier
                 </button>
               )}
-              {canSubmit && (
-                <button type="button" disabled={isSaving} onClick={() => startAction('submit')}>
+              {canPerform(Action.Soumettre) && (
+                <button type="button" disabled={isSaving} onClick={() => startAction(Action.Soumettre)}>
                   Soumettre à la validation
                 </button>
               )}
-              {canTakeControl && (
+              {canPerform(Action.PrendreLaMain) && (
                 <button type="button" disabled={isSaving} onClick={handleTakeControl}>
                   Commencer l’analyse
                 </button>
               )}
-              {canReleaseControl && (
+              {canPerform(Action.Liberer) && (
                 <button type="button" disabled={isSaving} onClick={handleReleaseControl}>
                   Arrêter l’analyse
                 </button>
               )}
-              {(canReviewAsSigner1 || canReviewAsSigner2) && (
-                <>
-                  <button type="button" disabled={isSaving} onClick={() => startAction('refuse')}>
-                    Refuser le rapprochement
-                  </button>
-                  {(canArchiveOnValidation || canPassToSigner2) && (
-                    <button type="button" disabled={isSaving} onClick={() => startAction('validate')}>
-                      {canPassToSigner2
-                        ? 'Valider et transmettre au signataire 2'
-                        : 'Valider et archiver le rapprochement'}
-                    </button>
+              {canPerform(Action.Refuser) && (
+                <button type="button" disabled={isSaving} onClick={() => startAction(Action.Refuser)}>
+                  Refuser le rapprochement
+                </button>
+              )}
+              {(canPerform(Action.Valider) || canPerform(Action.ValiderEtArchiver)) && (
+                <button
+                  type="button"
+                  disabled={isSaving}
+                  onClick={() => startAction(
+                    canPerform(Action.Valider) ? Action.Valider : Action.ValiderEtArchiver
                   )}
-                </>
+                >
+                  {canPerform(Action.Valider)
+                    ? 'Valider et transmettre au signataire 2'
+                    : 'Valider et archiver le rapprochement'}
+                </button>
               )}
             </>
           )}
