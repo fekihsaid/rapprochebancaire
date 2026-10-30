@@ -1,49 +1,46 @@
 .detail {
-  margin: 16px 0;
-  padding: 18px;
-  border: 1px solid #edebe9;
-  background-color: #fff;
-}
-
-.backButton {
+  margin: 18px 0 0;
   padding: 0;
-  border: 0;
-  background: transparent;
-  color: #0078d4;
-  font: inherit;
-  cursor: pointer;
-
-  &:hover {
-    text-decoration: underline;
-  }
+  color: #06234b;
+  font-family: Arial, sans-serif;
 }
 
 .title {
-  margin: 16px 0 8px;
-  color: #d35a1b;
-  font-size: 20px;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
 }
 
 .fields {
   width: 100%;
-  margin-top: 8px;
+  margin: 0;
   border: 0;
   border-collapse: collapse;
-  background-color: #fff;
+  background: transparent;
+  font-size: 10px;
+
+  tr {
+    height: 24px;
+  }
 }
 
 .fieldLabel,
 .fieldValue {
-  padding: 8px 10px;
-  border-bottom: 1px solid #edebe9;
+  padding: 4px 5px;
+  border: 0;
   text-align: left;
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 .fieldLabel {
-  width: 180px;
-  color: #605e5c;
-  font-weight: 600;
+  width: 24%;
+  font-weight: 400;
 }
 
 .fieldValue {
@@ -51,22 +48,69 @@
   white-space: pre-wrap;
 }
 
-.actions,
-.formActions {
+.fieldValue input,
+.fieldValue textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #a6a6a6;
+  font: inherit;
+}
+
+.attachmentList {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  padding: 0 12px;
+  border: 1px solid #d1d1d1;
+
+  a {
+    color: #0072c6;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.metadata {
+  color: #53647b;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 18px;
+  justify-content: flex-end;
+  gap: 6px;
 
   button {
-    min-height: 34px;
-    padding: 0 12px;
-    border: 1px solid #0078d4;
-    border-radius: 2px;
-    background-color: #0078d4;
+    min-height: 28px;
+    padding: 0 17px;
+    border: 0;
+    background-color: #d35a1b;
     color: #fff;
     font: inherit;
     cursor: pointer;
+
+    &:hover {
+      background-color: #b94a14;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #06234b;
+      outline-offset: 2px;
+    }
 
     &:disabled {
       cursor: wait;
@@ -77,19 +121,21 @@
 
 .actionForm {
   max-width: 620px;
-  margin-top: 20px;
-  padding: 14px;
-  background-color: #f3f2f1;
+  margin: 18px 0 0 24%;
+  padding: 12px;
+  background-color: #fff;
+  border: 1px solid #d1d1d1;
+  color: #06234b;
+  font-size: 12px;
 
   h3 {
     margin: 0 0 12px;
-    font-size: 15px;
+    font-size: 14px;
   }
 
   label {
     display: block;
     margin: 10px 0;
-    font-size: 13px;
   }
 
   input,
@@ -98,17 +144,50 @@
     box-sizing: border-box;
     width: 100%;
     margin-top: 4px;
-    padding: 8px;
-    border: 1px solid #8a8886;
+    padding: 7px;
+    border: 1px solid #a6a6a6;
     font: inherit;
   }
 }
 
 .formActions {
+  display: flex;
+  gap: 6px;
   margin-top: 12px;
+
+  button {
+    min-height: 28px;
+    padding: 0 14px;
+    border: 0;
+    background-color: #d35a1b;
+    color: #fff;
+    font: inherit;
+    cursor: pointer;
+  }
 }
 
 .error {
-  margin: 12px 0 0;
+  margin: 12px 0 0 24%;
   color: #a4262c;
+  font-size: 12px;
+}
+
+@media (max-width: 640px) {
+  .fieldLabel {
+    width: 36%;
+  }
+
+  .footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .actions {
+    justify-content: flex-start;
+  }
+
+  .actionForm,
+  .error {
+    margin-left: 0;
+  }
 }

@@ -16,6 +16,14 @@ export const mockRapprochements: IRapprochement[] = [
     secondPass: true,
     emitter: 'Émetteur fictif',
     refusalReason1: 'Document incomplet',
-    refusalComment1: 'Merci de compléter les justificatifs.'
+    refusalComment1: 'Merci de compléter les justificatifs.',
+    contentType: 'Rapprochement Sociétés Sœurs',
+    created: '2026-10-02T15:35:00',
+    modified: '2026-10-05T16:36:00',
+    author: 'Nelly BARON',
+    editor: 'Julie GENESLAY',
+    attachments: [
+      { name: 'H005 - 51201002 09.2026.pdf', url: '#' }
+    ]
   }
 ];

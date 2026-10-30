@@ -3,6 +3,7 @@ import styles from './RapprochementDetail.module.scss';
 import type { IRapprochementService } from './services/IRapprochementService';
 import type {
   IRapprochement,
+  IRapprochementAttachment,
   IRapprochementUpdate,
   IUserAccess,
   PoleKey
@@ -18,6 +19,16 @@ interface IRapprochementDetailProps {
 }
 
 type WorkflowAction = 'submit' | 'refuse' | 'validate';
+type EditableField = 'month' | 'year' | 'account' | 'company' | 'genre' | 'description';
+
+interface IEditableValues {
+  month: string;
+  year: string;
+  account: string;
+  company: string;
+  genre: string;
+  description: string;
+}
 
 const formatDate = (value?: string): string => {
   if (!value) {
@@ -25,6 +36,22 @@ const formatDate = (value?: string): string => {
   }
   const date = new Date(value);
   return Number.isNaN(date.getTime()) ? value : date.toLocaleDateString();
+};
+
+const formatMetadataDate = (value?: string): string => {
+  if (!value) {
+    return '';
+  }
+  const date = new Date(value);
+  return Number.isNaN(date.getTime())
+    ? value
+    : date.toLocaleString('fr-FR', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
 };
 
 export const RapprochementDetail: React.FC<IRapprochementDetailProps> = ({
@@ -40,6 +67,39 @@ export const RapprochementDetail: React.FC<IRapprochementDetailProps> = ({
   const [reason, setReason] = React.useState<string>('');
   const [isSaving, setIsSaving] = React.useState<boolean>(false);
   const [errorMessage, setErrorMessage] = React.useState<string>('');
+  const [attachments, setAttachments] = React.useState<IRapprochementAttachment[]>(item.attachments || []);
+  const [isLoadingAttachments, setIsLoadingAttachments] = React.useState<boolean>(true);
+  const [isEditing, setIsEditing] = React.useState<boolean>(false);
+  const [editValues, setEditValues] = React.useState<IEditableValues>({
+    month: item.month,
+    year: item.year,
+    account: item.account,
+    company: item.company,
+    genre: item.genre,
+    description: item.description || ''
+  });
+
+  React.useEffect(() => {
+    let isCurrentRequest = true;
+    dataService.getAttachments(pole, item.id, item.period).then(
+      result => {
+        if (isCurrentRequest) {
+          setAttachments(result);
+          setIsLoadingAttachments(false);
+        }
+      },
+      error => {
+        if (isCurrentRequest) {
+          setErrorMessage(error instanceof Error ? error.message : String(error));
+          setIsLoadingAttachments(false);
+        }
+      }
+    );
+
+    return () => {
+      isCurrentRequest = false;
+    };
+  }, [dataService, item.id, item.period, pole]);
 
   const isSigner1 = userAccess.roles.indexOf('signataire1') !== -1;
   const isSigner2 = userAccess.roles.indexOf('signataire2') !== -1;
@@ -57,23 +117,27 @@ export const RapprochementDetail: React.FC<IRapprochementDetailProps> = ({
     || (item.status === "En cours d'analyse par un Signataire 2" && isSigner2);
   const canArchiveOnValidation = canReviewAsSigner2 || (canReviewAsSigner1 && item.period === 'mensuel');
   const canPassToSigner2 = canReviewAsSigner1 && item.period !== 'mensuel';
+  const canEditItem = userAccess.canEdit
+    && (item.status === 'Brouillon' || item.status === 'Refusé');
 
-  const saveChanges = async (changes: IRapprochementUpdate): Promise<void> => {
+  const saveChanges = async (changes: IRapprochementUpdate): Promise<boolean> => {
     setErrorMessage('');
     setIsSaving(true);
     try {
       await dataService.updateRapprochement(pole, item.id, changes);
       onUpdated();
+      return true;
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : String(error));
+      return false;
     } finally {
       setIsSaving(false);
     }
   };
 
-  const updateStatus = (status: string, changes: IRapprochementUpdate): Promise<void> => (
-    saveChanges({ status, ...changes })
-  );
+  const updateStatus = async (status: string, changes: IRapprochementUpdate): Promise<void> => {
+    await saveChanges({ status, ...changes });
+  };
 
   const handleTakeControl = async (): Promise<void> => {
     await updateStatus(
@@ -157,6 +221,25 @@ export const RapprochementDetail: React.FC<IRapprochementDetailProps> = ({
     await saveChanges({ status, ...changes });
   };
 
+  const handleSaveEdit = async (): Promise<void> => {
+    const company = editValues.company.trim();
+    const year = editValues.year.trim();
+    const month = editValues.month.trim();
+    const account = editValues.account.trim();
+    const saved = await saveChanges({
+      title: [company, year, month, account].filter(Boolean).join(' - '),
+      company,
+      year,
+      month,
+      account,
+      genre: editValues.genre.trim(),
+      description: editValues.description.trim()
+    });
+    if (saved) {
+      setIsEditing(false);
+    }
+  };
+
   const startAction = (action: WorkflowAction): void => {
     setErrorMessage('');
     setComment('');
@@ -164,8 +247,11 @@ export const RapprochementDetail: React.FC<IRapprochementDetailProps> = ({
     setPendingAction(action);
   };
 
-  const field = (label: string, value?: string): JSX.Element | null => {
-    if (!value || !value.trim()) {
+  const field = (label: string, value?: React.ReactNode): JSX.Element | null => {
+    const hasValue = typeof value === 'string'
+      ? Boolean(value.trim())
+      : value !== undefined && value !== null && value !== false;
+    if (!hasValue) {
       return null;
     }
 
@@ -177,24 +263,77 @@ export const RapprochementDetail: React.FC<IRapprochementDetailProps> = ({
     );
   };
 
+  const editableField = (label: string, key: EditableField): JSX.Element => (
+    <tr key={label}>
+      <td className={styles.fieldLabel}>{label}</td>
+      <td className={styles.fieldValue}>
+        {key === 'description' ? (
+          <textarea
+            value={editValues[key]}
+            onChange={event => setEditValues(values => ({ ...values, [key]: event.currentTarget.value }))}
+            rows={3}
+            disabled={isSaving}
+          />
+        ) : (
+          <input
+            value={editValues[key]}
+            onChange={event => setEditValues(values => ({ ...values, [key]: event.currentTarget.value }))}
+            disabled={isSaving}
+          />
+        )}
+      </td>
+    </tr>
+  );
+
+  const metadataField = (label: string, value: string): JSX.Element | null => (
+    value.trim()
+      ? <div key={label}>{label} {value}</div>
+      : null
+  );
+
+  const attachmentValue = isLoadingAttachments
+    ? 'Chargement des pièces jointes…'
+    : attachments.length > 0
+      ? (
+        <div className={styles.attachmentList}>
+          {attachments.map(attachment => (
+            <a key={`${attachment.name}-${attachment.url}`} href={attachment.url} target="_blank" rel="noreferrer">
+              {attachment.name}
+            </a>
+          ))}
+        </div>
+      )
+      : '';
+
   return (
     <section className={styles.detail} aria-labelledby="rapprochement-detail-title">
-      <button className={styles.backButton} type="button" onClick={onClose}>
-        Retour à la liste
-      </button>
-      <h2 className={styles.title} id="rapprochement-detail-title">Détail du rapprochement</h2>
+      <h2 className={styles.title} id="rapprochement-detail-title" hidden>Détail du rapprochement</h2>
 
       <table className={styles.fields}>
         <tbody>
         {field('Titre', item.title)}
         {field('Type', item.period === 'mensuel' ? 'Mensuel' : 'Trimestriel')}
         {field('Statut', item.status)}
-        {field('Genre', item.genre)}
-        {field('Société', item.company)}
-        {field('Compte', item.account)}
-        {field('Année', item.year)}
-        {field('Mois', item.month)}
-        {field('Description', item.description)}
+        {isEditing ? (
+          <>
+            {editableField('Genre', 'genre')}
+            {editableField('Société', 'company')}
+            {editableField('Compte', 'account')}
+            {editableField('Année', 'year')}
+            {editableField('Mois', 'month')}
+            {editableField('Description', 'description')}
+          </>
+        ) : (
+          <>
+            {field('Genre', item.genre)}
+            {field('Société', item.company)}
+            {field('Compte', item.account)}
+            {field('Année', item.year)}
+            {field('Mois', item.month)}
+            {field('Description', item.description)}
+          </>
+        )}
+        {field('Pièce(s) jointe(s)', attachmentValue)}
         {field('Émetteur', item.emitter)}
         {field('Date d’émission', formatDate(item.emissionDate))}
         {field('Signataire 1 assigné', item.signer1Assigned)}
@@ -231,38 +370,6 @@ export const RapprochementDetail: React.FC<IRapprochementDetailProps> = ({
         </tbody>
       </table>
 
-      <div className={styles.actions} aria-label="Actions du rapprochement">
-        {canSubmit && (
-          <button type="button" disabled={isSaving} onClick={() => startAction('submit')}>
-            Soumettre à la validation
-          </button>
-        )}
-        {canTakeControl && (
-          <button type="button" disabled={isSaving} onClick={handleTakeControl}>
-            Commencer l’analyse
-          </button>
-        )}
-        {canReleaseControl && (
-          <button type="button" disabled={isSaving} onClick={handleReleaseControl}>
-            Arrêter l’analyse
-          </button>
-        )}
-        {(canReviewAsSigner1 || canReviewAsSigner2) && (
-          <>
-            <button type="button" disabled={isSaving} onClick={() => startAction('refuse')}>
-              Refuser le rapprochement
-            </button>
-            {(canArchiveOnValidation || canPassToSigner2) && (
-              <button type="button" disabled={isSaving} onClick={() => startAction('validate')}>
-                {canPassToSigner2
-                  ? 'Valider et transmettre au signataire 2'
-                  : 'Valider et archiver le rapprochement'}
-              </button>
-            )}
-          </>
-        )}
-      </div>
-
       {pendingAction && (
         <div className={styles.actionForm}>
           <h3>
@@ -293,6 +400,77 @@ export const RapprochementDetail: React.FC<IRapprochementDetailProps> = ({
         </div>
       )}
       {errorMessage && <p className={styles.error} role="alert">{errorMessage}</p>}
+
+      <footer className={styles.footer}>
+        <div className={styles.metadata}>
+          {metadataField('Type de contenu :', item.contentType || '')}
+          {metadataField('Créé le', [formatMetadataDate(item.created), item.author ? `par ${item.author}` : ''].filter(Boolean).join(' '))}
+          {metadataField('Dernière modification le', [
+            formatMetadataDate(item.modified),
+            item.editor ? `par ${item.editor}` : ''
+          ].filter(Boolean).join(' '))}
+        </div>
+        <div className={styles.actions} aria-label="Actions du rapprochement">
+          <button type="button" disabled={isSaving} onClick={onClose}>Retour</button>
+          {isEditing ? (
+            <>
+              <button type="button" disabled={isSaving} onClick={handleSaveEdit}>
+                {isSaving ? 'Enregistrement…' : 'Enregistrer'}
+              </button>
+              <button type="button" disabled={isSaving} onClick={() => {
+                setEditValues({
+                  month: item.month,
+                  year: item.year,
+                  account: item.account,
+                  company: item.company,
+                  genre: item.genre,
+                  description: item.description || ''
+                });
+                setIsEditing(false);
+              }}>
+                Annuler
+              </button>
+            </>
+          ) : (
+            <>
+              {canEditItem && (
+                <button type="button" disabled={isSaving} onClick={() => setIsEditing(true)}>
+                  Modifier
+                </button>
+              )}
+              {canSubmit && (
+                <button type="button" disabled={isSaving} onClick={() => startAction('submit')}>
+                  Soumettre à la validation
+                </button>
+              )}
+              {canTakeControl && (
+                <button type="button" disabled={isSaving} onClick={handleTakeControl}>
+                  Commencer l’analyse
+                </button>
+              )}
+              {canReleaseControl && (
+                <button type="button" disabled={isSaving} onClick={handleReleaseControl}>
+                  Arrêter l’analyse
+                </button>
+              )}
+              {(canReviewAsSigner1 || canReviewAsSigner2) && (
+                <>
+                  <button type="button" disabled={isSaving} onClick={() => startAction('refuse')}>
+                    Refuser le rapprochement
+                  </button>
+                  {(canArchiveOnValidation || canPassToSigner2) && (
+                    <button type="button" disabled={isSaving} onClick={() => startAction('validate')}>
+                      {canPassToSigner2
+                        ? 'Valider et transmettre au signataire 2'
+                        : 'Valider et archiver le rapprochement'}
+                    </button>
+                  )}
+                </>
+              )}
+            </>
+          )}
+        </div>
+      </footer>
     </section>
   );
 };

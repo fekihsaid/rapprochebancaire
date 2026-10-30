@@ -52,6 +52,17 @@ export interface IRapprochement {
   refusalComment1Bis?: string;
   refusalComment2Bis?: string;
   secondPass?: boolean;
+  contentType?: string;
+  created?: string;
+  modified?: string;
+  author?: string;
+  editor?: string;
+  attachments?: IRapprochementAttachment[];
+}
+
+export interface IRapprochementAttachment {
+  name: string;
+  url: string;
 }
 
 export interface IChoiceMatrixEntry {

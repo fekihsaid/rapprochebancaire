@@ -3,6 +3,7 @@ import type {
   INewRapprochement,
   IUserAccess,
   IRapprochement,
+  IRapprochementAttachment,
   IRapprochementUpdate,
   PoleKey,
   RapprochementPeriod
@@ -11,6 +12,7 @@ import type {
 export interface IRapprochementService {
   getUserAccess(pole: PoleKey): Promise<IUserAccess>;
   getRapprochements(pole: PoleKey, period: RapprochementPeriod): Promise<IRapprochement[]>;
+  getAttachments(pole: PoleKey, itemId: number, period: RapprochementPeriod): Promise<IRapprochementAttachment[]>;
   getChoiceMatrix(pole: PoleKey): Promise<IChoiceMatrixEntry[]>;
   createRapprochement(pole: PoleKey, item: INewRapprochement): Promise<number>;
   updateRapprochement(pole: PoleKey, itemId: number, changes: IRapprochementUpdate): Promise<void>;

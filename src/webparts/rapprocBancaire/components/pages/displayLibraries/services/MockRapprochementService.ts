@@ -3,6 +3,7 @@ import type {
   IChoiceMatrixEntry,
   INewRapprochement,
   IRapprochement,
+  IRapprochementAttachment,
   IRapprochementUpdate,
   IUserAccess,
   PoleKey,
@@ -36,6 +37,18 @@ export class MockRapprochementService implements IRapprochementService {
     return this._items
       .filter(item => item.period === period)
       .map(item => ({ ...item }));
+  }
+
+  public async getAttachments(
+    _pole: PoleKey,
+    itemId: number,
+    _period: RapprochementPeriod
+  ): Promise<IRapprochementAttachment[]> {
+    const item = this._items.find(rapprochement => rapprochement.id === itemId);
+    if (!item) {
+      throw new Error(`Le rapprochement fictif ${itemId} n'existe pas.`);
+    }
+    return (item.attachments || []).map(attachment => ({ ...attachment }));
   }
 
   public async getChoiceMatrix(_pole: PoleKey): Promise<IChoiceMatrixEntry[]> {

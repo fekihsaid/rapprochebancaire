@@ -110,26 +110,30 @@ export const LibraryDisplay: React.FC<ILibraryDisplayProps> = ({
         style={{ backgroundImage: `url(${siteAbsoluteUrl}/SiteAssets/UsefullLinks/Bannier.png)` }}
         aria-hidden="true"
       />
-      <button className={styles.backButton} type="button" onClick={onBack}>
-        Liste des pôles
-      </button>
-      <h1 className={styles.title}>PÔLE {poleName}</h1>
-      <HorizontalNavBar
-        selectedPeriod={selectedPeriod}
-        onPeriodChange={period => {
-          setSelectedItem(undefined);
-          setSelectedPeriod(period);
-        }}
-      />
-      {userAccess && userAccess.canCreate && selectedPeriod !== 'archivage' && (
-        <div className={styles.toolbar}>
-          <button className={styles.createButton} type="button" onClick={() => {
-            setNotice('');
-            setIsCreateFormOpen(true);
-          }}>
-            Créer un rapprochement bancaire
+      {!selectedItem && (
+        <>
+          <button className={styles.backButton} type="button" onClick={onBack}>
+            Liste des pôles
           </button>
-        </div>
+          <h1 className={styles.title}>PÔLE {poleName}</h1>
+          <HorizontalNavBar
+            selectedPeriod={selectedPeriod}
+            onPeriodChange={period => {
+              setSelectedItem(undefined);
+              setSelectedPeriod(period);
+            }}
+          />
+          {userAccess && userAccess.canCreate && selectedPeriod !== 'archivage' && (
+            <div className={styles.toolbar}>
+              <button className={styles.createButton} type="button" onClick={() => {
+                setNotice('');
+                setIsCreateFormOpen(true);
+              }}>
+                Créer un rapprochement bancaire
+              </button>
+            </div>
+          )}
+        </>
       )}
       {notice && <p className={styles.notice} role="status">{notice}</p>}
       {isLoadingAccess ? (

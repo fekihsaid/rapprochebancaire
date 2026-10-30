@@ -13,6 +13,7 @@ import type {
   IChoiceMatrixEntry,
   INewRapprochement,
   IRapprochement,
+  IRapprochementAttachment,
   IRapprochementUpdate,
   PoleKey,
   RapprochementPeriod,
@@ -63,6 +64,11 @@ interface ISharePointItemResponse {
     Id?: number;
   };
   Id?: number;
+}
+
+interface ISharePointAttachment {
+  FileName: string;
+  ServerRelativeUrl: string;
 }
 
 interface ISharePointListResponse {
@@ -166,7 +172,12 @@ export class SharePointRapprochementService implements IRapprochementService {
       SHAREPOINT_SECOND_PASS_FIELDS.refusalReason1,
       SHAREPOINT_SECOND_PASS_FIELDS.refusalReason2,
       SHAREPOINT_SECOND_PASS_FIELDS.refusalComment1,
-      SHAREPOINT_SECOND_PASS_FIELDS.refusalComment2
+      SHAREPOINT_SECOND_PASS_FIELDS.refusalComment2,
+      'Created',
+      'Modified',
+      'Author/Title',
+      'Editor/Title',
+      'ContentType/Name'
     ].join(',');
     const expand = [
       SHAREPOINT_FIELDS.signer1,
@@ -177,7 +188,10 @@ export class SharePointRapprochementService implements IRapprochementService {
       SHAREPOINT_SECOND_PASS_FIELDS.emitter,
       SHAREPOINT_SECOND_PASS_FIELDS.signer1,
       SHAREPOINT_SECOND_PASS_FIELDS.signer2,
-      SHAREPOINT_WORKFLOW_FIELDS.beingAnalysedBy
+      SHAREPOINT_WORKFLOW_FIELDS.beingAnalysedBy,
+      'Author',
+      'Editor',
+      'ContentType'
     ].join(',');
     const filter = period === 'archivage'
       ? undefined
@@ -229,7 +243,32 @@ export class SharePointRapprochementService implements IRapprochementService {
       refusalReason2Bis: this._getString(item[SHAREPOINT_SECOND_PASS_FIELDS.refusalReason2]),
       refusalComment1Bis: this._getString(item[SHAREPOINT_SECOND_PASS_FIELDS.refusalComment1]),
       refusalComment2Bis: this._getString(item[SHAREPOINT_SECOND_PASS_FIELDS.refusalComment2]),
-      secondPass: Boolean(item[SHAREPOINT_WORKFLOW_FIELDS.secondPass])
+      secondPass: Boolean(item[SHAREPOINT_WORKFLOW_FIELDS.secondPass]),
+      contentType: this._getNestedString(item.ContentType, 'Name'),
+      created: this._getString(item.Created),
+      modified: this._getString(item.Modified),
+      author: this._getPersonName(item.Author),
+      editor: this._getPersonName(item.Editor)
+    }));
+  }
+
+  public async getAttachments(
+    pole: PoleKey,
+    itemId: number,
+    period: RapprochementPeriod
+  ): Promise<IRapprochementAttachment[]> {
+    const listName = period === 'archivage' ? SHAREPOINT_LISTS.archives : SHAREPOINT_LISTS.rapprochements;
+    const listUrl = this._getListUrl(pole, listName);
+    const response = await this._httpClient.get(
+      `${listUrl}/items(${itemId})/AttachmentFiles?$select=FileName,ServerRelativeUrl`,
+      SPHttpClient.configurations.v1,
+      { headers: { Accept: 'application/json;odata=nometadata' } }
+    );
+    const result = await this._readJson<ISharePointCollection<ISharePointAttachment>>(response);
+    const attachments = result.value || (result.d && result.d.results) || [];
+    return attachments.map(attachment => ({
+      name: attachment.FileName,
+      url: new URL(attachment.ServerRelativeUrl, `${this._getWebUrl(pole)}/`).toString()
     }));
   }
 
@@ -470,6 +509,14 @@ export class SharePointRapprochementService implements IRapprochementService {
 
   private _getString(value: unknown): string {
     return typeof value === 'string' ? value : '';
+  }
+
+  private _getNestedString(value: unknown, key: string): string {
+    if (value && typeof value === 'object' && key in value) {
+      const nestedValue = (value as Record<string, unknown>)[key];
+      return typeof nestedValue === 'string' ? nestedValue : '';
+    }
+    return '';
   }
 
   private _readFile(file: File): Promise<ArrayBuffer> {
