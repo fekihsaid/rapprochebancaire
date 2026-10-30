@@ -1,177 +1,220 @@
-.overlay {
-  position: fixed;
-  z-index: 1000;
-  inset: 0;
+.formPage {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.45);
-}
-
-.dialog {
-  width: 100%;
-  max-width: 760px;
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: 0 24px 24px;
-  background-color: #fff;
-  color: #323130;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-}
-
-.header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-  margin: 0 -24px 20px;
-  padding: 20px 24px 16px;
-  border-bottom: 1px solid #edebe9;
-  background-color: #faf9f7;
+  min-height: 450px;
+  flex-direction: column;
+  padding: 34px 0 14px;
+  color: #06234b;
+  font-family: Arial, sans-serif;
 }
 
 .title {
-  margin: 0;
-  font-size: 21px;
-  font-weight: 600;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
 }
 
-.subtitle {
-  margin: 6px 0 0;
-  color: #605e5c;
-  font-size: 13px;
-  text-transform: capitalize;
-}
-
-.status {
-  flex: 0 0 auto;
-  padding: 4px 10px;
-  border-radius: 2px;
-  background-color: #f3f2f1;
-  color: #605e5c;
-  font-size: 12px;
+.formPage form {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
 .fields {
   display: grid;
-  grid-template-columns: 180px minmax(0, 1fr);
-  gap: 0 16px;
+  grid-template-columns: minmax(210px, 220px) minmax(0, 320px);
+  align-content: start;
+  row-gap: 8px;
 }
 
 .field {
   display: grid;
   grid-column: 1 / -1;
-  grid-template-columns: 180px minmax(0, 1fr);
+  grid-template-columns: inherit;
   align-items: start;
   min-width: 0;
-  column-gap: 16px;
-  padding: 10px 0;
-  font-size: 13px;
+  column-gap: 0;
+  font-size: 10px;
 
   > span:first-child {
-    padding-top: 8px;
+    align-self: start;
+    padding-top: 6px;
   }
 
-  input,
+  b {
+    color: #d35a1b;
+    font-weight: 400;
+  }
+
   select,
   textarea {
     box-sizing: border-box;
-    width: 100%;
-    min-height: 34px;
-    padding: 7px 8px;
-    border: 1px solid #8a8886;
-    border-radius: 2px;
+    max-width: 100%;
+    border: 1px solid #a6a6a6;
+    border-radius: 0;
     background-color: #fff;
-    color: #323130;
+    color: #333;
     font: inherit;
   }
 
+  select {
+    height: 16px;
+    padding: 0;
+  }
+
   textarea {
-    resize: vertical;
+    width: 320px;
+    height: 90px;
+    padding: 4px;
+    resize: both;
   }
+}
 
-  input[type='file'] {
-    padding: 5px;
+.field:nth-child(1) select {
+  width: 58px;
+}
+
+.field:nth-child(2) select {
+  width: 195px;
+}
+
+.field:nth-child(3) select {
+  width: 225px;
+}
+
+.field:nth-child(4) select {
+  width: 44px;
+}
+
+.field:nth-child(5) select {
+  width: 74px;
+}
+
+.descriptionField > span:first-child,
+.attachmentField > span:first-child {
+  padding-top: 3px;
+}
+
+.attachmentControl {
+  min-width: 0;
+}
+
+.fileInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+.dropZone {
+  display: flex;
+  box-sizing: border-box;
+  width: 320px;
+  max-width: 100%;
+  height: 98px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed #333;
+  color: #0072c6;
+  font-size: 10px;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid #0072c6;
+    outline-offset: 2px;
   }
 }
 
-.fullWidth {
-  grid-template-columns: 180px minmax(0, 1fr);
+.dragging {
+  background-color: #fff4ed;
+  border-color: #d35a1b;
 }
 
-.fieldHint {
-  grid-column: 2;
-  margin-top: 4px;
-  color: #605e5c;
-  font-size: 11px;
+.paperclip {
+  margin-bottom: 4px;
+  color: #333;
+  font-size: 18px;
+  line-height: 20px;
 }
 
-.fileList {
-  margin: 12px 0 0;
-  padding-left: 20px;
-  font-size: 12px;
+.fileNames {
+  display: block;
+  margin-top: 3px;
+  overflow-wrap: anywhere;
+  color: #06234b;
+  font-size: 10px;
 }
 
 .error {
-  margin: 16px 0 0;
+  margin: 12px 0 0 220px;
   color: #a4262c;
-  font-size: 13px;
+  font-size: 11px;
 }
 
 .actions {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
-  gap: 10px;
-  margin-top: 24px;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 24px;
 
   button {
-    min-height: 36px;
-    padding: 0 16px;
-    border: 1px solid #8a8886;
-    border-radius: 2px;
-    background-color: #fff;
-    color: #323130;
-    font: inherit;
+    min-height: 27px;
+    padding: 0 17px;
+    border: 0;
+    background-color: #d35a1b;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
     cursor: pointer;
 
+    &:hover {
+      background-color: #b94a14;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #06234b;
+      outline-offset: 2px;
+    }
+
     &:disabled {
-      cursor: default;
+      cursor: wait;
       opacity: 0.6;
     }
   }
+}
 
-  button[type='submit'] {
-    border-color: #0078d4;
-    background-color: #0078d4;
-    color: #fff;
-  }
+.loading {
+  min-height: 450px;
+  padding-top: 34px;
+  color: #06234b;
+  font: 11px Arial, sans-serif;
 }
 
 @media (max-width: 560px) {
-  .dialog {
-    padding-right: 16px;
-    padding-left: 16px;
+  .fields {
+    grid-template-columns: minmax(110px, 38%) minmax(0, 1fr);
   }
 
-  .header {
-    margin-right: -16px;
-    margin-left: -16px;
-    padding-right: 16px;
-    padding-left: 16px;
+  .field textarea {
+    width: 100%;
   }
 
-  .field,
-  .fullWidth {
-    grid-template-columns: 1fr;
-    row-gap: 6px;
+  .field:nth-child(3) select {
+    width: 100%;
   }
 
-  .field > span:first-child {
-    padding-top: 0;
-  }
-
-  .fieldHint {
-    grid-column: 1;
+  .error {
+    margin-left: 0;
   }
 }

@@ -56,6 +56,11 @@ export class MockRapprochementService implements IRapprochementService {
   }
 
   public async createRapprochement(_pole: PoleKey, item: INewRapprochement): Promise<number> {
+    const access = await this.getUserAccess(_pole);
+    if (!access.canCreate) {
+      throw new Error('Seul un utilisateur du groupe Émetteur peut créer un rapprochement bancaire.');
+    }
+
     const id = this._nextId++;
     this._items.push({
       id,

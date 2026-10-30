@@ -110,7 +110,7 @@ export const LibraryDisplay: React.FC<ILibraryDisplayProps> = ({
         style={{ backgroundImage: `url(${siteAbsoluteUrl}/SiteAssets/UsefullLinks/Bannier.png)` }}
         aria-hidden="true"
       />
-      {!selectedItem && (
+      {!selectedItem && !isCreateFormOpen && (
         <>
           <button className={styles.backButton} type="button" onClick={onBack}>
             Liste des pôles
@@ -157,6 +157,19 @@ export const LibraryDisplay: React.FC<ILibraryDisplayProps> = ({
             setRefreshVersion(version => version + 1);
           }}
         />
+      ) : isCreateFormOpen && userAccess && userAccess.canCreate && selectedPeriod !== 'archivage' ? (
+        <CreateRapprochementForm
+          pole={pole}
+          period={selectedPeriod}
+          currentUserId={userAccess.currentUserId}
+          dataService={dataService}
+          onCancel={() => setIsCreateFormOpen(false)}
+          onCreated={message => {
+            setIsCreateFormOpen(false);
+            setNotice(message);
+            setRefreshVersion(version => version + 1);
+          }}
+        />
       ) : <div className={styles.tableContainer}>
         <table className={styles.listTable}>
           <thead>
@@ -200,19 +213,6 @@ export const LibraryDisplay: React.FC<ILibraryDisplayProps> = ({
           </tbody>
         </table>
       </div>}
-      {isCreateFormOpen && userAccess && userAccess.canCreate && selectedPeriod !== 'archivage' && (
-        <CreateRapprochementForm
-          pole={pole}
-          period={selectedPeriod}
-          dataService={dataService}
-          onCancel={() => setIsCreateFormOpen(false)}
-          onCreated={message => {
-            setIsCreateFormOpen(false);
-            setNotice(message);
-            setRefreshVersion(version => version + 1);
-          }}
-        />
-      )}
     </section>
   );
 };

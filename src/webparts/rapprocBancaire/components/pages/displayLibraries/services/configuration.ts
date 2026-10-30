@@ -101,3 +101,17 @@ export const STATUS_CHOICES = [
 
 export const GENRE_CHOICES = ['Banque', 'Caisse', 'Carte'] as const;
 export const YEAR_CHOICES = ['2026', '2025', '2024', '2023', '2022', '2021'] as const;
+export const MONTH_CHOICES = [
+  'Janvier',
+  'Février',
+  'Mars',
+  'Avril',
+  'Mai',
+  'Juin',
+  'Juillet',
+  'Août',
+  'Septembre',
+  'Octobre',
+  'Novembre',
+  'Décembre'
+] as const;

@@ -288,6 +288,11 @@ export class SharePointRapprochementService implements IRapprochementService {
   }
 
   public async createRapprochement(pole: PoleKey, item: INewRapprochement): Promise<number> {
+    const userAccess = await this.getUserAccess(pole);
+    if (!userAccess.canCreate) {
+      throw new Error('Seul un utilisateur du groupe Émetteur peut créer un rapprochement bancaire.');
+    }
+
     const listName = SHAREPOINT_LISTS.rapprochements;
     const listUrl = this._getListUrl(pole, listName);
     const entityType = await this._getListItemEntityType(listUrl, listName);
@@ -444,6 +449,8 @@ export class SharePointRapprochementService implements IRapprochementService {
       payload[SHAREPOINT_FIELDS.period] = item.period === 'mensuel' ? 'Mensuel' : 'Trimestriel';
     }
     if (item.description !== undefined) { payload[SHAREPOINT_FIELDS.description] = item.description; }
+    if (item.emitterId !== undefined) { payload[`${SHAREPOINT_WORKFLOW_FIELDS.emitter}Id`] = item.emitterId; }
+    if (item.emissionDate !== undefined) { payload[SHAREPOINT_WORKFLOW_FIELDS.emissionDate] = item.emissionDate; }
     const secondPassFields = item.useSecondPassFields ? SHAREPOINT_SECOND_PASS_FIELDS : undefined;
     if (item.signer1Id !== undefined) {
       payload[`${secondPassFields ? secondPassFields.signer1 : SHAREPOINT_FIELDS.signer1}Id`] = item.signer1Id;

@@ -83,6 +83,8 @@ export interface INewRapprochement {
   description?: string;
   signer1Id?: number;
   signer2Id?: number;
+  emitterId?: number;
+  emissionDate?: string;
 }
 
 export interface IRapprochementUpdate extends Partial<INewRapprochement> {
