@@ -1,0 +1,968 @@
+<div style="padding-left:5px">
+	
+	<table class="ms-core-tableNoSpace" id="onetIDListForm">
+	 <tbody><tr>
+	  <td>
+	 <div class="ms-webpart-zone ms-fullWidth">
+		<div id="MSOZoneCell_WebPartWPQ3" class="s4-wpcell-plain ms-webpartzone-cell ms-webpart-cell-vertical-inline-table ms-webpart-cell-vertical ms-fullWidth ">
+			<div class="ms-webpart-chrome ms-webpart-chrome-vertical ms-webpart-chrome-fullWidth ">
+				<div webpartid="66249f8c-3f33-463a-9175-ad253e0e9bb7" haspers="false" id="WebPartWPQ3" width="100%" class="ms-WPBody noindex " allowdelete="false" style=""><div class="ms-rtestate-field">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>PopupHTML.html</title>
+
+<!-- Upload des fichiers -->
+<div id="waitWhileUploading" class="popupParRap">
+	<div>
+		Merci de patienter
+	</div>
+</div>
+
+<!-- Archivage du rapprochement -->
+<div id="waitWhileArchiving" class="popupParRap">
+	<div>
+		Merci de patienter
+	</div>
+</div>
+
+<!-- Warning Fichiers mis à jour -->
+<div id="warningFilsModified" class="popupParRap">
+	<div>
+		Attention, une modification des fichiers attachés a eu lieu depuis la dernière sauvegarde du rapprochement bancaire.
+	</div>
+</div>
+
+<!--refus Signataire 1 Rappro-->
+<div id="motifRetourSignature1Rappro" class="popupParRap">
+	<table>
+		<tbody><tr>
+			<td>Modif retour signataire 1</td>
+			<td><select id="MotifRetourSignataire1" class="popupField">
+				<option value="Autre">Autre</option>
+				<option value="Date erronée">Date erronée</option>
+				<option value="Ecart non justifié">Ecart non justifié</option>
+				<option value="Ecritures non justifiées">Ecritures non justifiées</option>
+				<option value="Extrait de compte manquant">Extrait de compte manquant</option>
+				<option value="Rapprochement manquant">Rapprochement manquant</option>
+				<option value="Relevé bancaire manquant">Relevé bancaire manquant</option>
+				<option value="Solde comptable erroné">Solde comptable erroné</option>
+			</select></td>
+		</tr>
+		<tr>
+			<td>Commentaire retour signataire 1</td>
+			<td><textarea id="CommentaireRetourSignataire1" class="popupField textareaComment"></textarea></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+			<div class="btnPh" style="display: block;" onclick=" SaveRapParItem('RefuseSubmissionBtn')">Refuser le rapprochement (Signataire 1)</div>	
+			<div class="btnPh btnCnl" style="display: block;" onclick="Cancel('motifRetourSignature1Rappro')">Annuler</div>	
+			</td>
+		</tr>
+	</tbody></table>
+</div>
+
+<!--refus Signataire 2 Rappro-->
+<div id="motifRetourSignature2Rappro" class="popupParRap">
+	<table>
+		<tbody><tr>
+			<td>Modif retour signataire 2</td>
+			<td><select id="MotifRetourSignataire2" class="popupField">
+			<option value="Autre">Autre</option>
+			<option value="Date erronée">Date erronée</option>
+			<option value="Ecart non justifié">Ecart non justifié</option>
+			<option value="Ecritures non justifiées">Ecritures non justifiées</option>
+			<option value="Extrait de compte manquant">Extrait de compte manquant</option>
+			<option value="Rapprochement manquant">Rapprochement manquant</option>
+			<option value="Relevé bancaire manquant">Relevé bancaire manquant</option>
+			<option value="Solde comptable erroné">Solde comptable erroné</option>
+			</select></td>
+		</tr>
+		<tr>
+			<td>Commentaire retour signataire 2</td>
+			<td><textarea id="CommentaireRetourSignataire2" class="popupField textareaComment"></textarea></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+			<div class="btnPh" style="display: block;" onclick="SaveRapParItem('RefuseSubmissionBtn')">Refuser le rapprochement (Signataire 2)</div>
+			<div class="btnPh btnCnl" style="display: block;" onclick="Cancel('motifRetourSignature2Rappro')">Annuler</div>
+			</td>
+		</tr>
+	</tbody></table>
+</div>
+
+<!--Emission-->
+<div id="EmetteurSoumission" class="popupParRap">
+	<table>
+		<tbody><tr>
+			<td>Assigner le signataire 1</td>
+			<td>
+				
+					<div class="HsgSubHearch">
+	            			<div style="float:left" id="hsgNomSignataire1"><div dir=""><div class="sp-peoplepicker-topLevel" id="hsgNomSignataire1_TopSpan" title="Entrez un nom ou une adresse de courrier..." spclientpeoplepicker="true" style="width: 350px;"><input id="hsgNomSignataire1_TopSpan_HiddenInput" name="hsgNomSignataire1_TopSpan_HiddenInput" type="hidden"><div id="hsgNomSignataire1_TopSpan_AutoFillDiv" aria-live="assertive" class="sp-peoplepicker-autoFillContainer"></div><span id="hsgNomSignataire1_TopSpan_InitialHelpText" class="sp-peoplepicker-initialHelpText ms-helperText">Entrez un nom ou une adresse de courrier...</span><img class="sp-peoplepicker-waitImg" id="hsgNomSignataire1_TopSpan_WaitImage" alt="Cette animation indique que l'opération est en cours. Cliquez pour supprimer cette animation." src="/_layouts/15/images/gears_anv4.gif?rev=44"><span id="hsgNomSignataire1_TopSpan_ResolvedList" class="sp-peoplepicker-resolveList"></span><span id="hsgNomSignataire1_TopSpan_NotificationSpan" aria-live="polite" style="visibility:hidden;position:absolute;width:0px;display:inline-block;"></span><input type="text" class="sp-peoplepicker-editorInput" size="1" autocomplete="off" value="" id="hsgNomSignataire1_TopSpan_EditorInput" title="Entrez un nom ou une adresse de courrier..." autocorrect="off" autocapitalize="off" data-sp-peoplepickereditor="true"></div></div></div>            
+					</div>
+
+			</td>
+		</tr>
+		<tr>
+			<td>Commentaire émetteur </td>
+			<td><textarea id="hsgCommentaireEmetteur" class="popupField textareaComment"></textarea></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div class="btnPh" style="display: block;" onclick="SaveRapParItem('SubmitBtn')">Soumettre le rapprochement</div>
+				<div class="btnPh btnCnl" style="display: block;" onclick="Cancel('EmetteurSoumission')">Annuler</div>							
+			</td> 
+		</tr>
+	</tbody></table>
+</div>
+
+<!--Validation Signataire 1-->
+<div id="Signature1Validation" class="popupParRap">
+	<table>
+		<tbody><tr>
+			<td>Assigner le signataire 2</td>
+			<td>
+				
+					<div class="HsgSubHearch">
+	            			<div style="float:left" id="hsgNomSignataire2"><div dir=""><div class="sp-peoplepicker-topLevel" id="hsgNomSignataire2_TopSpan" title="Entrez un nom ou une adresse de courrier..." spclientpeoplepicker="true" style="width: 350px;"><input id="hsgNomSignataire2_TopSpan_HiddenInput" name="hsgNomSignataire2_TopSpan_HiddenInput" type="hidden"><div id="hsgNomSignataire2_TopSpan_AutoFillDiv" aria-live="assertive" class="sp-peoplepicker-autoFillContainer"></div><span id="hsgNomSignataire2_TopSpan_InitialHelpText" class="sp-peoplepicker-initialHelpText ms-helperText">Entrez un nom ou une adresse de courrier...</span><img class="sp-peoplepicker-waitImg" id="hsgNomSignataire2_TopSpan_WaitImage" alt="Cette animation indique que l'opération est en cours. Cliquez pour supprimer cette animation." src="/_layouts/15/images/gears_anv4.gif?rev=44"><span id="hsgNomSignataire2_TopSpan_ResolvedList" class="sp-peoplepicker-resolveList"></span><span id="hsgNomSignataire2_TopSpan_NotificationSpan" aria-live="polite" style="visibility:hidden;position:absolute;width:0px;display:inline-block;"></span><input type="text" class="sp-peoplepicker-editorInput" size="1" autocomplete="off" value="" id="hsgNomSignataire2_TopSpan_EditorInput" title="Entrez un nom ou une adresse de courrier..." autocorrect="off" autocapitalize="off" data-sp-peoplepickereditor="true"></div></div></div>            
+					</div>
+
+			</td>
+		</tr>
+		<tr>
+			<td>Commentaire signataire </td>
+			<td><textarea id="hsgCommentaireSignataire1" class="popupField textareaComment"></textarea></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+			<div class="btnPh" style="display: block;" onclick="SaveRapParItem('ValidateSubmissionBtn')">Valider le rapprochement (Signataire 1)</div>
+			<div class="btnPh btnCnl" style="display: block;" onclick="Cancel('Signature1Validation')">Annuler</div>
+			</td> 
+		</tr>
+	</tbody></table>
+</div>
+
+<!--Validation & Archivage Signataire 1-->
+<div id="Signature1Archivage" class="popupParRap">
+	<table>
+		<tbody><tr>
+			<td>Commentaire signataire </td>
+			<td><textarea id="hsgCommentaireArchivageSignataire1" class="popupField textareaComment"></textarea></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+			<div class="btnPh" style="display: block;" onclick="SaveRapParItem('ValidateSubmissionAndArchiveBtn')">Valider le rapprochement et Archiver</div>
+			<div class="btnPh btnCnl" style="display: block;" onclick="Cancel('Signature1Validation')">Annuler</div>
+			</td> 
+		</tr>
+	</tbody></table>
+</div>
+
+<!--Validation & Archivage Signataire 2-->
+<div id="Signature2Archivage" class="popupParRap">
+	<table>
+		<tbody><tr>
+			<td>Commentaire signataire </td>
+			<td><textarea id="hsgCommentaireArchivageSignataire2" class="popupField textareaComment"></textarea></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+			<div class="btnPh" style="display: block;" onclick="SaveRapParItem('ValidateSubmissionAndArchiveBtn')">Valider le rapprochement et Archiver</div>
+			<div class="btnPh btnCnl" style="display: block;" onclick="Cancel('Signature1Validation')">Annuler</div>
+			</td> 
+		</tr>
+	</tbody></table>
+</div>
+
+
+
+
+</div><div class="ms-clear"></div></div>
+			</div><div class="ms-PartSpacingVertical"></div>
+		</div><div id="MSOZoneCell_WebPartWPQ2" class="s4-wpcell-plain ms-webpartzone-cell ms-webpart-cell-vertical-inline-table ms-webpart-cell-vertical ms-fullWidth ">
+			<div class="ms-webpart-chrome ms-webpart-chrome-vertical ms-webpart-chrome-fullWidth ">
+				<div webpartid="22875720-b8d8-43fb-87bd-7e32c33eede8" haspers="false" id="WebPartWPQ2" width="100%" class="noindex " allowdelete="false" style="">
+		<table>
+			<tbody><tr>
+				<td>
+					<span id="part1" style="display: inline;">
+						
+		
+	
+						<div id="listFormToolBarTop" style="display: none;">
+						
+<table class="ms-formtoolbar" cellpadding="2" cellspacing="0" border="0" id="ctl00_ctl42_g_22875720_b8d8_43fb_87bd_7e32c33eede8_ctl00_toolBarTbltop" width="100%" role="presentation">
+  <tbody><tr>
+
+
+	<td width="99%" class="ms-toolbar" nowrap="nowrap"><img src="/_layouts/15/images/blank.gif?rev=44" width="1" height="18" alt="" data-accessibility-nocheck="true"></td>
+
+
+		<td class="ms-toolbar" nowrap="nowrap">
+	
+		<table cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td align="right" width="100%" nowrap="nowrap">
+			<input type="button" name="ctl00$ctl42$g_22875720_b8d8_43fb_87bd_7e32c33eede8$ctl00$toolBarTbltop$RightRptControls$ctl02$ctl00$diidIOGoBack" value="Fermer" onclick="STSNavigate('https:\u002f\u002fagora.atlas.hermes\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs\u002fLists\u002fRapprochements\u002fTRIMESTRIEL.aspx');return false;WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ctl42$g_22875720_b8d8_43fb_87bd_7e32c33eede8$ctl00$toolBarTbltop$RightRptControls$ctl02$ctl00$diidIOGoBack&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, true))" id="ctl00_ctl42_g_22875720_b8d8_43fb_87bd_7e32c33eede8_ctl00_toolBarTbltop_RightRptControls_ctl02_ctl00_diidIOGoBack" accesskey="C" class="ms-ButtonHeightWidth" target="_self" style="display: none;">
+		</td> </tr> </tbody></table>
+	
+		</td>
+	
+  </tr>
+</tbody></table>
+
+						</div>
+						<span style="display:none">
+		<script type="text/javascript">// <![CDATA[ 
+
+
+			recycleBinEnabled = 1;
+			cascadeDeleteWarningMessage = '';
+		// ]]>
+</script>
+		
+<table class="ms-toolbar" cellpadding="2" cellspacing="0" border="0" id="ctl00_ctl42_g_22875720_b8d8_43fb_87bd_7e32c33eede8_ctl00_ctl01_ctl00_toolBarTbl" width="100%" role="presentation">
+  <tbody><tr>
+
+<td class="ms-toolbar" nowrap="nowrap" id="_spFocusHere"><table cellpadding="1" cellspacing="0"><tbody><tr><td class="ms-toolbar" nowrap="nowrap"><img align="absmiddle" alt="Modifier l'élément" src="/_layouts/15/images/edititem.gif" style="border-width:0px;" width="16" height="16"></td><td class="ms-toolbar" nowrap="nowrap"><a id="ctl00_ctl42_g_22875720_b8d8_43fb_87bd_7e32c33eede8_ctl00_ctl01_ctl00_toolBarTbl_RptControls_diidIOEditItem" style="visibility:hidden;" href="javascript:STSNavigateWithCheckoutAlert('\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs\u002f_layouts\u002f15\u002flistform.aspx?ListId={ADF528EA-7F96-4FCF-B036-E7478DEA6FCA}\u0026PageType=6\u0026ID=2609\u0026Source=https\u00253A\u00252F\u00252Fagora\u00252Eatlas\u00252Ehermes\u00252FSites\u00252Fhsg\u00252Drapprobanc\u00252FSocietesSoeurs\u00252FLists\u00252FRapprochements\u00252FTRIMESTRIEL\u00252Easpx','0','0','\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs\u002fLists\u002fRapprochements\u002f2609_.000','https:\u002f\u002fagora.atlas.hermes\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs');" onclick="javascript:STSNavigateWithCheckoutAlert('\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs\u002f_layouts\u002f15\u002flistform.aspx?ListId={ADF528EA-7F96-4FCF-B036-E7478DEA6FCA}\u0026PageType=6\u0026ID=2609\u0026Source=https\u00253A\u00252F\u00252Fagora\u00252Eatlas\u00252Ehermes\u00252FSites\u00252Fhsg\u00252Drapprobanc\u00252FSocietesSoeurs\u00252FLists\u00252FRapprochements\u00252FTRIMESTRIEL\u00252Easpx','0','0','\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs\u002fLists\u002fRapprochements\u002f2609_.000','https:\u002f\u002fagora.atlas.hermes\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs'); return false;"></a><a href="javascript:STSNavigateWithCheckoutAlert('\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs\u002f_layouts\u002f15\u002flistform.aspx?ListId={ADF528EA-7F96-4FCF-B036-E7478DEA6FCA}\u0026PageType=6\u0026ID=2609\u0026Source=https\u00253A\u00252F\u00252Fagora\u00252Eatlas\u00252Ehermes\u00252FSites\u00252Fhsg\u00252Drapprobanc\u00252FSocietesSoeurs\u00252FLists\u00252FRapprochements\u00252FTRIMESTRIEL\u00252Easpx','0','0','\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs\u002fLists\u002fRapprochements\u002f2609_.000','https:\u002f\u002fagora.atlas.hermes\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs');" onclick="javascript:STSNavigateWithCheckoutAlert('\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs\u002f_layouts\u002f15\u002flistform.aspx?ListId={ADF528EA-7F96-4FCF-B036-E7478DEA6FCA}\u0026PageType=6\u0026ID=2609\u0026Source=https\u00253A\u00252F\u00252Fagora\u00252Eatlas\u00252Ehermes\u00252FSites\u00252Fhsg\u00252Drapprobanc\u00252FSocietesSoeurs\u00252FLists\u00252FRapprochements\u00252FTRIMESTRIEL\u00252Easpx','0','0','\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs\u002fLists\u002fRapprochements\u002f2609_.000','https:\u002f\u002fagora.atlas.hermes\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs'); return false;" accesskey="I" id="ctl00_ctl42_g_22875720_b8d8_43fb_87bd_7e32c33eede8_ctl00_ctl01_ctl00_toolBarTbl_RptControls_diidIOEditItem_LinkText" class="ms-toolbar">Modifier l'élément</a></td></tr></tbody></table>
+		</td>
+	
+		<td class="ms-separator">|</td>
+	<td class="ms-toolbar" nowrap="nowrap" id="_spFocusHere"><table cellpadding="1" cellspacing="0"><tbody><tr><td class="ms-toolbar" nowrap="nowrap"><img align="absmiddle" alt="Supprimer l'élément" src="/_layouts/15/images/delitem.gif" style="border-width:0px;" width="16" height="16"></td><td class="ms-toolbar" nowrap="nowrap"><a id="ctl00_ctl42_g_22875720_b8d8_43fb_87bd_7e32c33eede8_ctl00_ctl01_ctl00_toolBarTbl_RptControls_diidIODeleteItem" style="visibility:hidden;" href="javascript:__doPostBack('ctl00$ctl42$g_22875720_b8d8_43fb_87bd_7e32c33eede8$ctl00$ctl01$ctl00$toolBarTbl$RptControls$diidIODeleteItem','')" onclick="return DeleteItemConfirmation();"></a><a href="javascript:__doPostBack('ctl00$ctl42$g_22875720_b8d8_43fb_87bd_7e32c33eede8$ctl00$ctl01$ctl00$toolBarTbl$RptControls$diidIODeleteItem','')" onclick="return DeleteItemConfirmation();" accesskey="X" id="ctl00_ctl42_g_22875720_b8d8_43fb_87bd_7e32c33eede8_ctl00_ctl01_ctl00_toolBarTbl_RptControls_diidIODeleteItem_LinkText" class="ms-toolbar">Supprimer l'élément</a></td></tr></tbody></table>
+		</td>
+	
+		<td class="ms-separator">|</td>
+	<td class="ms-toolbar" nowrap="nowrap" id="_spFocusHere"><table cellpadding="1" cellspacing="0"><tbody><tr><td class="ms-toolbar" nowrap="nowrap"><img align="absmiddle" alt="Gérer les autorisations" src="/_layouts/15/images/manageperm.gif" style="border-width:0px;" width="16" height="16"></td><td class="ms-toolbar" nowrap="nowrap"><a id="ctl00_ctl42_g_22875720_b8d8_43fb_87bd_7e32c33eede8_ctl00_ctl01_ctl00_toolBarTbl_RptControls_diidIOPermissions" style="visibility:hidden;" href="javascript:" onclick="javascript:EnsureScriptFunc('sharing.js', 'DisplaySharedWithDialog', function () { DisplaySharedWithDialogCore('https:\u002f\u002fagora.atlas.hermes\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs','%7BADF528EA%2D7F96%2D4FCF%2DB036%2DE7478DEA6FCA%7D','2609',false,false,'0','Microsoft.SharePoint.SPContentType');});return false;"></a><a href="javascript:" onclick="javascript:EnsureScriptFunc('sharing.js', 'DisplaySharedWithDialog', function () { DisplaySharedWithDialogCore('https:\u002f\u002fagora.atlas.hermes\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs','%7BADF528EA%2D7F96%2D4FCF%2DB036%2DE7478DEA6FCA%7D','2609',false,false,'0','Microsoft.SharePoint.SPContentType');});return false;" accesskey="R" id="ctl00_ctl42_g_22875720_b8d8_43fb_87bd_7e32c33eede8_ctl00_ctl01_ctl00_toolBarTbl_RptControls_diidIOPermissions_LinkText" class="ms-toolbar">Gérer les autorisations</a></td></tr></tbody></table>
+		</td>
+	
+		<td class="ms-separator">|</td>
+	<td class="ms-toolbar" nowrap="nowrap" id="_spFocusHere"><table cellpadding="1" cellspacing="0"><tbody><tr><td class="ms-toolbar" nowrap="nowrap"><img align="absmiddle" alt="Flux de travail" src="/_layouts/15/images/workflows.png" style="border-width:0px;" width="16" height="16"></td><td class="ms-toolbar" nowrap="nowrap"><a id="ctl00_ctl42_g_22875720_b8d8_43fb_87bd_7e32c33eede8_ctl00_ctl01_ctl00_toolBarTbl_RptControls_ctl08" style="visibility:hidden;" href="/Sites/hsg-rapprobanc/SocietesSoeurs/_layouts/15/Workflow.aspx?ID=2609&amp;List=adf528ea-7f96-4fcf-b036-e7478dea6fca&amp;Source=https%3A%2F%2Fagora%2Eatlas%2Ehermes%2FSites%2Fhsg%2Drapprobanc%2FSocietesSoeurs%2FLists%2FRapprochements%2FTRIMESTRIEL%2Easpx"></a><a href="/Sites/hsg-rapprobanc/SocietesSoeurs/_layouts/15/Workflow.aspx?ID=2609&amp;List=adf528ea-7f96-4fcf-b036-e7478dea6fca&amp;Source=https%3A%2F%2Fagora%2Eatlas%2Ehermes%2FSites%2Fhsg%2Drapprobanc%2FSocietesSoeurs%2FLists%2FRapprochements%2FTRIMESTRIEL%2Easpx" accesskey="W" id="ctl00_ctl42_g_22875720_b8d8_43fb_87bd_7e32c33eede8_ctl00_ctl01_ctl00_toolBarTbl_RptControls_ctl08_LinkText" class="ms-toolbar">Flux de travail</a></td></tr></tbody></table>
+		</td>
+	
+		<td class="ms-separator">|</td>
+	<td class="ms-toolbar" nowrap="nowrap" id="_spFocusHere"><table cellpadding="1" cellspacing="0"><tbody><tr><td class="ms-toolbar" nowrap="nowrap"><img align="absmiddle" alt="M'avertir" src="/_layouts/15/images/alertme.png" style="border-width:0px;" width="16" height="16"></td><td class="ms-toolbar" nowrap="nowrap"><a id="ctl00_ctl42_g_22875720_b8d8_43fb_87bd_7e32c33eede8_ctl00_ctl01_ctl00_toolBarTbl_RptControls_diidSubscribeButton" style="visibility:hidden;" href="/Sites/hsg-rapprobanc/SocietesSoeurs/_layouts/15/SubNew.aspx?List=%7BADF528EA%2D7F96%2D4FCF%2DB036%2DE7478DEA6FCA%7D&amp;ID=2609&amp;Source=https%3A%2F%2Fagora%2Eatlas%2Ehermes%2FSites%2Fhsg%2Drapprobanc%2FSocietesSoeurs%2FLists%2FRapprochements%2FTRIMESTRIEL%2Easpx"></a><a href="/Sites/hsg-rapprobanc/SocietesSoeurs/_layouts/15/SubNew.aspx?List=%7BADF528EA%2D7F96%2D4FCF%2DB036%2DE7478DEA6FCA%7D&amp;ID=2609&amp;Source=https%3A%2F%2Fagora%2Eatlas%2Ehermes%2FSites%2Fhsg%2Drapprobanc%2FSocietesSoeurs%2FLists%2FRapprochements%2FTRIMESTRIEL%2Easpx" accesskey="G" id="ctl00_ctl42_g_22875720_b8d8_43fb_87bd_7e32c33eede8_ctl00_ctl01_ctl00_toolBarTbl_RptControls_diidSubscribeButton_LinkText" class="ms-toolbar">M'avertir</a></td></tr></tbody></table>
+		</td>
+	
+	<td width="99%" class="ms-toolbar" nowrap="nowrap"><img src="/_layouts/15/images/blank.gif?rev=44" width="1" height="18" alt="" data-accessibility-nocheck="true"></td>
+
+
+  </tr>
+</tbody></table>
+
+	</span><span></span>
+						
+						<table class="ms-formtable" style="margin-top: 8px;" border="0" cellpadding="0" cellspacing="0" width="100%">
+						
+						
+						
+		<tbody><tr>
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_Title"></a>Titre</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldText">
+		<!-- FieldName="Titre"
+			 FieldInternalName="Title"
+			 FieldType="SPFieldText"
+		  -->
+			H005 - FONDATION - 2026 - Septembre - 51201002 - BNP 002
+				
+			
+		</td>
+	</tr>
+	
+		<tr>
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_TypeParRap"></a>Type</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldChoice">
+		<!-- FieldName="Type"
+			 FieldInternalName="TypeParRap"
+			 FieldType="SPFieldChoice"
+		  -->
+			Trimestriel
+				
+			
+		</td>
+	</tr>
+	
+		<tr>
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_StatutParRap"></a>Statut</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldChoice">
+		<!-- FieldName="Statut"
+			 FieldInternalName="StatutParRap"
+			 FieldType="SPFieldChoice"
+		  -->
+			Refusé
+				
+			
+		</td>
+	</tr>
+	
+		<tr>
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_Genre"></a>Genre</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldChoice">
+		<!-- FieldName="Genre"
+			 FieldInternalName="Genre"
+			 FieldType="SPFieldChoice"
+		  -->
+			Banque
+				
+			
+		</td>
+	</tr>
+	
+		<tr>
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_Societe"></a>Société</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldChoice">
+		<!-- FieldName="Société"
+			 FieldInternalName="Societe"
+			 FieldType="SPFieldChoice"
+		  -->
+			H005 - FONDATION
+				
+			
+		</td>
+	</tr><tr>
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_CompteParRap"></a>Compte</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldChoice">
+		<!-- FieldName="Compte"
+			 FieldInternalName="CompteParRap"
+			 FieldType="SPFieldChoice"
+		  -->
+			51201002 - BNP 002
+				
+			
+		</td>
+	</tr><tr>
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_Annee"></a>Année</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldChoice">
+		<!-- FieldName="Année"
+			 FieldInternalName="Annee"
+			 FieldType="SPFieldChoice"
+		  -->
+			2026
+				
+			
+		</td>
+	</tr><tr>
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_Mois"></a>Mois</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldChoice">
+		<!-- FieldName="Mois"
+			 FieldInternalName="Mois"
+			 FieldType="SPFieldChoice"
+		  -->
+			Septembre
+				
+			
+		</td>
+	</tr><tr>
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_DescriptionParRap"></a>Description</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldNote">
+		<!-- FieldName="Description"
+			 FieldInternalName="DescriptionParRap"
+			 FieldType="SPFieldNote"
+		  -->
+			
+				
+			
+		</td>
+	</tr><tr id="PJsParRap" style="display: table-row;">
+    <td nowrap="true" valign="top" width="113px" class="ms-formlabel"><h3 class="ms-standardheader">
+    <nobr>Pièce(s) jointe(s)</nobr>
+    <span class="ms-accentText" title="Ce champ est obligatoire."> *</span>
+</h3></td>
+    <td valign="top" width="350px" class="ms-formbody">
+        <div class="addArea">
+            <div class="dragdroparea ms-long">
+                <center>
+                    <div><img src="../../../_catalogs/masterpage/HERMES/Modules/Custom/images/Attachement.png"></div>
+                    <div>Cliquez ou glissez un fichier ici</div>
+                </center>
+            <input type="file" multiple="false" style="display: none;"></div>
+        </div>
+        <span isvalidationmessage="true" class="ms-formvalidation ms-csrformvalidation"><span role="alert">Vous devez obligatoirement compléter ce champ.<br></span></span>
+        <div class="listArea">
+            <!-- <div class="bold-txt half">Documents attachés :</div> -->
+            <div class="half">
+            </div>
+            <div class="filelist">
+                <span style="display: none;">Aucun document attaché</span>
+                <ul><li><a href="/Sites/hsg-rapprobanc/SocietesSoeurs/Rapprochements pices jointes/2609/H005 - 51201002 09.2026.pdf">H005 - 51201002 09.2026.pdf</a></li></ul>
+            </div>
+        </div>       
+    </td>
+</tr>
+	
+		
+	
+		<tr>
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_EmetteurName"></a>Nom de l'emetteur</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldUser">
+		<!-- FieldName="Nom de l&#39;emetteur"
+			 FieldInternalName="EmetteurName"
+			 FieldType="SPFieldUser"
+		  -->
+			<nobr><span class="ms-imnSpan"><a href="#" onclick="IMNImageOnClick(event); return false;" class="ms-imnlink ms-spimn-presenceLink" tabindex="-1"><span class="ms-spimn-presenceWrapper ms-imnImg ms-spimn-imgSize-10x10"><img title="" alt="Aucune information de présence" name="imnmark" class="ms-spimn-img ms-spimn-presence-disconnected-10x10x32" showofflinepawn="1" src="/_layouts/15/images/spimn.png" sip="" id="imn0,type=sip"></span></a></span><span class="ms-noWrap ms-imnSpan"><a href="#" onclick="IMNImageOnClick(event); return false;" class="ms-imnlink" tabindex="-1"><img title="" alt="Aucune information de présence" name="imnmark" class="ms-hide" showofflinepawn="1" src="/_layouts/15/images/spimn.png" sip="" id="imn1,type=sip"></a><a onclick="GoToLinkOrDialogNewWindow(this); return false;" class="ms-peopleux-userdisplink ms-subtleLink" href="/Sites/hsg-rapprobanc/SocietesSoeurs/_layouts/15/listform.aspx?PageType=4&amp;ListId={525c1dab-2b06-4056-b468-83c614ef780d}&amp;ID=38">Nelly BARON</a></span></nobr>
+				
+			
+		</td>
+	</tr>
+	
+		<tr>
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_DateEmission"></a>Date de l'émission</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldDateTime">
+		<!-- FieldName="Date de l&#39;émission"
+			 FieldInternalName="DateEmission"
+			 FieldType="SPFieldDateTime"
+		  -->
+			02/10/2026&nbsp;
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_CommentaireEmetteur"></a>Commentaire émetteur</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldNote">
+		<!-- FieldName="Commentaire émetteur"
+			 FieldInternalName="CommentaireEmetteur"
+			 FieldType="SPFieldNote"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_Signataire1NameAssigned"></a>Nom du signataire 1 assigné</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldUser">
+		<!-- FieldName="Nom du signataire 1 assigné"
+			 FieldInternalName="Signataire1NameAssigned"
+			 FieldType="SPFieldUser"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr>
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_Signataire1Name"></a>Nom du signataire 1</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldUser">
+		<!-- FieldName="Nom du signataire 1"
+			 FieldInternalName="Signataire1Name"
+			 FieldType="SPFieldUser"
+		  -->
+			<nobr><span class="ms-imnSpan"><a href="#" onclick="IMNImageOnClick(event); return false;" class="ms-imnlink ms-spimn-presenceLink" tabindex="-1"><span class="ms-spimn-presenceWrapper ms-imnImg ms-spimn-imgSize-10x10"><img title="" alt="Aucune information de présence" name="imnmark" class="ms-spimn-img ms-spimn-presence-disconnected-10x10x32" showofflinepawn="1" src="/_layouts/15/images/spimn.png" sip="" id="imn2,type=sip"></span></a></span><span class="ms-noWrap ms-imnSpan"><a href="#" onclick="IMNImageOnClick(event); return false;" class="ms-imnlink" tabindex="-1"><img title="" alt="Aucune information de présence" name="imnmark" class="ms-hide" showofflinepawn="1" src="/_layouts/15/images/spimn.png" sip="" id="imn3,type=sip"></a><a onclick="GoToLinkOrDialogNewWindow(this); return false;" class="ms-peopleux-userdisplink ms-subtleLink" href="/Sites/hsg-rapprobanc/SocietesSoeurs/_layouts/15/listform.aspx?PageType=4&amp;ListId={525c1dab-2b06-4056-b468-83c614ef780d}&amp;ID=97">Julie GENESLAY</a></span></nobr>
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_DateSignature1"></a>Date Signature 1</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldDateTime">
+		<!-- FieldName="Date Signature 1"
+			 FieldInternalName="DateSignature1"
+			 FieldType="SPFieldDateTime"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_CommentaireSignataire1"></a>Commentaire signataire 1</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldNote">
+		<!-- FieldName="Commentaire signataire 1"
+			 FieldInternalName="CommentaireSignataire1"
+			 FieldType="SPFieldNote"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr>
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_MotifRetour1"></a>Motif de refus du Signataire 1</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldText">
+		<!-- FieldName="Motif de refus du Signataire 1"
+			 FieldInternalName="MotifRetour1"
+			 FieldType="SPFieldText"
+		  -->
+			Autre
+				
+			
+		</td>
+	</tr>
+	
+		<tr>
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_CommentaireRetour1"></a>Commentaire retour signataire 1</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldNote">
+		<!-- FieldName="Commentaire retour signataire 1"
+			 FieldInternalName="CommentaireRetour1"
+			 FieldType="SPFieldNote"
+		  -->
+			<div dir="">Ne pas utiliser</div>
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_Signataire2NameAssigned"></a>Nom du signataire 2 assigné</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldUser">
+		<!-- FieldName="Nom du signataire 2 assigné"
+			 FieldInternalName="Signataire2NameAssigned"
+			 FieldType="SPFieldUser"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_Signataire2Name"></a>Nom du signataire 2</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldUser">
+		<!-- FieldName="Nom du signataire 2"
+			 FieldInternalName="Signataire2Name"
+			 FieldType="SPFieldUser"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_DateSignature2"></a>Date Signature 2</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldDateTime">
+		<!-- FieldName="Date Signature 2"
+			 FieldInternalName="DateSignature2"
+			 FieldType="SPFieldDateTime"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_CommentaireSignataire2"></a>Commentaire signataire 2</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldNote">
+		<!-- FieldName="Commentaire signataire 2"
+			 FieldInternalName="CommentaireSignataire2"
+			 FieldType="SPFieldNote"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_MotifRetour2"></a>Motif de refus du Signataire 2</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldText">
+		<!-- FieldName="Motif de refus du Signataire 2"
+			 FieldInternalName="MotifRetour2"
+			 FieldType="SPFieldText"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_CommentaireRetour2"></a>Commentaire retour signataire 2</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldNote">
+		<!-- FieldName="Commentaire retour signataire 2"
+			 FieldInternalName="CommentaireRetour2"
+			 FieldType="SPFieldNote"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_EmetteurNameBis"></a>Nom de l'emetteur bis</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldUser">
+		<!-- FieldName="Nom de l&#39;emetteur bis"
+			 FieldInternalName="EmetteurNameBis"
+			 FieldType="SPFieldUser"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_DateEmissionBis"></a>Date de l'émission bis</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldDateTime">
+		<!-- FieldName="Date de l&#39;émission bis"
+			 FieldInternalName="DateEmissionBis"
+			 FieldType="SPFieldDateTime"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_CommentaireEmetteurBis"></a>Commentaire émetteur bis</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldNote">
+		<!-- FieldName="Commentaire émetteur bis"
+			 FieldInternalName="CommentaireEmetteurBis"
+			 FieldType="SPFieldNote"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_Signataire1BisNameAssigned"></a>Nom du signataire 1 Bis assigné</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldUser">
+		<!-- FieldName="Nom du signataire 1 Bis assigné"
+			 FieldInternalName="Signataire1BisNameAssigned"
+			 FieldType="SPFieldUser"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_Signataire1NameBis"></a>Nom du signataire 1 Bis</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldUser">
+		<!-- FieldName="Nom du signataire 1 Bis"
+			 FieldInternalName="Signataire1NameBis"
+			 FieldType="SPFieldUser"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_DateSignature1Bis"></a>Date Signature 1 Bis</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldDateTime">
+		<!-- FieldName="Date Signature 1 Bis"
+			 FieldInternalName="DateSignature1Bis"
+			 FieldType="SPFieldDateTime"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_CommentaireSignataire1Bis"></a>Commentaire signataire 1 bis</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldNote">
+		<!-- FieldName="Commentaire signataire 1 bis"
+			 FieldInternalName="CommentaireSignataire1Bis"
+			 FieldType="SPFieldNote"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_MotifRetour1Bis"></a>Motif de refus du Signataire 1 Bis</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldText">
+		<!-- FieldName="Motif de refus du Signataire 1 Bis"
+			 FieldInternalName="MotifRetour1Bis"
+			 FieldType="SPFieldText"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_CommentaireRetour1Bis"></a>Commentaire retour signataire 1 bis</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldNote">
+		<!-- FieldName="Commentaire retour signataire 1 bis"
+			 FieldInternalName="CommentaireRetour1Bis"
+			 FieldType="SPFieldNote"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_Signataire2BisNameAssigned"></a>Nom du signataire 2 Bis assigné</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldUser">
+		<!-- FieldName="Nom du signataire 2 Bis assigné"
+			 FieldInternalName="Signataire2BisNameAssigned"
+			 FieldType="SPFieldUser"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_Signataire2NameBis"></a>Nom du signataire 2 Bis</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldUser">
+		<!-- FieldName="Nom du signataire 2 Bis"
+			 FieldInternalName="Signataire2NameBis"
+			 FieldType="SPFieldUser"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_DateSignature2Bis"></a>Date Signature 2 Bis</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldDateTime">
+		<!-- FieldName="Date Signature 2 Bis"
+			 FieldInternalName="DateSignature2Bis"
+			 FieldType="SPFieldDateTime"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_CommentaireSignataire2Bis"></a>Commentaire signataire 2 bis</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldNote">
+		<!-- FieldName="Commentaire signataire 2 bis"
+			 FieldInternalName="CommentaireSignataire2Bis"
+			 FieldType="SPFieldNote"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_MotifRetour2Bis"></a>Motif de refus du Signataire 2 Bis</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldText">
+		<!-- FieldName="Motif de refus du Signataire 2 Bis"
+			 FieldInternalName="MotifRetour2Bis"
+			 FieldType="SPFieldText"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_CommentaireRetour2Bis"></a>Commentaire retour signataire 2 bis</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldNote">
+		<!-- FieldName="Commentaire retour signataire 2 bis"
+			 FieldInternalName="CommentaireRetour2Bis"
+			 FieldType="SPFieldNote"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_Signature1"></a>Signature 1</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldBoolean">
+		<!-- FieldName="Signature 1"
+			 FieldInternalName="Signature1"
+			 FieldType="SPFieldBoolean"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_Signature2"></a>Signature 2</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldBoolean">
+		<!-- FieldName="Signature 2"
+			 FieldInternalName="Signature2"
+			 FieldType="SPFieldBoolean"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_BeingAnalysedBy"></a>En cours d'analyse par</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldUser">
+		<!-- FieldName="En cours d&#39;analyse par"
+			 FieldInternalName="BeingAnalysedBy"
+			 FieldType="SPFieldUser"
+		  -->
+			
+				
+			
+		</td>
+	</tr>
+	
+		<tr style="display: none;">
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_SecondePasse"></a>Seconde Passe</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldBoolean">
+		<!-- FieldName="Seconde Passe"
+			 FieldInternalName="SecondePasse"
+			 FieldType="SPFieldBoolean"
+		  -->
+			Oui
+				
+			
+		</td>
+	</tr>
+	
+		
+	
+		
+	
+		
+	
+						
+						
+		<tr id="idAttachmentsRow" style="display: none;">
+			
+		<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader"><a name="SPBookmark_Attachments"></a>Pièces jointes</span></td>
+		<td valign="top" class="ms-formbody" width="350px" id="SPFieldAttachments">
+		<!-- FieldName="Pièces jointes"
+			 FieldInternalName="Attachments"
+			 FieldType="SPFieldAttachments"
+		  -->
+			<table border="0" cellpadding="0" cellspacing="0" id="idAttachmentsTable"></table>
+				
+			
+		</td>
+	
+			<script type="text/javascript">// <![CDATA[ 
+
+
+				if (typeof ShowAttachmentRows == "function")
+					ShowAttachmentRows();
+			// ]]>
+</script>
+		</tr>
+	
+						</tbody></table>
+						<table cellpadding="0" cellspacing="0" width="100%" style="padding-top: 7px"><tbody><tr><td width="100%">
+						
+		<input name="ctl00$ctl42$g_22875720_b8d8_43fb_87bd_7e32c33eede8$ctl00$ctl08$ctl00$owshiddenversion" type="HIDDEN" id="ctl00_ctl42_g_22875720_b8d8_43fb_87bd_7e32c33eede8_ctl00_ctl08_ctl00_owshiddenversion">
+	
+						
+						
+		<table cellpadding="0" cellspacing="0">
+		<tbody><tr><td nowrap="nowrap" class="ms-descriptiontext">Type de contenu: <span id="ctl00_ctl42_g_22875720_b8d8_43fb_87bd_7e32c33eede8_ctl00_ctl10_ctl00_InitContentType">Rapprochement Sociétés Soeurs</span></td></tr>
+		</tbody></table>
+	
+						
+<table class="ms-formtoolbar" cellpadding="2" cellspacing="0" border="0" id="ctl00_ctl42_g_22875720_b8d8_43fb_87bd_7e32c33eede8_ctl00_toolBarTbl" width="100%" role="presentation">
+  <tbody><tr>
+
+
+		<td class="ms-toolbar" nowrap="nowrap">
+	
+		<table cellpadding="0" cellspacing="0">
+		  <tbody><tr><td nowrap="nowrap" class="ms-descriptiontext" id="onetidinfoblock1">
+				<span id="ctl00_ctl42_g_22875720_b8d8_43fb_87bd_7e32c33eede8_ctl00_toolBarTbl_RptControls_ctl00_ctl00_ctl00">Créé  le 02/10/2026 15:35&nbsp;
+ par <nobr><span class="ms-imnSpan"><a href="#" onclick="IMNImageOnClick(event); return false;" class="ms-imnlink ms-spimn-presenceLink" tabindex="-1"><span class="ms-spimn-presenceWrapper ms-imnImg ms-spimn-imgSize-10x10"><img title="" alt="Aucune information de présence" name="imnmark" class="ms-spimn-img ms-spimn-presence-disconnected-10x10x32" showofflinepawn="1" src="/_layouts/15/images/spimn.png" sip="" id="imn4,type=sip"></span></a></span><span class="ms-noWrap ms-imnSpan"><a href="#" onclick="IMNImageOnClick(event); return false;" class="ms-imnlink" tabindex="-1"><img title="" alt="Aucune information de présence" name="imnmark" class="ms-hide" showofflinepawn="1" src="/_layouts/15/images/spimn.png" sip="" id="imn5,type=sip"></a><a onclick="GoToLinkOrDialogNewWindow(this); return false;" class="ms-peopleux-userdisplink ms-subtleLink" href="/Sites/hsg-rapprobanc/SocietesSoeurs/_layouts/15/listform.aspx?PageType=4&amp;ListId={525c1dab-2b06-4056-b468-83c614ef780d}&amp;ID=38">Nelly BARON</a></span></nobr>
+</span>
+			</td></tr>
+			<tr><td nowrap="nowrap" class="ms-descriptiontext" id="onetidinfoblock2">
+				<span id="ctl00_ctl42_g_22875720_b8d8_43fb_87bd_7e32c33eede8_ctl00_toolBarTbl_RptControls_ctl00_ctl00_ctl01">Dernière modification le 05/10/2026 15:36&nbsp;
+ par <nobr><span class="ms-imnSpan"><a href="#" onclick="IMNImageOnClick(event); return false;" class="ms-imnlink ms-spimn-presenceLink" tabindex="-1"><span class="ms-spimn-presenceWrapper ms-imnImg ms-spimn-imgSize-10x10"><img title="" alt="Aucune information de présence" name="imnmark" class="ms-spimn-img ms-spimn-presence-disconnected-10x10x32" showofflinepawn="1" src="/_layouts/15/images/spimn.png" sip="" id="imn6,type=sip"></span></a></span><span class="ms-noWrap ms-imnSpan"><a href="#" onclick="IMNImageOnClick(event); return false;" class="ms-imnlink" tabindex="-1"><img title="" alt="Aucune information de présence" name="imnmark" class="ms-hide" showofflinepawn="1" src="/_layouts/15/images/spimn.png" sip="" id="imn7,type=sip"></a><a onclick="GoToLinkOrDialogNewWindow(this); return false;" class="ms-peopleux-userdisplink ms-subtleLink" href="/Sites/hsg-rapprobanc/SocietesSoeurs/_layouts/15/listform.aspx?PageType=4&amp;ListId={525c1dab-2b06-4056-b468-83c614ef780d}&amp;ID=97">Julie GENESLAY</a></span></nobr>
+</span>
+			</td></tr>
+		</tbody></table>
+	
+		</td>
+	
+	<td width="99%" class="ms-toolbar" nowrap="nowrap"><img src="/_layouts/15/images/blank.gif?rev=44" width="1" height="18" alt="" data-accessibility-nocheck="true"></td>
+
+
+		<td class="ms-toolbar" nowrap="nowrap">
+	
+		<table cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td align="right" width="100%" nowrap="nowrap">
+			<input type="button" name="ctl00$ctl42$g_22875720_b8d8_43fb_87bd_7e32c33eede8$ctl00$toolBarTbl$RightRptControls$ctl01$ctl00$diidIOGoBack" value="Fermer" onclick="STSNavigate('https:\u002f\u002fagora.atlas.hermes\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs\u002fLists\u002fRapprochements\u002fTRIMESTRIEL.aspx');return false;WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ctl42$g_22875720_b8d8_43fb_87bd_7e32c33eede8$ctl00$toolBarTbl$RightRptControls$ctl01$ctl00$diidIOGoBack&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, true))" id="ctl00_ctl42_g_22875720_b8d8_43fb_87bd_7e32c33eede8_ctl00_toolBarTbl_RightRptControls_ctl01_ctl00_diidIOGoBack" accesskey="C" class="ms-ButtonHeightWidth" target="_self" style="display: none;">
+		</td> </tr> </tbody></table>
+	
+		</td>
+	
+  </tr>
+</tbody></table>
+
+						</td></tr></tbody></table>
+					</span>
+				</td>
+				<td valign="top">
+					
+				</td>
+			</tr>
+		</tbody></table>
+		
+	<div id="WPQ2ClientFormPlaceholder"></div>
+				<div class="ms-clear"></div></div>
+			</div><div class="ms-PartSpacingVertical"></div>
+		</div><div id="MSOZoneCell_WebPartWPQ4" class="s4-wpcell-plain ms-webpartzone-cell ms-webpart-cell-vertical-inline-table ms-webpart-cell-vertical ms-fullWidth ">
+			<div class="ms-webpart-chrome ms-webpart-chrome-vertical ms-webpart-chrome-fullWidth ">
+				<div webpartid="4c208b92-3504-4561-b807-fa5acc0238e4" haspers="false" id="WebPartWPQ4" width="100%" class="ms-WPBody noindex " allowdelete="false" style=""><div class="ms-rtestate-field"><div class="WorkflowButtons">
+	<div class="LinksButton">
+		<a id="BackBtn" class="LinkButtonWorkflow" onclick="STSNavigate('https:\u002f\u002fagora.atlas.hermes\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs\u002fLists\u002fRapprochements\u002fTRIMESTRIEL.aspx');return false;WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ctl42$g_22875720_b8d8_43fb_87bd_7e32c33eede8$ctl00$toolBarTbltop$RightRptControls$ctl02$ctl00$diidIOGoBack&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, true))" style="display: inline;">Retour</a>
+		<a id="SaveAsBrouillonBtn" class="LinkButtonWorkflow">Enregistrer en tant que brouillon</a>
+		<a id="EditBrouillonBtn" class="LinkButtonWorkflow" style="display: inline;">Modifier</a>
+		<a id="SubmitBtn" class="LinkButtonWorkflow" style="display: inline;">Soumettre à la validation</a>
+		<a id="TakeControlBtn" class="LinkButtonWorkflow">Commencer l'analyse</a>
+		<a id="ReleaseControlBtn" class="LinkButtonWorkflow">Arrêter l'analyse</a>
+		<a id="RefuseSubmissionBtn" class="LinkButtonWorkflow">Refuser le rapprochement</a>
+		<a id="ValidateSubmissionBtn" class="LinkButtonWorkflow">Valider le rapprochement</a>
+		<a id="ValidateSubmissionAndArchiveBtn" class="LinkButtonWorkflow">Valider et archiver le rapprochement</a>
+	</div>
+</div>
+<style>
+	[id*='Ribbon.ListForm.Edit.Commit'],[id*='Ribbon.ListForm.Display.Manage.EditItem']
+	{
+		display:none;
+	}
+</style>
+
+<title>WebPartButtonsWorkflows.html</title></div><div class="ms-clear"></div></div>
+			</div><div class="ms-PartSpacingVertical"></div>
+		</div><div id="MSOZoneCell_WebPartWPQ5" class="s4-wpcell-plain ms-webpartzone-cell ms-webpart-cell-vertical-inline-table ms-webpart-cell-vertical ms-fullWidth ">
+			<div class="ms-webpart-chrome ms-webpart-chrome-vertical ms-webpart-chrome-fullWidth ">
+				<div webpartid="bbd8eed1-5665-414d-94ef-74524e378316" haspers="false" id="WebPartWPQ5" width="100%" class="ms-WPBody noindex " allowdelete="false" style=""><div class="ms-rtestate-field"><div><table><tbody>
+</tbody></table> 
+</div><title>WebpartPiecesJointes.html</title></div><div class="ms-clear"></div></div>
+			</div><div class="ms-PartSpacingVertical"></div>
+		</div><div id="MSOZoneCell_WebPartWPQ6" class="s4-wpcell-plain ms-webpartzone-cell ms-webpart-cell-vertical-inline-table ms-webpart-cell-vertical ms-fullWidth ">
+			<div class="ms-webpart-chrome ms-webpart-chrome-vertical ms-webpart-chrome-fullWidth ">
+				<div webpartid="b4cac6f8-67b3-49c3-a95f-7a1cfb1adef4" haspers="false" id="WebPartWPQ6" width="100%" class="ms-WPBody noindex " allowdelete="false" style=""><div class="ms-rtestate-field"><style>
+#part1
+{
+  display:none;
+}
+</style><br></div><div class="ms-clear"></div></div>
+			</div>
+		</div>
+	</div>
+	  </td>
+	 </tr>
+	</tbody></table>
+
+	</div>
