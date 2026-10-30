@@ -20,35 +20,35 @@
 
 .title {
   margin: 16px 0 8px;
-  overflow-wrap: anywhere;
-  font-size: 18px;
-}
-
-.status {
-  margin: 0 0 16px;
-  color: #605e5c;
+  color: #d35a1b;
+  font-size: 20px;
 }
 
 .fields {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 12px;
-  margin: 0;
+  width: 100%;
+  margin-top: 8px;
+  border: 0;
+  border-collapse: collapse;
+  background-color: #fff;
 }
 
-.field {
-  min-width: 0;
+.fieldLabel,
+.fieldValue {
+  padding: 8px 10px;
+  border-bottom: 1px solid #edebe9;
+  text-align: left;
+  vertical-align: top;
+}
 
-  dt {
-    color: #605e5c;
-    font-size: 12px;
-  }
+.fieldLabel {
+  width: 180px;
+  color: #605e5c;
+  font-weight: 600;
+}
 
-  dd {
-    margin: 3px 0 0;
-    overflow-wrap: anywhere;
-    white-space: pre-wrap;
-  }
+.fieldValue {
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
 }
 
 .actions,

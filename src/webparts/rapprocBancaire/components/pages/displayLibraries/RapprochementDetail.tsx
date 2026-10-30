@@ -21,7 +21,7 @@ type WorkflowAction = 'submit' | 'refuse' | 'validate';
 
 const formatDate = (value?: string): string => {
   if (!value) {
-    return '—';
+    return '';
   }
   const date = new Date(value);
   return Number.isNaN(date.getTime()) ? value : date.toLocaleDateString();
@@ -164,28 +164,36 @@ export const RapprochementDetail: React.FC<IRapprochementDetailProps> = ({
     setPendingAction(action);
   };
 
-  const field = (label: string, value?: string): JSX.Element => (
-    <div className={styles.field} key={label}>
-      <dt>{label}</dt>
-      <dd>{value || '—'}</dd>
-    </div>
-  );
+  const field = (label: string, value?: string): JSX.Element | null => {
+    if (!value || !value.trim()) {
+      return null;
+    }
+
+    return (
+      <tr key={label}>
+        <td className={styles.fieldLabel}>{label}</td>
+        <td className={styles.fieldValue}>{value}</td>
+      </tr>
+    );
+  };
 
   return (
     <section className={styles.detail} aria-labelledby="rapprochement-detail-title">
       <button className={styles.backButton} type="button" onClick={onClose}>
         Retour à la liste
       </button>
-      <h2 className={styles.title} id="rapprochement-detail-title">{item.title}</h2>
-      <p className={styles.status}>Statut : <strong>{item.status}</strong></p>
+      <h2 className={styles.title} id="rapprochement-detail-title">Détail du rapprochement</h2>
 
-      <dl className={styles.fields}>
-        {field('Mois', item.month)}
-        {field('Année', item.year)}
-        {field('Compte', item.account)}
-        {field('Société', item.company)}
-        {field('Genre', item.genre)}
+      <table className={styles.fields}>
+        <tbody>
+        {field('Titre', item.title)}
         {field('Type', item.period === 'mensuel' ? 'Mensuel' : 'Trimestriel')}
+        {field('Statut', item.status)}
+        {field('Genre', item.genre)}
+        {field('Société', item.company)}
+        {field('Compte', item.account)}
+        {field('Année', item.year)}
+        {field('Mois', item.month)}
         {field('Description', item.description)}
         {field('Émetteur', item.emitter)}
         {field('Date d’émission', formatDate(item.emissionDate))}
@@ -220,7 +228,8 @@ export const RapprochementDetail: React.FC<IRapprochementDetailProps> = ({
             {field('Commentaire retour signataire 2 (seconde passe)', item.refusalComment2Bis)}
           </>
         )}
-      </dl>
+        </tbody>
+      </table>
 
       <div className={styles.actions} aria-label="Actions du rapprochement">
         {canSubmit && (
