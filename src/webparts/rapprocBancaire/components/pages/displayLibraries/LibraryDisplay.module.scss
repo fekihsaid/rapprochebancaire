@@ -34,6 +34,38 @@
   text-align: center;
 }
 
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 12px;
+}
+
+.createButton {
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid #0078d4;
+  border-radius: 2px;
+  background-color: #0078d4;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #106ebe;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #323130;
+    outline-offset: 2px;
+  }
+}
+
+.notice {
+  margin: 8px 0;
+  color: #107c10;
+  font-size: 13px;
+}
+
 .tableContainer {
   overflow-x: auto;
   background-color: #fff;

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styles from './LibraryDisplay.module.scss';
 import { HorizontalNavBar } from './HorizontalNavBar';
+import { CreateRapprochementForm } from './CreateRapprochementForm';
 import type { IRapprochementService } from './services/IRapprochementService';
 import type { PoleKey, RapprochementPeriod } from './services/models';
 
@@ -35,6 +36,9 @@ export const LibraryDisplay: React.FC<ILibraryDisplayProps> = ({
   const [rows, setRows] = React.useState<Awaited<ReturnType<IRapprochementService['getRapprochements']>>>([]);
   const [isLoading, setIsLoading] = React.useState<boolean>(true);
   const [errorMessage, setErrorMessage] = React.useState<string>('');
+  const [isCreateFormOpen, setIsCreateFormOpen] = React.useState<boolean>(false);
+  const [refreshVersion, setRefreshVersion] = React.useState<number>(0);
+  const [notice, setNotice] = React.useState<string>('');
 
   React.useEffect(() => {
     let isCurrentRequest = true;
@@ -60,7 +64,7 @@ export const LibraryDisplay: React.FC<ILibraryDisplayProps> = ({
     return () => {
       isCurrentRequest = false;
     };
-  }, [dataService, pole, selectedPeriod]);
+  }, [dataService, pole, selectedPeriod, refreshVersion]);
 
   return (
     <section className={styles.libraryPage}>
@@ -74,6 +78,17 @@ export const LibraryDisplay: React.FC<ILibraryDisplayProps> = ({
       </button>
       <h1 className={styles.title}>PÔLE {poleName}</h1>
       <HorizontalNavBar selectedPeriod={selectedPeriod} onPeriodChange={setSelectedPeriod} />
+      {selectedPeriod !== 'archivage' && (
+        <div className={styles.toolbar}>
+          <button className={styles.createButton} type="button" onClick={() => {
+            setNotice('');
+            setIsCreateFormOpen(true);
+          }}>
+            Créer un rapprochement bancaire
+          </button>
+        </div>
+      )}
+      {notice && <p className={styles.notice} role="status">{notice}</p>}
       <div className={styles.tableContainer}>
         <table className={styles.listTable}>
           <thead>
@@ -104,6 +119,19 @@ export const LibraryDisplay: React.FC<ILibraryDisplayProps> = ({
           </tbody>
         </table>
       </div>
+      {isCreateFormOpen && selectedPeriod !== 'archivage' && (
+        <CreateRapprochementForm
+          pole={pole}
+          period={selectedPeriod}
+          dataService={dataService}
+          onCancel={() => setIsCreateFormOpen(false)}
+          onCreated={message => {
+            setIsCreateFormOpen(false);
+            setNotice(message);
+            setRefreshVersion(version => version + 1);
+          }}
+        />
+      )}
     </section>
   );
 };
