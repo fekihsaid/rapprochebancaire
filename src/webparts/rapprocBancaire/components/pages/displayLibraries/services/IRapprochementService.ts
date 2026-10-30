@@ -1,6 +1,7 @@
 import type {
   IChoiceMatrixEntry,
   INewRapprochement,
+  IUserAccess,
   IRapprochement,
   IRapprochementUpdate,
   PoleKey,
@@ -8,6 +9,7 @@ import type {
 } from './models';
 
 export interface IRapprochementService {
+  getUserAccess(pole: PoleKey): Promise<IUserAccess>;
   getRapprochements(pole: PoleKey, period: RapprochementPeriod): Promise<IRapprochement[]>;
   getChoiceMatrix(pole: PoleKey): Promise<IChoiceMatrixEntry[]>;
   createRapprochement(pole: PoleKey, item: INewRapprochement): Promise<number>;

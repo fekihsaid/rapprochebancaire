@@ -2,8 +2,9 @@ import * as React from 'react';
 import styles from './LibraryDisplay.module.scss';
 import { HorizontalNavBar } from './HorizontalNavBar';
 import { CreateRapprochementForm } from './CreateRapprochementForm';
+import { RapprochementDetail } from './RapprochementDetail';
 import type { IRapprochementService } from './services/IRapprochementService';
-import type { PoleKey, RapprochementPeriod } from './services/models';
+import type { IRapprochement, IUserAccess, PoleKey, RapprochementPeriod } from './services/models';
 
 interface ILibraryDisplayProps {
   pole: PoleKey;
@@ -39,8 +40,44 @@ export const LibraryDisplay: React.FC<ILibraryDisplayProps> = ({
   const [isCreateFormOpen, setIsCreateFormOpen] = React.useState<boolean>(false);
   const [refreshVersion, setRefreshVersion] = React.useState<number>(0);
   const [notice, setNotice] = React.useState<string>('');
+  const [userAccess, setUserAccess] = React.useState<IUserAccess | undefined>(undefined);
+  const [isLoadingAccess, setIsLoadingAccess] = React.useState<boolean>(true);
+  const [accessError, setAccessError] = React.useState<string>('');
+  const [selectedItem, setSelectedItem] = React.useState<IRapprochement | undefined>();
 
   React.useEffect(() => {
+    let isCurrentRequest = true;
+    setIsLoadingAccess(true);
+    setAccessError('');
+    setUserAccess(undefined);
+
+    dataService.getUserAccess(pole).then(
+      access => {
+        if (isCurrentRequest) {
+          setUserAccess(access);
+          setIsLoadingAccess(false);
+        }
+      },
+      error => {
+        if (isCurrentRequest) {
+          setAccessError(error instanceof Error ? error.message : String(error));
+          setIsLoadingAccess(false);
+        }
+      }
+    );
+
+    return () => {
+      isCurrentRequest = false;
+    };
+  }, [dataService, pole]);
+
+  React.useEffect(() => {
+    if (!userAccess || !userAccess.canView) {
+      setRows([]);
+      setIsLoading(false);
+      return;
+    }
+
     let isCurrentRequest = true;
     setIsLoading(true);
     setErrorMessage('');
@@ -64,7 +101,7 @@ export const LibraryDisplay: React.FC<ILibraryDisplayProps> = ({
     return () => {
       isCurrentRequest = false;
     };
-  }, [dataService, pole, selectedPeriod, refreshVersion]);
+  }, [dataService, pole, selectedPeriod, refreshVersion, userAccess]);
 
   return (
     <section className={styles.libraryPage}>
@@ -77,8 +114,14 @@ export const LibraryDisplay: React.FC<ILibraryDisplayProps> = ({
         Liste des pôles
       </button>
       <h1 className={styles.title}>PÔLE {poleName}</h1>
-      <HorizontalNavBar selectedPeriod={selectedPeriod} onPeriodChange={setSelectedPeriod} />
-      {selectedPeriod !== 'archivage' && (
+      <HorizontalNavBar
+        selectedPeriod={selectedPeriod}
+        onPeriodChange={period => {
+          setSelectedItem(undefined);
+          setSelectedPeriod(period);
+        }}
+      />
+      {userAccess && userAccess.canCreate && selectedPeriod !== 'archivage' && (
         <div className={styles.toolbar}>
           <button className={styles.createButton} type="button" onClick={() => {
             setNotice('');
@@ -89,7 +132,28 @@ export const LibraryDisplay: React.FC<ILibraryDisplayProps> = ({
         </div>
       )}
       {notice && <p className={styles.notice} role="status">{notice}</p>}
-      <div className={styles.tableContainer}>
+      {isLoadingAccess ? (
+        <p className={styles.emptyState}>Vérification des accès…</p>
+      ) : accessError ? (
+        <p className={styles.errorState} role="alert">{accessError}</p>
+      ) : !userAccess || !userAccess.canView ? (
+        <p className={styles.errorState} role="alert">
+          Vous n’avez pas accès aux listes de ce pôle.
+        </p>
+      ) : selectedItem && userAccess ? (
+        <RapprochementDetail
+          item={selectedItem}
+          pole={pole}
+          dataService={dataService}
+          userAccess={userAccess}
+          onClose={() => setSelectedItem(undefined)}
+          onUpdated={() => {
+            setSelectedItem(undefined);
+            setNotice('Le rapprochement a été mis à jour.');
+            setRefreshVersion(version => version + 1);
+          }}
+        />
+      ) : <div className={styles.tableContainer}>
         <table className={styles.listTable}>
           <thead>
             <tr>
@@ -104,7 +168,20 @@ export const LibraryDisplay: React.FC<ILibraryDisplayProps> = ({
             ) : errorMessage ? (
               <tr><td className={styles.errorState} colSpan={columns.length}>{errorMessage}</td></tr>
             ) : rows.length > 0 ? rows.map(item => (
-              <tr key={item.id}>
+              <tr
+                key={item.id}
+                className={styles.clickableRow}
+                tabIndex={0}
+                role="button"
+                aria-label={`Ouvrir le rapprochement ${item.title}`}
+                onClick={() => setSelectedItem(item)}
+                onKeyDown={event => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    setSelectedItem(item);
+                  }
+                }}
+              >
                 {columns.map(column => (
                   <td key={column.key}>{item[column.key]}</td>
                 ))}
@@ -118,8 +195,8 @@ export const LibraryDisplay: React.FC<ILibraryDisplayProps> = ({
             )}
           </tbody>
         </table>
-      </div>
-      {isCreateFormOpen && selectedPeriod !== 'archivage' && (
+      </div>}
+      {isCreateFormOpen && userAccess && userAccess.canCreate && selectedPeriod !== 'archivage' && (
         <CreateRapprochementForm
           pole={pole}
           period={selectedPeriod}

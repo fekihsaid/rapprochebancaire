@@ -1,0 +1,869 @@
+<div style="padding-left:5px">
+
+<table class="ms-core-tableNoSpace" id="onetIDListForm">
+<tbody><tr>
+ <td>
+<div class="ms-webpart-zone ms-fullWidth">
+<div id="MSOZoneCell_WebPartWPQ3" class="s4-wpcell-plain ms-webpartzone-cell ms-webpart-cell-vertical-inline-table ms-webpart-cell-vertical ms-fullWidth ">
+<div class="ms-webpart-chrome ms-webpart-chrome-vertical ms-webpart-chrome-fullWidth ">
+<div webpartid="94fe5e26-bb50-4873-8cec-5dcd89b55709" haspers="false" id="WebPartWPQ3" width="100%" class="ms-WPBody noindex " allowdelete="false" style=""><div class="ms-rtestate-field"><style>
+#part1
+{
+  display:none;
+}
+</style><br></div><div class="ms-clear"></div></div>
+</div><div class="ms-PartSpacingVertical"></div>
+</div><div id="MSOZoneCell_WebPartWPQ4" class="s4-wpcell-plain ms-webpartzone-cell ms-webpart-cell-vertical-inline-table ms-webpart-cell-vertical ms-fullWidth ">
+<div class="ms-webpart-chrome ms-webpart-chrome-vertical ms-webpart-chrome-fullWidth ">
+<div webpartid="41f2d05f-8e73-43f8-9124-e05ce32541d2" haspers="false" id="WebPartWPQ4" width="100%" class="ms-WPBody noindex " allowdelete="false" style=""><div class="ms-rtestate-field">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>PopupHTML.html</title>
+
+<!-- Upload des fichiers -->
+<div id="waitWhileUploading" class="popupParRap">
+<div>
+Merci de patienter
+</div>
+</div>
+
+<!-- Archivage du rapprochement -->
+<div id="waitWhileArchiving" class="popupParRap">
+<div>
+Merci de patienter
+</div>
+</div>
+
+<!-- Warning Fichiers mis à jour -->
+<div id="warningFilsModified" class="popupParRap">
+<div>
+Attention, une modification des fichiers attachés a eu lieu depuis la dernière sauvegarde du rapprochement bancaire.
+</div>
+</div>
+
+<!--refus Signataire 1 Rappro-->
+<div id="motifRetourSignature1Rappro" class="popupParRap">
+<table>
+<tbody><tr>
+<td>Modif retour signataire 1</td>
+<td><select id="MotifRetourSignataire1" class="popupField">
+<option value="Autre">Autre</option>
+<option value="Date erronée">Date erronée</option>
+<option value="Ecart non justifié">Ecart non justifié</option>
+<option value="Ecritures non justifiées">Ecritures non justifiées</option>
+<option value="Extrait de compte manquant">Extrait de compte manquant</option>
+<option value="Rapprochement manquant">Rapprochement manquant</option>
+<option value="Relevé bancaire manquant">Relevé bancaire manquant</option>
+<option value="Solde comptable erroné">Solde comptable erroné</option>
+</select></td>
+</tr>
+<tr>
+<td>Commentaire retour signataire 1</td>
+<td><textarea id="CommentaireRetourSignataire1" class="popupField textareaComment"></textarea></td>
+</tr>
+<tr>
+<td colspan="2">
+<div class="btnPh" style="display: block;" onclick=" SaveRapParItem('RefuseSubmissionBtn')">Refuser le rapprochement (Signataire 1)</div>
+<div class="btnPh btnCnl" style="display: block;" onclick="Cancel('motifRetourSignature1Rappro')">Annuler</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+<!--refus Signataire 2 Rappro-->
+<div id="motifRetourSignature2Rappro" class="popupParRap">
+<table>
+<tbody><tr>
+<td>Modif retour signataire 2</td>
+<td><select id="MotifRetourSignataire2" class="popupField">
+<option value="Autre">Autre</option>
+<option value="Date erronée">Date erronée</option>
+<option value="Ecart non justifié">Ecart non justifié</option>
+<option value="Ecritures non justifiées">Ecritures non justifiées</option>
+<option value="Extrait de compte manquant">Extrait de compte manquant</option>
+<option value="Rapprochement manquant">Rapprochement manquant</option>
+<option value="Relevé bancaire manquant">Relevé bancaire manquant</option>
+<option value="Solde comptable erroné">Solde comptable erroné</option>
+</select></td>
+</tr>
+<tr>
+<td>Commentaire retour signataire 2</td>
+<td><textarea id="CommentaireRetourSignataire2" class="popupField textareaComment"></textarea></td>
+</tr>
+<tr>
+<td colspan="2">
+<div class="btnPh" style="display: block;" onclick="SaveRapParItem('RefuseSubmissionBtn')">Refuser le rapprochement (Signataire 2)</div>
+<div class="btnPh btnCnl" style="display: block;" onclick="Cancel('motifRetourSignature2Rappro')">Annuler</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+<!--Emission-->
+<div id="EmetteurSoumission" class="popupParRap">
+<table>
+<tbody><tr>
+<td>Assigner le signataire 1</td>
+<td>
+
+<div class="HsgSubHearch">
+            <div style="float:left" id="hsgNomSignataire1"><div dir=""><div class="sp-peoplepicker-topLevel" id="hsgNomSignataire1_TopSpan" title="Entrez un nom ou une adresse de courrier..." spclientpeoplepicker="true" style="width: 350px;"><input id="hsgNomSignataire1_TopSpan_HiddenInput" name="hsgNomSignataire1_TopSpan_HiddenInput" type="hidden"><div id="hsgNomSignataire1_TopSpan_AutoFillDiv" aria-live="assertive" class="sp-peoplepicker-autoFillContainer"></div><span id="hsgNomSignataire1_TopSpan_InitialHelpText" class="sp-peoplepicker-initialHelpText ms-helperText">Entrez un nom ou une adresse de courrier...</span><img class="sp-peoplepicker-waitImg" id="hsgNomSignataire1_TopSpan_WaitImage" alt="Cette animation indique que l'opération est en cours. Cliquez pour supprimer cette animation." src="/_layouts/15/images/gears_anv4.gif?rev=44"><span id="hsgNomSignataire1_TopSpan_ResolvedList" class="sp-peoplepicker-resolveList"></span><span id="hsgNomSignataire1_TopSpan_NotificationSpan" aria-live="polite" style="visibility:hidden;position:absolute;width:0px;display:inline-block;"></span><input type="text" class="sp-peoplepicker-editorInput" size="1" autocomplete="off" value="" id="hsgNomSignataire1_TopSpan_EditorInput" title="Entrez un nom ou une adresse de courrier..." autocorrect="off" autocapitalize="off" data-sp-peoplepickereditor="true"></div></div></div>            
+</div>
+
+</td>
+</tr>
+<tr>
+<td>Commentaire émetteur </td>
+<td><textarea id="hsgCommentaireEmetteur" class="popupField textareaComment"></textarea></td>
+</tr>
+<tr>
+<td colspan="2">
+<div class="btnPh" style="display: block;" onclick="SaveRapParItem('SubmitBtn')">Soumettre le rapprochement</div>
+<div class="btnPh btnCnl" style="display: block;" onclick="Cancel('EmetteurSoumission')">Annuler</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+<!--Validation Signataire 1-->
+<div id="Signature1Validation" class="popupParRap">
+<table>
+<tbody><tr>
+<td>Assigner le signataire 2</td>
+<td>
+
+<div class="HsgSubHearch">
+            <div style="float:left" id="hsgNomSignataire2"><div dir=""><div class="sp-peoplepicker-topLevel" id="hsgNomSignataire2_TopSpan" title="Entrez un nom ou une adresse de courrier..." spclientpeoplepicker="true" style="width: 350px;"><input id="hsgNomSignataire2_TopSpan_HiddenInput" name="hsgNomSignataire2_TopSpan_HiddenInput" type="hidden"><div id="hsgNomSignataire2_TopSpan_AutoFillDiv" aria-live="assertive" class="sp-peoplepicker-autoFillContainer"></div><span id="hsgNomSignataire2_TopSpan_InitialHelpText" class="sp-peoplepicker-initialHelpText ms-helperText">Entrez un nom ou une adresse de courrier...</span><img class="sp-peoplepicker-waitImg" id="hsgNomSignataire2_TopSpan_WaitImage" alt="Cette animation indique que l'opération est en cours. Cliquez pour supprimer cette animation." src="/_layouts/15/images/gears_anv4.gif?rev=44"><span id="hsgNomSignataire2_TopSpan_ResolvedList" class="sp-peoplepicker-resolveList"></span><span id="hsgNomSignataire2_TopSpan_NotificationSpan" aria-live="polite" style="visibility:hidden;position:absolute;width:0px;display:inline-block;"></span><input type="text" class="sp-peoplepicker-editorInput" size="1" autocomplete="off" value="" id="hsgNomSignataire2_TopSpan_EditorInput" title="Entrez un nom ou une adresse de courrier..." autocorrect="off" autocapitalize="off" data-sp-peoplepickereditor="true"></div></div></div>            
+</div>
+
+</td>
+</tr>
+<tr>
+<td>Commentaire signataire </td>
+<td><textarea id="hsgCommentaireSignataire1" class="popupField textareaComment"></textarea></td>
+</tr>
+<tr>
+<td colspan="2">
+<div class="btnPh" style="display: block;" onclick="SaveRapParItem('ValidateSubmissionBtn')">Valider le rapprochement (Signataire 1)</div>
+<div class="btnPh btnCnl" style="display: block;" onclick="Cancel('Signature1Validation')">Annuler</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+<!--Validation & Archivage Signataire 1-->
+<div id="Signature1Archivage" class="popupParRap">
+<table>
+<tbody><tr>
+<td>Commentaire signataire </td>
+<td><textarea id="hsgCommentaireArchivageSignataire1" class="popupField textareaComment"></textarea></td>
+</tr>
+<tr>
+<td colspan="2">
+<div class="btnPh" style="display: block;" onclick="SaveRapParItem('ValidateSubmissionAndArchiveBtn')">Valider le rapprochement et Archiver</div>
+<div class="btnPh btnCnl" style="display: block;" onclick="Cancel('Signature1Validation')">Annuler</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+<!--Validation & Archivage Signataire 2-->
+<div id="Signature2Archivage" class="popupParRap">
+<table>
+<tbody><tr>
+<td>Commentaire signataire </td>
+<td><textarea id="hsgCommentaireArchivageSignataire2" class="popupField textareaComment"></textarea></td>
+</tr>
+<tr>
+<td colspan="2">
+<div class="btnPh" style="display: block;" onclick="SaveRapParItem('ValidateSubmissionAndArchiveBtn')">Valider le rapprochement et Archiver</div>
+<div class="btnPh btnCnl" style="display: block;" onclick="Cancel('Signature1Validation')">Annuler</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+
+
+
+</div><div class="ms-clear"></div></div>
+</div><div class="ms-PartSpacingVertical"></div>
+</div><div id="MSOZoneCell_WebPartWPQ2" class="s4-wpcell-plain ms-webpartzone-cell ms-webpart-cell-vertical-inline-table ms-webpart-cell-vertical ms-fullWidth ">
+<div class="ms-webpart-chrome ms-webpart-chrome-vertical ms-webpart-chrome-fullWidth ">
+<div webpartid="615cc735-01ea-4746-ad8d-30a33f372670" haspers="false" id="WebPartWPQ2" width="100%" class="noindex " allowdelete="false" style="">
+<table>
+<tbody><tr>
+<td>
+<span id="part1" style="display: inline;">
+
+
+
+<div id="listFormToolBarTop" style="display: none;">
+
+<table class="ms-formtoolbar" cellpadding="2" cellspacing="0" border="0" id="ctl00_ctl42_g_615cc735_01ea_4746_ad8d_30a33f372670_ctl00_toolBarTbltop" width="100%" role="presentation">
+  <tbody><tr>
+
+
+<td width="99%" class="ms-toolbar" nowrap="nowrap"><img src="/_layouts/15/images/blank.gif?rev=44" width="1" height="18" alt="" data-accessibility-nocheck="true"></td>
+
+
+<td class="ms-toolbar" nowrap="nowrap">
+
+<table cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td align="right" width="100%" nowrap="nowrap">
+<input type="button" name="ctl00$ctl42$g_615cc735_01ea_4746_ad8d_30a33f372670$ctl00$toolBarTbltop$RightRptControls$ctl01$ctl00$diidIOSaveItem" value="Enregistrer" onclick="if (!PreSaveItem()) return false;if (SPClientForms.ClientFormManager.SubmitClientForm('WPQ2')) return false;WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ctl42$g_615cc735_01ea_4746_ad8d_30a33f372670$ctl00$toolBarTbltop$RightRptControls$ctl01$ctl00$diidIOSaveItem&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, true))" id="ctl00_ctl42_g_615cc735_01ea_4746_ad8d_30a33f372670_ctl00_toolBarTbltop_RightRptControls_ctl01_ctl00_diidIOSaveItem" accesskey="O" class="ms-ButtonHeightWidth" target="_self" style="display: none;">
+</td> </tr> </tbody></table>
+
+</td>
+<td class="ms-separator">&nbsp;</td>
+<td class="ms-toolbar" nowrap="nowrap">
+
+<table cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td align="right" width="100%" nowrap="nowrap">
+<input type="button" name="ctl00$ctl42$g_615cc735_01ea_4746_ad8d_30a33f372670$ctl00$toolBarTbltop$RightRptControls$ctl02$ctl00$diidIOGoBack" value="Annuler" onclick="STSNavigate('https:\u002f\u002fagora.atlas.hermes\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs\u002fLists\u002fRapprochements\u002fMENSUEL.aspx');return false;WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ctl42$g_615cc735_01ea_4746_ad8d_30a33f372670$ctl00$toolBarTbltop$RightRptControls$ctl02$ctl00$diidIOGoBack&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, true))" id="ctl00_ctl42_g_615cc735_01ea_4746_ad8d_30a33f372670_ctl00_toolBarTbltop_RightRptControls_ctl02_ctl00_diidIOGoBack" accesskey="C" class="ms-ButtonHeightWidth" target="_self" style="display: none;">
+</td> </tr> </tbody></table>
+
+</td>
+
+  </tr>
+</tbody></table>
+
+</div>
+<span style="display:none">
+
+<table class="ms-toolbar" cellpadding="2" cellspacing="0" border="0" id="ctl00_ctl42_g_615cc735_01ea_4746_ad8d_30a33f372670_ctl00_ctl01_ctl00_toolBarTbl" width="100%" role="presentation">
+  <tbody><tr>
+
+
+<td class="ms-toolbar" nowrap="nowrap">
+<table cellpadding="1" cellspacing="0"><tbody><tr><td class="ms-toolbar" nowrap="nowrap"><img align="absmiddle" alt="Orthographe..." src="/_layouts/1036/images/rte2spchk.gif" style="border-width:0px;" width="16" height="16"></td><td class="ms-toolbar" nowrap="nowrap"><a id="ctl00_ctl42_g_615cc735_01ea_4746_ad8d_30a33f372670_ctl00_ctl01_ctl00_toolBarTbl_RptControls_ctl01" style="visibility:hidden;" href="javascript:SpellCheckEntirePageWithExplicitLanguage('https:\u002f\u002fagora.atlas.hermes\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs\u002f_vti_bin\u002fSpellCheck.asmx', 'https:\u002f\u002fagora.atlas.hermes\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs\u002f_layouts\u002f15\u002fSpellChecker.aspx', false, 1036);"></a><a href="javascript:SpellCheckEntirePageWithExplicitLanguage('https:\u002f\u002fagora.atlas.hermes\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs\u002f_vti_bin\u002fSpellCheck.asmx', 'https:\u002f\u002fagora.atlas.hermes\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs\u002f_layouts\u002f15\u002fSpellChecker.aspx', false, 1036);" id="ctl00_ctl42_g_615cc735_01ea_4746_ad8d_30a33f372670_ctl00_ctl01_ctl00_toolBarTbl_RptControls_ctl01_LinkText" class="ms-toolbar">Orthographe...</a></td></tr></tbody></table>
+</td>
+
+<td width="99%" class="ms-toolbar" nowrap="nowrap"><img src="/_layouts/15/images/blank.gif?rev=44" width="1" height="18" alt="" data-accessibility-nocheck="true"></td>
+
+
+  </tr>
+</tbody></table>
+
+</span><span></span>
+
+<table class="ms-formtable" style="margin-top: 8px;" border="0" cellpadding="0" cellspacing="0" width="100%">
+
+
+
+<tbody><tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="Title">
+<nobr>Titre</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Titre"
+FieldInternalName="Title"
+FieldType="SPFieldText"
+ -->
+<span dir="none"><input type="text" value="" maxlength="255" id="Title_fa564e0f-0c70-4ab9-b863-0177e6ddd247_$TextField" title="Titre" style="ime-mode : " class="ms-long ms-spellcheck-true"><br></span>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="TypeParRap">
+<nobr>Type</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Type"
+FieldInternalName="TypeParRap"
+FieldType="SPFieldChoice"
+ -->
+<span dir="none"><select id="TypeParRap_5d3d0a0b-4152-4c6c-8b70-0948ecd1d497_$DropDownChoice" title="Type" class="ms-RadioText"><option value="" selected="selected"></option><option value="Trimestriel">Trimestriel</option><option value="Mensuel">Mensuel</option></select><br></span>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="StatutParRap">
+<nobr>Statut</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Statut"
+FieldInternalName="StatutParRap"
+FieldType="SPFieldChoice"
+ -->
+<span dir="none"><select id="StatutParRap_c65069cf-0000-4e54-9bd3-1113776b7e2f_$DropDownChoice" title="Statut" class="ms-RadioText"><option value="" selected="selected"></option><option value="Brouillon">Brouillon</option><option value="Soumis au Signataire 1">Soumis au Signataire 1</option><option value="En cours d'analyse par un Signataire 1">En cours d'analyse par un Signataire 1</option><option value="Soumis au Signataire 2">Soumis au Signataire 2</option><option value="En cours d'analyse par un Signataire 2">En cours d'analyse par un Signataire 2</option><option value="Archivé">Archivé</option><option value="Refusé">Refusé</option><option value="Bloqué">Bloqué</option></select><br></span>
+
+
+
+</td>
+</tr>
+
+<tr>
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="Genre">
+<nobr>Genre</nobr>
+<span class="ms-accentText" title="Ce champ est obligatoire." style="display: inline;"> *</span></span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Genre"
+FieldInternalName="Genre"
+FieldType="SPFieldChoice"
+ -->
+<span dir="none"><select id="Genre_6c0c58b2-3b03-42b2-b694-bd3cf5f3ebad_$DropDownChoice" title="Genre" class="ms-RadioText"><option value="" selected="selected"></option><option value="Banque">Banque</option><option value="Caisse">Caisse</option><option value="Carte">Carte</option></select><br><span isvalidationmessage="true" class="ms-formvalidation ms-csrformvalidation" style="display: none;"><span role="alert">Vous devez obligatoirement compléter ce champ.<br></span></span></span>
+
+
+
+</td>
+</tr>
+
+<tr>
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="Societe">
+<nobr>Société</nobr>
+<span class="ms-accentText" title="Ce champ est obligatoire." style="display: inline;"> *</span></span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Société"
+FieldInternalName="Societe"
+FieldType="SPFieldChoice"
+ -->
+<span dir="none"><select id="Societe_1332c213-b269-472f-aee9-e7ceb7955d6d_$DropDownChoice" title="Société" class="ms-RadioText"><option value="" selected="selected" disabled="disabled" style="display: none;"></option><option value="H005 - FONDATION" disabled="disabled" style="display: none;">H005 - FONDATION</option><option value="H013 - BEYRAND" disabled="disabled" style="display: none;">H013 - BEYRAND</option><option value="H015 - MARO SAYAT" disabled="disabled" style="display: none;">H015 - MARO SAYAT</option><option value="H020 - MARO DU SUD OUEST" disabled="disabled" style="display: none;">H020 - MARO DU SUD OUEST</option><option value="H025 - JOHN LOBB" disabled="disabled" style="display: none;">H025 - JOHN LOBB</option><option value="H040 - HMC" disabled="disabled" style="display: none;">H040 - HMC</option><option value="H050 - MARO SAINT ANTOINE" disabled="disabled" style="display: none;">H050 - MARO SAINT ANTOINE</option><option value="H055 - MARO BELLEY" disabled="disabled" style="display: none;">H055 - MARO BELLEY</option><option value="H075 - MARO ARDENNES" disabled="disabled" style="display: none;">H075 - MARO ARDENNES</option><option value="H090 - MARO DE FRANCHE COMTE" disabled="disabled" style="display: none;">H090 - MARO DE FRANCHE COMTE</option><option value="H095 - MHM" disabled="disabled" style="display: none;">H095 - MHM</option><option value="H145 - MARO GUYENNE" disabled="disabled" style="display: none;">H145 - MARO GUYENNE</option><option value="H146 - MARO MONTEREAU" disabled="disabled" style="display: none;">H146 - MARO MONTEREAU</option><option value="H173 - CFA" disabled="disabled" style="display: none;">H173 - CFA</option><option value="H370 - PUIFORCAT" disabled="disabled" style="display: none;">H370 - PUIFORCAT</option><option value="H380 - CATE" disabled="disabled" style="display: none;">H380 - CATE</option><option value="H706 - SCI CAPUCINES" disabled="disabled" style="display: none;">H706 - SCI CAPUCINES</option><option value="H744 - MARO ISEROISE" disabled="disabled" style="display: none;">H744 - MARO ISEROISE</option><option value="H754 - MARO NORMANDIE" disabled="disabled" style="display: none;">H754 - MARO NORMANDIE</option><option value="H755 - IMMOB. GUYENNE" disabled="disabled" style="display: none;">H755 - IMMOB. GUYENNE</option><option value="H802 - MARO THIERRY" disabled="disabled" style="display: none;">H802 - MARO THIERRY</option><option value="H704 - SCI Boissy les muriers" disabled="disabled" style="display: none;">H704 - SCI Boissy les muriers</option><option value="H186 - Manufacture Vallée de l'Orne" disabled="disabled" style="display: none;">H186 - Manufacture Vallée de l'Orne</option></select><br><span isvalidationmessage="true" class="ms-formvalidation ms-csrformvalidation" style="display: none;"><span role="alert">Vous devez obligatoirement compléter ce champ.<br></span></span></span>
+
+
+
+</td>
+</tr><tr>
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="CompteParRap">
+<nobr>Compte</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Compte"
+FieldInternalName="CompteParRap"
+FieldType="SPFieldChoice"
+ -->
+<span dir="none"><select id="CompteParRap_a3d44ab7-8cc3-4cfe-9146-6a3bb87031e2_$DropDownChoice" title="Compte" class="ms-RadioText"><option value="" selected="selected" disabled="disabled" style="display: none;"></option><option value="51201001-BNP-H015" disabled="disabled" style="display: none;">51201001-BNP-H015</option><option value="51201001-BNP-H020" disabled="disabled" style="display: none;">51201001-BNP-H020</option><option value="51201001-BNP-H050" disabled="disabled" style="display: none;">51201001-BNP-H050</option><option value="51201001-BNP-H055" disabled="disabled" style="display: none;">51201001-BNP-H055</option><option value="51201001-BNP-H075" disabled="disabled" style="display: none;">51201001-BNP-H075</option><option value="51201001-BNP-H090" disabled="disabled" style="display: none;">51201001-BNP-H090</option><option value="51201001-BNP-H095" disabled="disabled" style="display: none;">51201001-BNP-H095</option><option value="51201001-BNP-H145" disabled="disabled" style="display: none;">51201001-BNP-H145</option><option value="51201001-BNP-H146" disabled="disabled" style="display: none;">51201001-BNP-H146</option><option value="51201001-BNP-H744" disabled="disabled" style="display: none;">51201001-BNP-H744</option><option value="51201002-BNP-H744" disabled="disabled" style="display: none;">51201002-BNP-H744</option><option value="51201003-BNP-H744" disabled="disabled" style="display: none;">51201003-BNP-H744</option><option value="51201001-BNP-H754" disabled="disabled" style="display: none;">51201001-BNP-H754</option><option value="51201001-BNP-H755" disabled="disabled" style="display: none;">51201001-BNP-H755</option><option value="51201001-BNP-H706" disabled="disabled" style="display: none;">51201001-BNP-H706</option><option value="51201001-BNP-H005" disabled="disabled" style="display: none;">51201001-BNP-H005</option><option value="51201002-BNP-H005" disabled="disabled" style="display: none;">51201002-BNP-H005</option><option value="51201001-BNP-H013" disabled="disabled" style="display: none;">51201001-BNP-H013</option><option value="51201002-BNP-H013-GBP" disabled="disabled" style="display: none;">51201002-BNP-H013-GBP</option><option value="51203001-CIC-H013" disabled="disabled" style="display: none;">51203001-CIC-H013</option><option value="51201001-BNP-H025" disabled="disabled" style="display: none;">51201001-BNP-H025</option><option value="51201002-BNP-H025" disabled="disabled" style="display: none;">51201002-BNP-H025</option><option value="51201005-BNP-H025-CNY" disabled="disabled" style="display: none;">51201005-BNP-H025-CNY</option><option value="51201006-BNP-H025-GBP" disabled="disabled" style="display: none;">51201006-BNP-H025-GBP</option><option value="51201008-BNP-H025-JPY" disabled="disabled" style="display: none;">51201008-BNP-H025-JPY</option><option value="51201009-BNP-H025-USD" disabled="disabled" style="display: none;">51201009-BNP-H025-USD</option><option value="51201010-BNP-H025-KaDeWe" disabled="disabled" style="display: none;">51201010-BNP-H025-KaDeWe</option><option value="51201001-BNP-H040" disabled="disabled" style="display: none;">51201001-BNP-H040</option><option value="51201002-BNP-H040" disabled="disabled" style="display: none;">51201002-BNP-H040</option><option value="51203001-CIC-H040" disabled="disabled" style="display: none;">51203001-CIC-H040</option><option value="51201001-BNP-H370" disabled="disabled" style="display: none;">51201001-BNP-H370</option><option value="51201002-BNP-H370-CHF" disabled="disabled" style="display: none;">51201002-BNP-H370-CHF</option><option value="51201003-BNP-H370-GBP" disabled="disabled" style="display: none;">51201003-BNP-H370-GBP</option><option value="51201004-BNP-H370-HKD" disabled="disabled" style="display: none;">51201004-BNP-H370-HKD</option><option value="51201005-BNP-H370-JPY" disabled="disabled" style="display: none;">51201005-BNP-H370-JPY</option><option value="51201006-BNP-H370-USD" disabled="disabled" style="display: none;">51201006-BNP-H370-USD</option><option value="51201007-BNP-H370-CNY" disabled="disabled" style="display: none;">51201007-BNP-H370-CNY</option><option value="51201001-BNP-H380" disabled="disabled" style="display: none;">51201001-BNP-H380</option><option value="51201002-BNP-H380-USD" disabled="disabled" style="display: none;">51201002-BNP-H380-USD</option><option value="51201001 - BNP 001" disabled="disabled" style="display: none;">51201001 - BNP 001</option><option value="51201002 - BNP 002" disabled="disabled" style="display: none;">51201002 - BNP 002</option><option value="51201003 - BNP 003" disabled="disabled" style="display: none;">51201003 - BNP 003</option><option value="51201004 - BNP 004" disabled="disabled" style="display: none;">51201004 - BNP 004</option><option value="51201005 - BNP 005" disabled="disabled" style="display: none;">51201005 - BNP 005</option><option value="51201006 - BNP 006" disabled="disabled" style="display: none;">51201006 - BNP 006</option><option value="51201007 - BNP 007" disabled="disabled" style="display: none;">51201007 - BNP 007</option><option value="51201008 - BNP 008" disabled="disabled" style="display: none;">51201008 - BNP 008</option><option value="51201009 - BNP 009" disabled="disabled" style="display: none;">51201009 - BNP 009</option><option value="51203001 - CIC 001" disabled="disabled" style="display: none;">51203001 - CIC 001</option><option value="51700000 - H0254001 - BOA PAP" disabled="disabled" style="display: none;">51700000 - H0254001 - BOA PAP</option><option value="51700000 - H0254011 - F1 PAP" disabled="disabled" style="display: none;">51700000 - H0254011 - F1 PAP</option><option value="51700000 - H0254021 - STG PAP" disabled="disabled" style="display: none;">51700000 - H0254021 - STG PAP</option><option value="51700000 - H0404000 - MAGASIN HMC" disabled="disabled" style="display: none;">51700000 - H0404000 - MAGASIN HMC</option><option value="51700000 - H3704001 - PUIFORCAT DETAIL" disabled="disabled" style="display: none;">51700000 - H3704001 - PUIFORCAT DETAIL</option><option value="53100000 - H0254001 - BOA PAP" disabled="disabled" style="display: none;">53100000 - H0254001 - BOA PAP</option><option value="53100000 - H0254011 - F1 PAP" disabled="disabled" style="display: none;">53100000 - H0254011 - F1 PAP</option><option value="53100000 - H0254021 - STG PAP" disabled="disabled" style="display: none;">53100000 - H0254021 - STG PAP</option><option value="53100000 - H0404000 - MAGASIN HMC" disabled="disabled" style="display: none;">53100000 - H0404000 - MAGASIN HMC</option><option value="53100000 - H3704001 - PUIFORCAT DETAIL" disabled="disabled" style="display: none;">53100000 - H3704001 - PUIFORCAT DETAIL</option><option value="51201011 - H025 - DKK" disabled="disabled" style="display: none;">51201011 - H025 - DKK</option><option value="51201010 - H025 - DKK" disabled="disabled" style="display: none;">51201010 - H025 - DKK</option><option value="51220001 - BPO" disabled="disabled" style="display: none;">51220001 - BPO</option><option value="51201001 BANQUE BNP 001" disabled="disabled" style="display: none;">51201001 BANQUE BNP 001</option><option value="51223001 - SG" disabled="disabled" style="display: none;">51223001 - SG</option><option value="51201001 - BNP" disabled="disabled" style="display: none;">51201001 - BNP</option><option value="51201010 KaDeWe" disabled="disabled" style="display: none;">51201010 KaDeWe</option><option value="51203002 - CIC Epargne du CFA" disabled="disabled" style="display: none;">51203002 - CIC Epargne du CFA</option><option value="51201002 - BNP 002" disabled="disabled" style="display: none;">51201002 - BNP 002</option></select><br></span>
+
+
+
+</td>
+</tr>
+
+
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="EmetteurName">
+<nobr>Nom de l'emetteur</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Nom de l&#39;emetteur"
+FieldInternalName="EmetteurName"
+FieldType="SPFieldUser"
+ -->
+<div dir="none"><div class="sp-peoplepicker-topLevel" id="EmetteurName_822c6bbd-8b68-40dd-ae2b-cf7abdd7dfce_$ClientPeoplePicker" title="Nom de l'emetteur"><input id="EmetteurName_822c6bbd-8b68-40dd-ae2b-cf7abdd7dfce_$ClientPeoplePicker_HiddenInput" name="EmetteurName_822c6bbd-8b68-40dd-ae2b-cf7abdd7dfce_$ClientPeoplePicker_HiddenInput" type="hidden"><div id="EmetteurName_822c6bbd-8b68-40dd-ae2b-cf7abdd7dfce_$ClientPeoplePicker_AutoFillDiv" aria-live="assertive" class="sp-peoplepicker-autoFillContainer"></div><span id="EmetteurName_822c6bbd-8b68-40dd-ae2b-cf7abdd7dfce_$ClientPeoplePicker_InitialHelpText" class="sp-peoplepicker-initialHelpText ms-helperText">Entrez un nom ou une adresse de courrier...</span><img class="sp-peoplepicker-waitImg" id="EmetteurName_822c6bbd-8b68-40dd-ae2b-cf7abdd7dfce_$ClientPeoplePicker_WaitImage" alt="Cette animation indique que l'opération est en cours. Cliquez pour supprimer cette animation." src="/_layouts/15/images/gears_anv4.gif?rev=44"><span id="EmetteurName_822c6bbd-8b68-40dd-ae2b-cf7abdd7dfce_$ClientPeoplePicker_ResolvedList" class="sp-peoplepicker-resolveList"></span><span id="EmetteurName_822c6bbd-8b68-40dd-ae2b-cf7abdd7dfce_$ClientPeoplePicker_NotificationSpan" aria-live="polite" style="visibility:hidden;position:absolute;width:0px;display:inline-block;"></span><input type="text" class="sp-peoplepicker-editorInput" size="1" autocomplete="off" value="" id="EmetteurName_822c6bbd-8b68-40dd-ae2b-cf7abdd7dfce_$ClientPeoplePicker_EditorInput" title="Nom de l'emetteur" autocorrect="off" autocapitalize="off"></div></div>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="DateEmission">
+<nobr>Date de l'émission</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Date de l&#39;émission"
+FieldInternalName="DateEmission"
+FieldType="SPFieldDateTime"
+ -->
+<span dir="none"><table id="DateEmission_03788d80-0471-477c-a9a5-670849882497_$DateTimeFieldTopTable" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="ms-dtinput"><label for="DateEmission_03788d80-0471-477c-a9a5-670849882497_$DateTimeFieldDate" style="display:none">DateEmission date</label><input type="text" value="" maxlength="45" id="DateEmission_03788d80-0471-477c-a9a5-670849882497_$DateTimeFieldDate" title="Date de l'émission" class="ms-input" autopostback="0"></td><td class="ms-dtinput"><a href="#" onclick="clickDatePicker('DateEmission_03788d80-0471-477c-a9a5-670849882497_$DateTimeFieldDate', '\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs\u002f_layouts\u002f15\u002fiframe.aspx?cal=1&amp;lcid=1036&amp;langid=1036&amp;tz=00:59:59.9991907&amp;ww=0111110&amp;fdow=1&amp;fwoy=0&amp;hj=0&amp;swn=false&amp;minjday=109207&amp;maxjday=2666269&amp;date=', '', event); return false;"><img id="DateEmission_03788d80-0471-477c-a9a5-670849882497_$DateTimeFieldDateDatePickerImage" src="/_layouts/15/images/calendar_25.gif?rev=44" border="0" alt="Sélectionnez une date dans le calendrier."></a></td><td><iframe id="DateEmission_03788d80-0471-477c-a9a5-670849882497_$DateTimeFieldDateDatePickerFrame" src="/_layouts/15/images/blank.gif?rev=44" frameborder="0" scrolling="no" style="display:none; position:absolute; width:200px; z-index:101;" title="Sélectionnez une date dans le calendrier."></iframe></td></tr></tbody></table></span>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="CommentaireEmetteur">
+<nobr>Commentaire émetteur</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Commentaire émetteur"
+FieldInternalName="CommentaireEmetteur"
+FieldType="SPFieldNote"
+ -->
+<span dir="none"><textarea rows="6" cols="20" id="CommentaireEmetteur_b76d74af-55d1-4c03-abe0-8d1566d76907_$TextField" title="Éditeur de texte enrichi Commentaire émetteur" class="ms-long"></textarea><br></span>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="Signataire1NameAssigned">
+<nobr>Nom du signataire 1 assigné</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Nom du signataire 1 assigné"
+FieldInternalName="Signataire1NameAssigned"
+FieldType="SPFieldUser"
+ -->
+<div dir="none"><div class="sp-peoplepicker-topLevel" id="Signataire1NameAssigned_8f3de6ee-9a15-4da1-97fc-c8ac9c9e1d81_$ClientPeoplePicker" title="Nom du signataire 1 assigné"><input id="Signataire1NameAssigned_8f3de6ee-9a15-4da1-97fc-c8ac9c9e1d81_$ClientPeoplePicker_HiddenInput" name="Signataire1NameAssigned_8f3de6ee-9a15-4da1-97fc-c8ac9c9e1d81_$ClientPeoplePicker_HiddenInput" type="hidden"><div id="Signataire1NameAssigned_8f3de6ee-9a15-4da1-97fc-c8ac9c9e1d81_$ClientPeoplePicker_AutoFillDiv" aria-live="assertive" class="sp-peoplepicker-autoFillContainer"></div><span id="Signataire1NameAssigned_8f3de6ee-9a15-4da1-97fc-c8ac9c9e1d81_$ClientPeoplePicker_InitialHelpText" class="sp-peoplepicker-initialHelpText ms-helperText">Entrez un nom ou une adresse de courrier...</span><img class="sp-peoplepicker-waitImg" id="Signataire1NameAssigned_8f3de6ee-9a15-4da1-97fc-c8ac9c9e1d81_$ClientPeoplePicker_WaitImage" alt="Cette animation indique que l'opération est en cours. Cliquez pour supprimer cette animation." src="/_layouts/15/images/gears_anv4.gif?rev=44"><span id="Signataire1NameAssigned_8f3de6ee-9a15-4da1-97fc-c8ac9c9e1d81_$ClientPeoplePicker_ResolvedList" class="sp-peoplepicker-resolveList"></span><span id="Signataire1NameAssigned_8f3de6ee-9a15-4da1-97fc-c8ac9c9e1d81_$ClientPeoplePicker_NotificationSpan" aria-live="polite" style="visibility:hidden;position:absolute;width:0px;display:inline-block;"></span><input type="text" class="sp-peoplepicker-editorInput" size="1" autocomplete="off" value="" id="Signataire1NameAssigned_8f3de6ee-9a15-4da1-97fc-c8ac9c9e1d81_$ClientPeoplePicker_EditorInput" title="Nom du signataire 1 assigné" autocorrect="off" autocapitalize="off"></div></div>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="Signataire1Name">
+<nobr>Nom du signataire 1</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Nom du signataire 1"
+FieldInternalName="Signataire1Name"
+FieldType="SPFieldUser"
+ -->
+<div dir="none"><div class="sp-peoplepicker-topLevel" id="Signataire1Name_ecd86e33-894b-40e7-8dab-ed7d3ba27566_$ClientPeoplePicker" title="Nom du signataire 1"><input id="Signataire1Name_ecd86e33-894b-40e7-8dab-ed7d3ba27566_$ClientPeoplePicker_HiddenInput" name="Signataire1Name_ecd86e33-894b-40e7-8dab-ed7d3ba27566_$ClientPeoplePicker_HiddenInput" type="hidden"><div id="Signataire1Name_ecd86e33-894b-40e7-8dab-ed7d3ba27566_$ClientPeoplePicker_AutoFillDiv" aria-live="assertive" class="sp-peoplepicker-autoFillContainer"></div><span id="Signataire1Name_ecd86e33-894b-40e7-8dab-ed7d3ba27566_$ClientPeoplePicker_InitialHelpText" class="sp-peoplepicker-initialHelpText ms-helperText">Entrez un nom ou une adresse de courrier...</span><img class="sp-peoplepicker-waitImg" id="Signataire1Name_ecd86e33-894b-40e7-8dab-ed7d3ba27566_$ClientPeoplePicker_WaitImage" alt="Cette animation indique que l'opération est en cours. Cliquez pour supprimer cette animation." src="/_layouts/15/images/gears_anv4.gif?rev=44"><span id="Signataire1Name_ecd86e33-894b-40e7-8dab-ed7d3ba27566_$ClientPeoplePicker_ResolvedList" class="sp-peoplepicker-resolveList"></span><span id="Signataire1Name_ecd86e33-894b-40e7-8dab-ed7d3ba27566_$ClientPeoplePicker_NotificationSpan" aria-live="polite" style="visibility:hidden;position:absolute;width:0px;display:inline-block;"></span><input type="text" class="sp-peoplepicker-editorInput" size="1" autocomplete="off" value="" id="Signataire1Name_ecd86e33-894b-40e7-8dab-ed7d3ba27566_$ClientPeoplePicker_EditorInput" title="Nom du signataire 1" autocorrect="off" autocapitalize="off"></div></div>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="DateSignature1">
+<nobr>Date Signature 1</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Date Signature 1"
+FieldInternalName="DateSignature1"
+FieldType="SPFieldDateTime"
+ -->
+<span dir="none"><table id="DateSignature1_843543c1-983a-4866-b076-18d1691b7469_$DateTimeFieldTopTable" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="ms-dtinput"><label for="DateSignature1_843543c1-983a-4866-b076-18d1691b7469_$DateTimeFieldDate" style="display:none">DateSignature1 date</label><input type="text" value="" maxlength="45" id="DateSignature1_843543c1-983a-4866-b076-18d1691b7469_$DateTimeFieldDate" title="Date Signature 1" class="ms-input" autopostback="0"></td><td class="ms-dtinput"><a href="#" onclick="clickDatePicker('DateSignature1_843543c1-983a-4866-b076-18d1691b7469_$DateTimeFieldDate', '\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs\u002f_layouts\u002f15\u002fiframe.aspx?cal=1&amp;lcid=1036&amp;langid=1036&amp;tz=00:59:59.9991907&amp;ww=0111110&amp;fdow=1&amp;fwoy=0&amp;hj=0&amp;swn=false&amp;minjday=109207&amp;maxjday=2666269&amp;date=', '', event); return false;"><img id="DateSignature1_843543c1-983a-4866-b076-18d1691b7469_$DateTimeFieldDateDatePickerImage" src="/_layouts/15/images/calendar_25.gif?rev=44" border="0" alt="Sélectionnez une date dans le calendrier."></a></td><td><iframe id="DateSignature1_843543c1-983a-4866-b076-18d1691b7469_$DateTimeFieldDateDatePickerFrame" src="/_layouts/15/images/blank.gif?rev=44" frameborder="0" scrolling="no" style="display:none; position:absolute; width:200px; z-index:101;" title="Sélectionnez une date dans le calendrier."></iframe></td></tr></tbody></table></span>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="CommentaireSignataire1">
+<nobr>Commentaire signataire 1</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Commentaire signataire 1"
+FieldInternalName="CommentaireSignataire1"
+FieldType="SPFieldNote"
+ -->
+<span dir="none"><textarea rows="6" cols="20" id="CommentaireSignataire1_191e94c1-77cb-4b36-9298-bc63f3ad56cb_$TextField" title="Éditeur de texte enrichi Commentaire signataire 1" class="ms-long"></textarea><br></span>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="MotifRetour1">
+<nobr>Motif de refus du Signataire 1</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Motif de refus du Signataire 1"
+FieldInternalName="MotifRetour1"
+FieldType="SPFieldText"
+ -->
+<span dir="none"><input type="text" value="" maxlength="255" id="MotifRetour1_205784a9-4c40-4f1e-808b-c3bf981d29a1_$TextField" title="Motif de refus du Signataire 1" style="ime-mode : " class="ms-long ms-spellcheck-true"><br></span>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="CommentaireRetour1">
+<nobr>Commentaire retour signataire 1</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Commentaire retour signataire 1"
+FieldInternalName="CommentaireRetour1"
+FieldType="SPFieldNote"
+ -->
+<span dir="none"><textarea rows="6" cols="20" id="CommentaireRetour1_bdbec785-6245-4a46-a645-9062cd43c46a_$TextField" title="Éditeur de texte enrichi Commentaire retour signataire 1" class="ms-long"></textarea><br></span>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="Signataire2NameAssigned">
+<nobr>Nom du signataire 2 assigné</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Nom du signataire 2 assigné"
+FieldInternalName="Signataire2NameAssigned"
+FieldType="SPFieldUser"
+ -->
+<div dir="none"><div class="sp-peoplepicker-topLevel" id="Signataire2NameAssigned_de7aea5f-f9bf-4118-ae26-8878cf354cbb_$ClientPeoplePicker" title="Nom du signataire 2 assigné"><input id="Signataire2NameAssigned_de7aea5f-f9bf-4118-ae26-8878cf354cbb_$ClientPeoplePicker_HiddenInput" name="Signataire2NameAssigned_de7aea5f-f9bf-4118-ae26-8878cf354cbb_$ClientPeoplePicker_HiddenInput" type="hidden"><div id="Signataire2NameAssigned_de7aea5f-f9bf-4118-ae26-8878cf354cbb_$ClientPeoplePicker_AutoFillDiv" aria-live="assertive" class="sp-peoplepicker-autoFillContainer"></div><span id="Signataire2NameAssigned_de7aea5f-f9bf-4118-ae26-8878cf354cbb_$ClientPeoplePicker_InitialHelpText" class="sp-peoplepicker-initialHelpText ms-helperText">Entrez un nom ou une adresse de courrier...</span><img class="sp-peoplepicker-waitImg" id="Signataire2NameAssigned_de7aea5f-f9bf-4118-ae26-8878cf354cbb_$ClientPeoplePicker_WaitImage" alt="Cette animation indique que l'opération est en cours. Cliquez pour supprimer cette animation." src="/_layouts/15/images/gears_anv4.gif?rev=44"><span id="Signataire2NameAssigned_de7aea5f-f9bf-4118-ae26-8878cf354cbb_$ClientPeoplePicker_ResolvedList" class="sp-peoplepicker-resolveList"></span><span id="Signataire2NameAssigned_de7aea5f-f9bf-4118-ae26-8878cf354cbb_$ClientPeoplePicker_NotificationSpan" aria-live="polite" style="visibility:hidden;position:absolute;width:0px;display:inline-block;"></span><input type="text" class="sp-peoplepicker-editorInput" size="1" autocomplete="off" value="" id="Signataire2NameAssigned_de7aea5f-f9bf-4118-ae26-8878cf354cbb_$ClientPeoplePicker_EditorInput" title="Nom du signataire 2 assigné" autocorrect="off" autocapitalize="off"></div></div>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="Signataire2Name">
+<nobr>Nom du signataire 2</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Nom du signataire 2"
+FieldInternalName="Signataire2Name"
+FieldType="SPFieldUser"
+ -->
+<div dir="none"><div class="sp-peoplepicker-topLevel" id="Signataire2Name_1c02b799-17bc-4fb1-be72-93e86802c092_$ClientPeoplePicker" title="Nom du signataire 2"><input id="Signataire2Name_1c02b799-17bc-4fb1-be72-93e86802c092_$ClientPeoplePicker_HiddenInput" name="Signataire2Name_1c02b799-17bc-4fb1-be72-93e86802c092_$ClientPeoplePicker_HiddenInput" type="hidden"><div id="Signataire2Name_1c02b799-17bc-4fb1-be72-93e86802c092_$ClientPeoplePicker_AutoFillDiv" aria-live="assertive" class="sp-peoplepicker-autoFillContainer"></div><span id="Signataire2Name_1c02b799-17bc-4fb1-be72-93e86802c092_$ClientPeoplePicker_InitialHelpText" class="sp-peoplepicker-initialHelpText ms-helperText">Entrez un nom ou une adresse de courrier...</span><img class="sp-peoplepicker-waitImg" id="Signataire2Name_1c02b799-17bc-4fb1-be72-93e86802c092_$ClientPeoplePicker_WaitImage" alt="Cette animation indique que l'opération est en cours. Cliquez pour supprimer cette animation." src="/_layouts/15/images/gears_anv4.gif?rev=44"><span id="Signataire2Name_1c02b799-17bc-4fb1-be72-93e86802c092_$ClientPeoplePicker_ResolvedList" class="sp-peoplepicker-resolveList"></span><span id="Signataire2Name_1c02b799-17bc-4fb1-be72-93e86802c092_$ClientPeoplePicker_NotificationSpan" aria-live="polite" style="visibility:hidden;position:absolute;width:0px;display:inline-block;"></span><input type="text" class="sp-peoplepicker-editorInput" size="1" autocomplete="off" value="" id="Signataire2Name_1c02b799-17bc-4fb1-be72-93e86802c092_$ClientPeoplePicker_EditorInput" title="Nom du signataire 2" autocorrect="off" autocapitalize="off"></div></div>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="DateSignature2">
+<nobr>Date Signature 2</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Date Signature 2"
+FieldInternalName="DateSignature2"
+FieldType="SPFieldDateTime"
+ -->
+<span dir="none"><table id="DateSignature2_8c5032b7-0963-4669-802f-ae2e731e8b19_$DateTimeFieldTopTable" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="ms-dtinput"><label for="DateSignature2_8c5032b7-0963-4669-802f-ae2e731e8b19_$DateTimeFieldDate" style="display:none">DateSignature2 date</label><input type="text" value="" maxlength="45" id="DateSignature2_8c5032b7-0963-4669-802f-ae2e731e8b19_$DateTimeFieldDate" title="Date Signature 2" class="ms-input" autopostback="0"></td><td class="ms-dtinput"><a href="#" onclick="clickDatePicker('DateSignature2_8c5032b7-0963-4669-802f-ae2e731e8b19_$DateTimeFieldDate', '\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs\u002f_layouts\u002f15\u002fiframe.aspx?cal=1&amp;lcid=1036&amp;langid=1036&amp;tz=00:59:59.9991907&amp;ww=0111110&amp;fdow=1&amp;fwoy=0&amp;hj=0&amp;swn=false&amp;minjday=109207&amp;maxjday=2666269&amp;date=', '', event); return false;"><img id="DateSignature2_8c5032b7-0963-4669-802f-ae2e731e8b19_$DateTimeFieldDateDatePickerImage" src="/_layouts/15/images/calendar_25.gif?rev=44" border="0" alt="Sélectionnez une date dans le calendrier."></a></td><td><iframe id="DateSignature2_8c5032b7-0963-4669-802f-ae2e731e8b19_$DateTimeFieldDateDatePickerFrame" src="/_layouts/15/images/blank.gif?rev=44" frameborder="0" scrolling="no" style="display:none; position:absolute; width:200px; z-index:101;" title="Sélectionnez une date dans le calendrier."></iframe></td></tr></tbody></table></span>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="CommentaireSignataire2">
+<nobr>Commentaire signataire 2</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Commentaire signataire 2"
+FieldInternalName="CommentaireSignataire2"
+FieldType="SPFieldNote"
+ -->
+<span dir="none"><textarea rows="6" cols="20" id="CommentaireSignataire2_10d30e4f-0145-42d2-a5a9-ffc9772e4c65_$TextField" title="Éditeur de texte enrichi Commentaire signataire 2" class="ms-long"></textarea><br></span>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="MotifRetour2">
+<nobr>Motif de refus du Signataire 2</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Motif de refus du Signataire 2"
+FieldInternalName="MotifRetour2"
+FieldType="SPFieldText"
+ -->
+<span dir="none"><input type="text" value="" maxlength="255" id="MotifRetour2_9ca6f930-15d0-4810-90a6-c6f1f01e35b7_$TextField" title="Motif de refus du Signataire 2" style="ime-mode : " class="ms-long ms-spellcheck-true"><br></span>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="CommentaireRetour2">
+<nobr>Commentaire retour signataire 2</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Commentaire retour signataire 2"
+FieldInternalName="CommentaireRetour2"
+FieldType="SPFieldNote"
+ -->
+<span dir="none"><textarea rows="6" cols="20" id="CommentaireRetour2_61f32993-da2b-4c0d-9f97-1e9e20a41853_$TextField" title="Éditeur de texte enrichi Commentaire retour signataire 2" class="ms-long"></textarea><br></span>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="EmetteurNameBis">
+<nobr>Nom de l'emetteur bis</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Nom de l&#39;emetteur bis"
+FieldInternalName="EmetteurNameBis"
+FieldType="SPFieldUser"
+ -->
+<div dir="none"><div class="sp-peoplepicker-topLevel" id="EmetteurNameBis_2bfa40c6-f70d-41ba-95b2-0c1450121e1a_$ClientPeoplePicker" title="Nom de l'emetteur bis"><input id="EmetteurNameBis_2bfa40c6-f70d-41ba-95b2-0c1450121e1a_$ClientPeoplePicker_HiddenInput" name="EmetteurNameBis_2bfa40c6-f70d-41ba-95b2-0c1450121e1a_$ClientPeoplePicker_HiddenInput" type="hidden"><div id="EmetteurNameBis_2bfa40c6-f70d-41ba-95b2-0c1450121e1a_$ClientPeoplePicker_AutoFillDiv" aria-live="assertive" class="sp-peoplepicker-autoFillContainer"></div><span id="EmetteurNameBis_2bfa40c6-f70d-41ba-95b2-0c1450121e1a_$ClientPeoplePicker_InitialHelpText" class="sp-peoplepicker-initialHelpText ms-helperText">Entrez un nom ou une adresse de courrier...</span><img class="sp-peoplepicker-waitImg" id="EmetteurNameBis_2bfa40c6-f70d-41ba-95b2-0c1450121e1a_$ClientPeoplePicker_WaitImage" alt="Cette animation indique que l'opération est en cours. Cliquez pour supprimer cette animation." src="/_layouts/15/images/gears_anv4.gif?rev=44"><span id="EmetteurNameBis_2bfa40c6-f70d-41ba-95b2-0c1450121e1a_$ClientPeoplePicker_ResolvedList" class="sp-peoplepicker-resolveList"></span><span id="EmetteurNameBis_2bfa40c6-f70d-41ba-95b2-0c1450121e1a_$ClientPeoplePicker_NotificationSpan" aria-live="polite" style="visibility:hidden;position:absolute;width:0px;display:inline-block;"></span><input type="text" class="sp-peoplepicker-editorInput" size="1" autocomplete="off" value="" id="EmetteurNameBis_2bfa40c6-f70d-41ba-95b2-0c1450121e1a_$ClientPeoplePicker_EditorInput" title="Nom de l'emetteur bis" autocorrect="off" autocapitalize="off"></div></div>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="DateEmissionBis">
+<nobr>Date de l'émission bis</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Date de l&#39;émission bis"
+FieldInternalName="DateEmissionBis"
+FieldType="SPFieldDateTime"
+ -->
+<span dir="none"><table id="DateEmissionBis_50fb24c4-ea10-4fac-becf-5c927aff661c_$DateTimeFieldTopTable" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="ms-dtinput"><label for="DateEmissionBis_50fb24c4-ea10-4fac-becf-5c927aff661c_$DateTimeFieldDate" style="display:none">DateEmissionBis date</label><input type="text" value="" maxlength="45" id="DateEmissionBis_50fb24c4-ea10-4fac-becf-5c927aff661c_$DateTimeFieldDate" title="Date de l'émission bis" class="ms-input" autopostback="0"></td><td class="ms-dtinput"><a href="#" onclick="clickDatePicker('DateEmissionBis_50fb24c4-ea10-4fac-becf-5c927aff661c_$DateTimeFieldDate', '\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs\u002f_layouts\u002f15\u002fiframe.aspx?cal=1&amp;lcid=1036&amp;langid=1036&amp;tz=00:59:59.9991907&amp;ww=0111110&amp;fdow=1&amp;fwoy=0&amp;hj=0&amp;swn=false&amp;minjday=109207&amp;maxjday=2666269&amp;date=', '', event); return false;"><img id="DateEmissionBis_50fb24c4-ea10-4fac-becf-5c927aff661c_$DateTimeFieldDateDatePickerImage" src="/_layouts/15/images/calendar_25.gif?rev=44" border="0" alt="Sélectionnez une date dans le calendrier."></a></td><td><iframe id="DateEmissionBis_50fb24c4-ea10-4fac-becf-5c927aff661c_$DateTimeFieldDateDatePickerFrame" src="/_layouts/15/images/blank.gif?rev=44" frameborder="0" scrolling="no" style="display:none; position:absolute; width:200px; z-index:101;" title="Sélectionnez une date dans le calendrier."></iframe></td></tr></tbody></table></span>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="CommentaireEmetteurBis">
+<nobr>Commentaire émetteur bis</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Commentaire émetteur bis"
+FieldInternalName="CommentaireEmetteurBis"
+FieldType="SPFieldNote"
+ -->
+<span dir="none"><textarea rows="6" cols="20" id="CommentaireEmetteurBis_9c29233b-e8bd-4d04-a015-046d5dd1cde9_$TextField" title="Éditeur de texte enrichi Commentaire émetteur bis" class="ms-long"></textarea><br></span>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="Signataire1BisNameAssigned">
+<nobr>Nom du signataire 1 Bis assigné</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Nom du signataire 1 Bis assigné"
+FieldInternalName="Signataire1BisNameAssigned"
+FieldType="SPFieldUser"
+ -->
+<div dir="none"><div class="sp-peoplepicker-topLevel" id="Signataire1BisNameAssigned_5ca830ab-d0e8-4a0c-9511-d150025cdd26_$ClientPeoplePicker" title="Nom du signataire 1 Bis assigné"><input id="Signataire1BisNameAssigned_5ca830ab-d0e8-4a0c-9511-d150025cdd26_$ClientPeoplePicker_HiddenInput" name="Signataire1BisNameAssigned_5ca830ab-d0e8-4a0c-9511-d150025cdd26_$ClientPeoplePicker_HiddenInput" type="hidden"><div id="Signataire1BisNameAssigned_5ca830ab-d0e8-4a0c-9511-d150025cdd26_$ClientPeoplePicker_AutoFillDiv" aria-live="assertive" class="sp-peoplepicker-autoFillContainer"></div><span id="Signataire1BisNameAssigned_5ca830ab-d0e8-4a0c-9511-d150025cdd26_$ClientPeoplePicker_InitialHelpText" class="sp-peoplepicker-initialHelpText ms-helperText">Entrez un nom ou une adresse de courrier...</span><img class="sp-peoplepicker-waitImg" id="Signataire1BisNameAssigned_5ca830ab-d0e8-4a0c-9511-d150025cdd26_$ClientPeoplePicker_WaitImage" alt="Cette animation indique que l'opération est en cours. Cliquez pour supprimer cette animation." src="/_layouts/15/images/gears_anv4.gif?rev=44"><span id="Signataire1BisNameAssigned_5ca830ab-d0e8-4a0c-9511-d150025cdd26_$ClientPeoplePicker_ResolvedList" class="sp-peoplepicker-resolveList"></span><span id="Signataire1BisNameAssigned_5ca830ab-d0e8-4a0c-9511-d150025cdd26_$ClientPeoplePicker_NotificationSpan" aria-live="polite" style="visibility:hidden;position:absolute;width:0px;display:inline-block;"></span><input type="text" class="sp-peoplepicker-editorInput" size="1" autocomplete="off" value="" id="Signataire1BisNameAssigned_5ca830ab-d0e8-4a0c-9511-d150025cdd26_$ClientPeoplePicker_EditorInput" title="Nom du signataire 1 Bis assigné" autocorrect="off" autocapitalize="off"></div></div>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="Signataire1NameBis">
+<nobr>Nom du signataire 1 Bis</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Nom du signataire 1 Bis"
+FieldInternalName="Signataire1NameBis"
+FieldType="SPFieldUser"
+ -->
+<div dir="none"><div class="sp-peoplepicker-topLevel" id="Signataire1NameBis_f91b620b-64c7-441f-bc92-9fd541e6b112_$ClientPeoplePicker" title="Nom du signataire 1 Bis"><input id="Signataire1NameBis_f91b620b-64c7-441f-bc92-9fd541e6b112_$ClientPeoplePicker_HiddenInput" name="Signataire1NameBis_f91b620b-64c7-441f-bc92-9fd541e6b112_$ClientPeoplePicker_HiddenInput" type="hidden"><div id="Signataire1NameBis_f91b620b-64c7-441f-bc92-9fd541e6b112_$ClientPeoplePicker_AutoFillDiv" aria-live="assertive" class="sp-peoplepicker-autoFillContainer"></div><span id="Signataire1NameBis_f91b620b-64c7-441f-bc92-9fd541e6b112_$ClientPeoplePicker_InitialHelpText" class="sp-peoplepicker-initialHelpText ms-helperText">Entrez un nom ou une adresse de courrier...</span><img class="sp-peoplepicker-waitImg" id="Signataire1NameBis_f91b620b-64c7-441f-bc92-9fd541e6b112_$ClientPeoplePicker_WaitImage" alt="Cette animation indique que l'opération est en cours. Cliquez pour supprimer cette animation." src="/_layouts/15/images/gears_anv4.gif?rev=44"><span id="Signataire1NameBis_f91b620b-64c7-441f-bc92-9fd541e6b112_$ClientPeoplePicker_ResolvedList" class="sp-peoplepicker-resolveList"></span><span id="Signataire1NameBis_f91b620b-64c7-441f-bc92-9fd541e6b112_$ClientPeoplePicker_NotificationSpan" aria-live="polite" style="visibility:hidden;position:absolute;width:0px;display:inline-block;"></span><input type="text" class="sp-peoplepicker-editorInput" size="1" autocomplete="off" value="" id="Signataire1NameBis_f91b620b-64c7-441f-bc92-9fd541e6b112_$ClientPeoplePicker_EditorInput" title="Nom du signataire 1 Bis" autocorrect="off" autocapitalize="off"></div></div>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="DateSignature1Bis">
+<nobr>Date Signature 1 Bis</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Date Signature 1 Bis"
+FieldInternalName="DateSignature1Bis"
+FieldType="SPFieldDateTime"
+ -->
+<span dir="none"><table id="DateSignature1Bis_8cd4f43c-0393-4e78-986b-885a6d03bc4e_$DateTimeFieldTopTable" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="ms-dtinput"><label for="DateSignature1Bis_8cd4f43c-0393-4e78-986b-885a6d03bc4e_$DateTimeFieldDate" style="display:none">DateSignature1Bis date</label><input type="text" value="" maxlength="45" id="DateSignature1Bis_8cd4f43c-0393-4e78-986b-885a6d03bc4e_$DateTimeFieldDate" title="Date Signature 1 Bis" class="ms-input" autopostback="0"></td><td class="ms-dtinput"><a href="#" onclick="clickDatePicker('DateSignature1Bis_8cd4f43c-0393-4e78-986b-885a6d03bc4e_$DateTimeFieldDate', '\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs\u002f_layouts\u002f15\u002fiframe.aspx?cal=1&amp;lcid=1036&amp;langid=1036&amp;tz=00:59:59.9991907&amp;ww=0111110&amp;fdow=1&amp;fwoy=0&amp;hj=0&amp;swn=false&amp;minjday=109207&amp;maxjday=2666269&amp;date=', '', event); return false;"><img id="DateSignature1Bis_8cd4f43c-0393-4e78-986b-885a6d03bc4e_$DateTimeFieldDateDatePickerImage" src="/_layouts/15/images/calendar_25.gif?rev=44" border="0" alt="Sélectionnez une date dans le calendrier."></a></td><td><iframe id="DateSignature1Bis_8cd4f43c-0393-4e78-986b-885a6d03bc4e_$DateTimeFieldDateDatePickerFrame" src="/_layouts/15/images/blank.gif?rev=44" frameborder="0" scrolling="no" style="display:none; position:absolute; width:200px; z-index:101;" title="Sélectionnez une date dans le calendrier."></iframe></td></tr></tbody></table></span>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="CommentaireSignataire1Bis">
+<nobr>Commentaire signataire 1 bis</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Commentaire signataire 1 bis"
+FieldInternalName="CommentaireSignataire1Bis"
+FieldType="SPFieldNote"
+ -->
+<span dir="none"><textarea rows="6" cols="20" id="CommentaireSignataire1Bis_34b4aa44-ea52-4945-8b6a-ae1edafd6a9f_$TextField" title="Éditeur de texte enrichi Commentaire signataire 1 bis" class="ms-long"></textarea><br></span>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="MotifRetour1Bis">
+<nobr>Motif de refus du Signataire 1 Bis</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Motif de refus du Signataire 1 Bis"
+FieldInternalName="MotifRetour1Bis"
+FieldType="SPFieldText"
+ -->
+<span dir="none"><input type="text" value="" maxlength="255" id="MotifRetour1Bis_1ad86363-b2ff-4dd6-9b49-fab9483d5a96_$TextField" title="Motif de refus du Signataire 1 Bis" style="ime-mode : " class="ms-long ms-spellcheck-true"><br></span>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="CommentaireRetour1Bis">
+<nobr>Commentaire retour signataire 1 bis</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Commentaire retour signataire 1 bis"
+FieldInternalName="CommentaireRetour1Bis"
+FieldType="SPFieldNote"
+ -->
+<span dir="none"><textarea rows="6" cols="20" id="CommentaireRetour1Bis_5ff5b4e9-bf0a-4ea1-b1f6-ab0c29ec96f8_$TextField" title="Éditeur de texte enrichi Commentaire retour signataire 1 bis" class="ms-long"></textarea><br></span>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="Signataire2BisNameAssigned">
+<nobr>Nom du signataire 2 Bis assigné</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Nom du signataire 2 Bis assigné"
+FieldInternalName="Signataire2BisNameAssigned"
+FieldType="SPFieldUser"
+ -->
+<div dir="none"><div class="sp-peoplepicker-topLevel" id="Signataire2BisNameAssigned_9e144623-020e-4415-83a2-60a2b7911744_$ClientPeoplePicker" title="Nom du signataire 2 Bis assigné"><input id="Signataire2BisNameAssigned_9e144623-020e-4415-83a2-60a2b7911744_$ClientPeoplePicker_HiddenInput" name="Signataire2BisNameAssigned_9e144623-020e-4415-83a2-60a2b7911744_$ClientPeoplePicker_HiddenInput" type="hidden"><div id="Signataire2BisNameAssigned_9e144623-020e-4415-83a2-60a2b7911744_$ClientPeoplePicker_AutoFillDiv" aria-live="assertive" class="sp-peoplepicker-autoFillContainer"></div><span id="Signataire2BisNameAssigned_9e144623-020e-4415-83a2-60a2b7911744_$ClientPeoplePicker_InitialHelpText" class="sp-peoplepicker-initialHelpText ms-helperText">Entrez un nom ou une adresse de courrier...</span><img class="sp-peoplepicker-waitImg" id="Signataire2BisNameAssigned_9e144623-020e-4415-83a2-60a2b7911744_$ClientPeoplePicker_WaitImage" alt="Cette animation indique que l'opération est en cours. Cliquez pour supprimer cette animation." src="/_layouts/15/images/gears_anv4.gif?rev=44"><span id="Signataire2BisNameAssigned_9e144623-020e-4415-83a2-60a2b7911744_$ClientPeoplePicker_ResolvedList" class="sp-peoplepicker-resolveList"></span><span id="Signataire2BisNameAssigned_9e144623-020e-4415-83a2-60a2b7911744_$ClientPeoplePicker_NotificationSpan" aria-live="polite" style="visibility:hidden;position:absolute;width:0px;display:inline-block;"></span><input type="text" class="sp-peoplepicker-editorInput" size="1" autocomplete="off" value="" id="Signataire2BisNameAssigned_9e144623-020e-4415-83a2-60a2b7911744_$ClientPeoplePicker_EditorInput" title="Nom du signataire 2 Bis assigné" autocorrect="off" autocapitalize="off"></div></div>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="Signataire2NameBis">
+<nobr>Nom du signataire 2 Bis</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Nom du signataire 2 Bis"
+FieldInternalName="Signataire2NameBis"
+FieldType="SPFieldUser"
+ -->
+<div dir="none"><div class="sp-peoplepicker-topLevel" id="Signataire2NameBis_19da24d9-2e63-4770-b757-5aff6ec4f0c4_$ClientPeoplePicker" title="Nom du signataire 2 Bis"><input id="Signataire2NameBis_19da24d9-2e63-4770-b757-5aff6ec4f0c4_$ClientPeoplePicker_HiddenInput" name="Signataire2NameBis_19da24d9-2e63-4770-b757-5aff6ec4f0c4_$ClientPeoplePicker_HiddenInput" type="hidden"><div id="Signataire2NameBis_19da24d9-2e63-4770-b757-5aff6ec4f0c4_$ClientPeoplePicker_AutoFillDiv" aria-live="assertive" class="sp-peoplepicker-autoFillContainer"></div><span id="Signataire2NameBis_19da24d9-2e63-4770-b757-5aff6ec4f0c4_$ClientPeoplePicker_InitialHelpText" class="sp-peoplepicker-initialHelpText ms-helperText">Entrez un nom ou une adresse de courrier...</span><img class="sp-peoplepicker-waitImg" id="Signataire2NameBis_19da24d9-2e63-4770-b757-5aff6ec4f0c4_$ClientPeoplePicker_WaitImage" alt="Cette animation indique que l'opération est en cours. Cliquez pour supprimer cette animation." src="/_layouts/15/images/gears_anv4.gif?rev=44"><span id="Signataire2NameBis_19da24d9-2e63-4770-b757-5aff6ec4f0c4_$ClientPeoplePicker_ResolvedList" class="sp-peoplepicker-resolveList"></span><span id="Signataire2NameBis_19da24d9-2e63-4770-b757-5aff6ec4f0c4_$ClientPeoplePicker_NotificationSpan" aria-live="polite" style="visibility:hidden;position:absolute;width:0px;display:inline-block;"></span><input type="text" class="sp-peoplepicker-editorInput" size="1" autocomplete="off" value="" id="Signataire2NameBis_19da24d9-2e63-4770-b757-5aff6ec4f0c4_$ClientPeoplePicker_EditorInput" title="Nom du signataire 2 Bis" autocorrect="off" autocapitalize="off"></div></div>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="DateSignature2Bis">
+<nobr>Date Signature 2 Bis</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Date Signature 2 Bis"
+FieldInternalName="DateSignature2Bis"
+FieldType="SPFieldDateTime"
+ -->
+<span dir="none"><table id="DateSignature2Bis_4561c318-0897-43b5-85f5-f8d318d1d9e9_$DateTimeFieldTopTable" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="ms-dtinput"><label for="DateSignature2Bis_4561c318-0897-43b5-85f5-f8d318d1d9e9_$DateTimeFieldDate" style="display:none">DateSignature2Bis date</label><input type="text" value="" maxlength="45" id="DateSignature2Bis_4561c318-0897-43b5-85f5-f8d318d1d9e9_$DateTimeFieldDate" title="Date Signature 2 Bis" class="ms-input" autopostback="0"></td><td class="ms-dtinput"><a href="#" onclick="clickDatePicker('DateSignature2Bis_4561c318-0897-43b5-85f5-f8d318d1d9e9_$DateTimeFieldDate', '\u002fSites\u002fhsg-rapprobanc\u002fSocietesSoeurs\u002f_layouts\u002f15\u002fiframe.aspx?cal=1&amp;lcid=1036&amp;langid=1036&amp;tz=00:59:59.9991907&amp;ww=0111110&amp;fdow=1&amp;fwoy=0&amp;hj=0&amp;swn=false&amp;minjday=109207&amp;maxjday=2666269&amp;date=', '', event); return false;"><img id="DateSignature2Bis_4561c318-0897-43b5-85f5-f8d318d1d9e9_$DateTimeFieldDateDatePickerImage" src="/_layouts/15/images/calendar_25.gif?rev=44" border="0" alt="Sélectionnez une date dans le calendrier."></a></td><td><iframe id="DateSignature2Bis_4561c318-0897-43b5-85f5-f8d318d1d9e9_$DateTimeFieldDateDatePickerFrame" src="/_layouts/15/images/blank.gif?rev=44" frameborder="0" scrolling="no" style="display:none; position:absolute; width:200px; z-index:101;" title="Sélectionnez une date dans le calendrier."></iframe></td></tr></tbody></table></span>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="CommentaireSignataire2Bis">
+<nobr>Commentaire signataire 2 bis</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Commentaire signataire 2 bis"
+FieldInternalName="CommentaireSignataire2Bis"
+FieldType="SPFieldNote"
+ -->
+<span dir="none"><textarea rows="6" cols="20" id="CommentaireSignataire2Bis_1fa45b5e-83c2-4cdf-bbc1-f4115f3924b5_$TextField" title="Éditeur de texte enrichi Commentaire signataire 2 bis" class="ms-long"></textarea><br></span>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="MotifRetour2Bis">
+<nobr>Motif de refus du Signataire 2 Bis</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Motif de refus du Signataire 2 Bis"
+FieldInternalName="MotifRetour2Bis"
+FieldType="SPFieldText"
+ -->
+<span dir="none"><input type="text" value="" maxlength="255" id="MotifRetour2Bis_f86a0625-ee1a-49ba-984d-5245ec0cfd13_$TextField" title="Motif de refus du Signataire 2 Bis" style="ime-mode : " class="ms-long ms-spellcheck-true"><br></span>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="CommentaireRetour2Bis">
+<nobr>Commentaire retour signataire 2 bis</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Commentaire retour signataire 2 bis"
+FieldInternalName="CommentaireRetour2Bis"
+FieldType="SPFieldNote"
+ -->
+<span dir="none"><textarea rows="6" cols="20" id="CommentaireRetour2Bis_3d41b116-4558-4cba-ab3c-cf157902f6ec_$TextField" title="Éditeur de texte enrichi Commentaire retour signataire 2 bis" class="ms-long"></textarea><br></span>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="Signature1">
+<nobr>Signature 1</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Signature 1"
+FieldInternalName="Signature1"
+FieldType="SPFieldBoolean"
+ -->
+<span dir="none"><input type="checkbox" id="Signature1_c0d7cdae-98dc-4d1a-9c71-ff7a12a4407d_$BooleanField" title="Signature 1"><br></span>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="Signature2">
+<nobr>Signature 2</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="Signature 2"
+FieldInternalName="Signature2"
+FieldType="SPFieldBoolean"
+ -->
+<span dir="none"><input type="checkbox" id="Signature2_66724065-f70a-4b96-aec5-4bb75771cda4_$BooleanField" title="Signature 2"><br></span>
+
+
+
+</td>
+</tr>
+
+<tr style="display: none;">
+<td nowrap="true" valign="top" width="113px" class="ms-formlabel"><span class="ms-h3 ms-standardheader" id="BeingAnalysedBy">
+<nobr>En cours d'analyse par</nobr>
+</span></td>
+<td valign="top" width="350px" class="ms-formbody">
+<!-- FieldName="En cours d&#39;analyse par"
+FieldInternalName="BeingAnalysedBy"
+FieldType="SPFieldUser"
+ -->
+<div dir="none"><div class="sp-peoplepicker-topLevel" id="BeingAnalysedBy_20519b6a-def4-43d3-bea4-631b91c4b05e_$ClientPeoplePicker" title="En cours d'analyse par"><input id="BeingAnalysedBy_20519b6a-def4-43d3-bea4-631b91c4b05e_$ClientPeoplePicker_HiddenInput" name="BeingAnalysedBy_20519b6a-def4-43d3-bea4-631b91c4b05e_$ClientPeoplePicker_HiddenInput" type="hidden"><div id="BeingAnalysedBy_20519b6a-def4-43d3-bea4-631b91c4b05e_$ClientPeoplePicker_AutoFillDiv" aria-live="assertive" class="sp-peoplepicker-autoFillContainer"></div><span id="BeingAnalysedBy_20519b6a-def4-43d3-bea4-631b91c4b05e_$ClientPeoplePicker_InitialHelpText" class="sp-peoplepicker-initialHelpText ms-helperText">Entrez un nom ou une adresse de courrier...</span><img class="sp-peoplepicker-waitImg" id="BeingAnalysedBy_20519b6a-def4-43d3-bea4-631b91c4b05e_$ClientPeoplePicker_WaitImage" alt="Cette animation indique que l'opération est en cours. Cliquez pour supprimer cette animation." src="/_layouts/15/images/gears_anv4.gif?rev=44"><span id="BeingAnalysedBy_20519b6a-def4-43d3-bea4-631b91c4b0

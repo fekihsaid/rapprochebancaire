@@ -12,6 +12,10 @@ export const mockRapprochements: IRapprochement[] = [
     genre: 'Banque',
     status: 'Refusé',
     signer1: 'Yassine fekih',
-    signer2: ''
+    signer2: '',
+    secondPass: true,
+    emitter: 'Émetteur fictif',
+    refusalReason1: 'Document incomplet',
+    refusalComment1: 'Merci de compléter les justificatifs.'
   }
 ];

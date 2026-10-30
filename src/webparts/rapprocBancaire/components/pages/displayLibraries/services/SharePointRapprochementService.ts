@@ -1,5 +1,13 @@
 import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
-import { POLES, SHAREPOINT_FIELDS, SHAREPOINT_LISTS } from './configuration';
+import {
+  POLES,
+  POLE_GROUPS,
+  SHAREPOINT_ASSIGNED_SIGNER_FIELDS,
+  SHAREPOINT_FIELDS,
+  SHAREPOINT_LISTS,
+  SHAREPOINT_SECOND_PASS_FIELDS,
+  SHAREPOINT_WORKFLOW_FIELDS
+} from './configuration';
 import type { IRapprochementService } from './IRapprochementService';
 import type {
   IChoiceMatrixEntry,
@@ -7,8 +15,23 @@ import type {
   IRapprochement,
   IRapprochementUpdate,
   PoleKey,
-  RapprochementPeriod
+  RapprochementPeriod,
+  IUserAccess,
+  UserRole
 } from './models';
+
+interface ISharePointUserGroup {
+  Title: string;
+}
+
+interface ISharePointUser {
+  Id?: number;
+  Groups?: {
+    results?: ISharePointUserGroup[];
+  } | {
+    value?: ISharePointUserGroup[];
+  };
+}
 
 interface ISharePointItem {
   Id: number;
@@ -67,6 +90,40 @@ export class SharePointRapprochementService implements IRapprochementService {
     private readonly _rootSiteAbsoluteUrl: string
   ) { }
 
+  public async getUserAccess(pole: PoleKey): Promise<IUserAccess> {
+    const userUrl = `${this._getWebUrl(pole)}/_api/web/currentuser?$select=Id&$expand=Groups`;
+    const response = await this._httpClient.get(
+      encodeURI(userUrl),
+      SPHttpClient.configurations.v1,
+      { headers: { Accept: 'application/json;odata=verbose' } }
+    );
+    const result = await this._readJson<{ d?: ISharePointUser } & ISharePointUser>(response);
+    const user = result.d || result;
+    const groups = user.Groups;
+    const userGroups = groups && 'results' in groups
+      ? groups.results || []
+      : groups && 'value' in groups
+        ? groups.value || []
+        : [];
+    const memberGroupNames = new Set(
+      userGroups.map(group => group.Title)
+    );
+    const groupConfiguration = POLE_GROUPS[pole];
+    const roles = (Object.keys(groupConfiguration) as UserRole[])
+      .filter(role => memberGroupNames.has(groupConfiguration[role]));
+    const isAdmin = roles.indexOf('admin') !== -1;
+    const canManageWorkflow = roles.indexOf('signataire1') !== -1 || roles.indexOf('signataire2') !== -1;
+
+    return {
+      roles,
+      canView: roles.length > 0,
+      canCreate: roles.indexOf('emetteur') !== -1,
+      canEdit: roles.indexOf('emetteur') !== -1 || isAdmin || canManageWorkflow,
+      canManageWorkflow,
+      currentUserId: user.Id
+    };
+  }
+
   public async getRapprochements(pole: PoleKey, period: RapprochementPeriod): Promise<IRapprochement[]> {
     const listName = period === 'archivage' ? SHAREPOINT_LISTS.archives : SHAREPOINT_LISTS.rapprochements;
     const select = [
@@ -80,10 +137,48 @@ export class SharePointRapprochementService implements IRapprochementService {
       SHAREPOINT_FIELDS.status,
       `${SHAREPOINT_FIELDS.signer1}/Title`,
       `${SHAREPOINT_FIELDS.signer2}/Title`,
+      `${SHAREPOINT_ASSIGNED_SIGNER_FIELDS.signer1}/Title`,
+      `${SHAREPOINT_ASSIGNED_SIGNER_FIELDS.signer2}/Title`,
+      `${SHAREPOINT_WORKFLOW_FIELDS.emitter}/Title`,
+      `${SHAREPOINT_SECOND_PASS_FIELDS.emitter}/Title`,
+      `${SHAREPOINT_SECOND_PASS_FIELDS.signer1}/Title`,
+      `${SHAREPOINT_SECOND_PASS_FIELDS.signer2}/Title`,
+      `${SHAREPOINT_WORKFLOW_FIELDS.beingAnalysedBy}/Title`,
       SHAREPOINT_FIELDS.period,
-      SHAREPOINT_FIELDS.description
+      SHAREPOINT_FIELDS.description,
+      SHAREPOINT_WORKFLOW_FIELDS.emissionDate,
+      SHAREPOINT_WORKFLOW_FIELDS.signatureDate1,
+      SHAREPOINT_WORKFLOW_FIELDS.signatureDate2,
+      SHAREPOINT_WORKFLOW_FIELDS.emitterComment,
+      SHAREPOINT_WORKFLOW_FIELDS.signer1Comment,
+      SHAREPOINT_WORKFLOW_FIELDS.signer2Comment,
+      SHAREPOINT_WORKFLOW_FIELDS.refusalReason1,
+      SHAREPOINT_WORKFLOW_FIELDS.refusalReason2,
+      SHAREPOINT_WORKFLOW_FIELDS.refusalComment1,
+      SHAREPOINT_WORKFLOW_FIELDS.refusalComment2,
+      SHAREPOINT_WORKFLOW_FIELDS.secondPass,
+      SHAREPOINT_SECOND_PASS_FIELDS.emissionDate,
+      SHAREPOINT_SECOND_PASS_FIELDS.signatureDate1,
+      SHAREPOINT_SECOND_PASS_FIELDS.signatureDate2,
+      SHAREPOINT_SECOND_PASS_FIELDS.emitterComment,
+      SHAREPOINT_SECOND_PASS_FIELDS.signer1Comment,
+      SHAREPOINT_SECOND_PASS_FIELDS.signer2Comment,
+      SHAREPOINT_SECOND_PASS_FIELDS.refusalReason1,
+      SHAREPOINT_SECOND_PASS_FIELDS.refusalReason2,
+      SHAREPOINT_SECOND_PASS_FIELDS.refusalComment1,
+      SHAREPOINT_SECOND_PASS_FIELDS.refusalComment2
     ].join(',');
-    const expand = `${SHAREPOINT_FIELDS.signer1},${SHAREPOINT_FIELDS.signer2}`;
+    const expand = [
+      SHAREPOINT_FIELDS.signer1,
+      SHAREPOINT_FIELDS.signer2,
+      SHAREPOINT_ASSIGNED_SIGNER_FIELDS.signer1,
+      SHAREPOINT_ASSIGNED_SIGNER_FIELDS.signer2,
+      SHAREPOINT_WORKFLOW_FIELDS.emitter,
+      SHAREPOINT_SECOND_PASS_FIELDS.emitter,
+      SHAREPOINT_SECOND_PASS_FIELDS.signer1,
+      SHAREPOINT_SECOND_PASS_FIELDS.signer2,
+      SHAREPOINT_WORKFLOW_FIELDS.beingAnalysedBy
+    ].join(',');
     const filter = period === 'archivage'
       ? undefined
       : `${SHAREPOINT_FIELDS.period} eq '${period === 'mensuel' ? 'Mensuel' : 'Trimestriel'}'`;
@@ -106,7 +201,35 @@ export class SharePointRapprochementService implements IRapprochementService {
       signer1: this._getPersonName(item[SHAREPOINT_FIELDS.signer1]),
       signer2: this._getPersonName(item[SHAREPOINT_FIELDS.signer2]),
       period,
-      description: item[SHAREPOINT_FIELDS.description] || ''
+      description: item[SHAREPOINT_FIELDS.description] || '',
+      emitter: this._getPersonName(item[SHAREPOINT_WORKFLOW_FIELDS.emitter]),
+      signer1Assigned: this._getPersonName(item[SHAREPOINT_ASSIGNED_SIGNER_FIELDS.signer1]),
+      signer2Assigned: this._getPersonName(item[SHAREPOINT_ASSIGNED_SIGNER_FIELDS.signer2]),
+      beingAnalysedBy: this._getPersonName(item[SHAREPOINT_WORKFLOW_FIELDS.beingAnalysedBy]),
+      emissionDate: this._getString(item[SHAREPOINT_WORKFLOW_FIELDS.emissionDate]),
+      signatureDate1: this._getString(item[SHAREPOINT_WORKFLOW_FIELDS.signatureDate1]),
+      signatureDate2: this._getString(item[SHAREPOINT_WORKFLOW_FIELDS.signatureDate2]),
+      emitterComment: this._getString(item[SHAREPOINT_WORKFLOW_FIELDS.emitterComment]),
+      signer1Comment: this._getString(item[SHAREPOINT_WORKFLOW_FIELDS.signer1Comment]),
+      signer2Comment: this._getString(item[SHAREPOINT_WORKFLOW_FIELDS.signer2Comment]),
+      refusalReason1: this._getString(item[SHAREPOINT_WORKFLOW_FIELDS.refusalReason1]),
+      refusalReason2: this._getString(item[SHAREPOINT_WORKFLOW_FIELDS.refusalReason2]),
+      refusalComment1: this._getString(item[SHAREPOINT_WORKFLOW_FIELDS.refusalComment1]),
+      refusalComment2: this._getString(item[SHAREPOINT_WORKFLOW_FIELDS.refusalComment2]),
+      emitterBis: this._getPersonName(item[SHAREPOINT_SECOND_PASS_FIELDS.emitter]),
+      signer1Bis: this._getPersonName(item[SHAREPOINT_SECOND_PASS_FIELDS.signer1]),
+      signer2Bis: this._getPersonName(item[SHAREPOINT_SECOND_PASS_FIELDS.signer2]),
+      emissionDateBis: this._getString(item[SHAREPOINT_SECOND_PASS_FIELDS.emissionDate]),
+      signatureDate1Bis: this._getString(item[SHAREPOINT_SECOND_PASS_FIELDS.signatureDate1]),
+      signatureDate2Bis: this._getString(item[SHAREPOINT_SECOND_PASS_FIELDS.signatureDate2]),
+      emitterCommentBis: this._getString(item[SHAREPOINT_SECOND_PASS_FIELDS.emitterComment]),
+      signer1CommentBis: this._getString(item[SHAREPOINT_SECOND_PASS_FIELDS.signer1Comment]),
+      signer2CommentBis: this._getString(item[SHAREPOINT_SECOND_PASS_FIELDS.signer2Comment]),
+      refusalReason1Bis: this._getString(item[SHAREPOINT_SECOND_PASS_FIELDS.refusalReason1]),
+      refusalReason2Bis: this._getString(item[SHAREPOINT_SECOND_PASS_FIELDS.refusalReason2]),
+      refusalComment1Bis: this._getString(item[SHAREPOINT_SECOND_PASS_FIELDS.refusalComment1]),
+      refusalComment2Bis: this._getString(item[SHAREPOINT_SECOND_PASS_FIELDS.refusalComment2]),
+      secondPass: Boolean(item[SHAREPOINT_WORKFLOW_FIELDS.secondPass])
     }));
   }
 
@@ -262,9 +385,12 @@ export class SharePointRapprochementService implements IRapprochementService {
 
   private _createPayload(
     entityType: string,
-    item: INewRapprochement | IRapprochementUpdate
-  ): { __metadata: { type: string }; [key: string]: string | number | { type: string } } {
-    const payload: { __metadata: { type: string }; [key: string]: string | number | { type: string } } = {
+    item: IRapprochementUpdate
+    // SharePoint REST payloads allow null to clear a Person field.
+    // eslint-disable-next-line @rushstack/no-new-null
+  ): { __metadata: { type: string }; [key: string]: string | number | boolean | null | { type: string } } {
+    // eslint-disable-next-line @rushstack/no-new-null
+    const payload: { __metadata: { type: string }; [key: string]: string | number | boolean | null | { type: string } } = {
       __metadata: { type: entityType }
     };
 
@@ -279,8 +405,50 @@ export class SharePointRapprochementService implements IRapprochementService {
       payload[SHAREPOINT_FIELDS.period] = item.period === 'mensuel' ? 'Mensuel' : 'Trimestriel';
     }
     if (item.description !== undefined) { payload[SHAREPOINT_FIELDS.description] = item.description; }
-    if (item.signer1Id !== undefined) { payload[`${SHAREPOINT_FIELDS.signer1}Id`] = item.signer1Id; }
-    if (item.signer2Id !== undefined) { payload[`${SHAREPOINT_FIELDS.signer2}Id`] = item.signer2Id; }
+    const secondPassFields = item.useSecondPassFields ? SHAREPOINT_SECOND_PASS_FIELDS : undefined;
+    if (item.signer1Id !== undefined) {
+      payload[`${secondPassFields ? secondPassFields.signer1 : SHAREPOINT_FIELDS.signer1}Id`] = item.signer1Id;
+    }
+    if (item.signer2Id !== undefined) {
+      payload[`${secondPassFields ? secondPassFields.signer2 : SHAREPOINT_FIELDS.signer2}Id`] = item.signer2Id;
+    }
+    if (item.emitterId !== undefined) {
+      payload[`${secondPassFields ? secondPassFields.emitter : SHAREPOINT_WORKFLOW_FIELDS.emitter}Id`] = item.emitterId;
+    }
+    if (item.beingAnalysedById !== undefined) {
+      payload[`${SHAREPOINT_WORKFLOW_FIELDS.beingAnalysedBy}Id`] = item.beingAnalysedById;
+    }
+    if (item.emissionDate !== undefined) {
+      payload[secondPassFields ? secondPassFields.emissionDate : SHAREPOINT_WORKFLOW_FIELDS.emissionDate] = item.emissionDate;
+    }
+    if (item.signatureDate1 !== undefined) {
+      payload[secondPassFields ? secondPassFields.signatureDate1 : SHAREPOINT_WORKFLOW_FIELDS.signatureDate1] = item.signatureDate1;
+    }
+    if (item.signatureDate2 !== undefined) {
+      payload[secondPassFields ? secondPassFields.signatureDate2 : SHAREPOINT_WORKFLOW_FIELDS.signatureDate2] = item.signatureDate2;
+    }
+    if (item.emitterComment !== undefined) {
+      payload[secondPassFields ? secondPassFields.emitterComment : SHAREPOINT_WORKFLOW_FIELDS.emitterComment] = item.emitterComment;
+    }
+    if (item.signer1Comment !== undefined) {
+      payload[secondPassFields ? secondPassFields.signer1Comment : SHAREPOINT_WORKFLOW_FIELDS.signer1Comment] = item.signer1Comment;
+    }
+    if (item.signer2Comment !== undefined) {
+      payload[secondPassFields ? secondPassFields.signer2Comment : SHAREPOINT_WORKFLOW_FIELDS.signer2Comment] = item.signer2Comment;
+    }
+    if (item.refusalReason1 !== undefined) {
+      payload[secondPassFields ? secondPassFields.refusalReason1 : SHAREPOINT_WORKFLOW_FIELDS.refusalReason1] = item.refusalReason1;
+    }
+    if (item.refusalReason2 !== undefined) {
+      payload[secondPassFields ? secondPassFields.refusalReason2 : SHAREPOINT_WORKFLOW_FIELDS.refusalReason2] = item.refusalReason2;
+    }
+    if (item.refusalComment1 !== undefined) {
+      payload[secondPassFields ? secondPassFields.refusalComment1 : SHAREPOINT_WORKFLOW_FIELDS.refusalComment1] = item.refusalComment1;
+    }
+    if (item.refusalComment2 !== undefined) {
+      payload[secondPassFields ? secondPassFields.refusalComment2 : SHAREPOINT_WORKFLOW_FIELDS.refusalComment2] = item.refusalComment2;
+    }
+    if (item.secondPass !== undefined) { payload[SHAREPOINT_WORKFLOW_FIELDS.secondPass] = item.secondPass; }
     return payload;
   }
 
@@ -289,11 +457,19 @@ export class SharePointRapprochementService implements IRapprochementService {
     return `${this._rootSiteAbsoluteUrl.replace(/\/$/, '')}/${encodeURIComponent(webPath).replace(/%2F/gi, '/')}`;
   }
 
-  private _getPersonName(value: ISharePointItem['Signataire1Name']): string {
+  private _getPersonName(value: unknown): string {
     if (typeof value === 'string') {
       return value;
     }
-    return value && value.Title ? value.Title : '';
+
+    if (value && typeof value === 'object' && 'Title' in value && typeof value.Title === 'string') {
+      return value.Title;
+    }
+    return '';
+  }
+
+  private _getString(value: unknown): string {
+    return typeof value === 'string' ? value : '';
   }
 
   private _readFile(file: File): Promise<ArrayBuffer> {
