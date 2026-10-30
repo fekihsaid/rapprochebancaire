@@ -1,31 +1,18 @@
-.NavigationLink .TabLinkMensuelSelected::before, .NavigationLink .TabLinkMensuel::before {
-    height: 50px;
-    width: 25px;
-    content: "";
-    position: absolute;
-    border-right: 0px;
-    border-top: 0px;
-    transform: skew(381deg);
-    -webkit-transform: skew(381deg);
-    -moz-transform: skew(381deg);
-    background: #faf9f7;
-    left: 188px;
-    top: -4px;
-}
-.NavigationLink .TabLinkMensuelSelected {
-    vertical-align: middle;
+.navigation {
+  margin: 0 12px;
+  background-color: #faf9f7;
+
+  :global(.ms-Pivot-link) {
+    min-width: 150px;
+    margin-right: 12px;
+    padding: 12px 18px;
+    background-color: #f5f5f5;
+    color: #777;
     text-align: center;
-    line-height: 38px;
-    width: 200px;
-    display: inline-block;
-    font-size: 20px;
-    font-weight: bold;
-    height: 44px;
-    padding: 4px 0;
-    position: relative;
-    text-align: center;
-    background-color: white;
-    margin-right: 15px;
-    vertical-align: middle;
-    padding-top: 10px;
+  }
+
+  :global(.ms-Pivot-link.is-selected) {
+    background-color: #fff;
+    color: #0078d4;
+  }
 }

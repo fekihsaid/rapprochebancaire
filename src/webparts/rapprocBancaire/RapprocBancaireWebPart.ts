@@ -11,6 +11,10 @@ import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import * as strings from 'RapprocBancaireWebPartStrings';
 import RapprocBancaire from './components/RapprocBancaire';
 import { IRapprocBancaireProps } from './components/IRapprocBancaireProps';
+import { DATA_SOURCE } from './components/pages/displayLibraries/services/configuration';
+import { MockRapprochementService } from './components/pages/displayLibraries/services/MockRapprochementService';
+import { SharePointRapprochementService } from './components/pages/displayLibraries/services/SharePointRapprochementService';
+import type { IRapprochementService } from './components/pages/displayLibraries/services/IRapprochementService';
 
 export interface IRapprocBancaireWebPartProps {
   description: string;
@@ -20,8 +24,15 @@ export default class RapprocBancaireWebPart extends BaseClientSideWebPart<IRappr
 
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = '';
+  private _dataService: IRapprochementService | undefined;
 
   public render(): void {
+    if (!this._dataService) {
+      this._dataService = DATA_SOURCE === 'mock'
+        ? new MockRapprochementService()
+        : new SharePointRapprochementService(this.context.spHttpClient, this.context.pageContext.site.absoluteUrl);
+    }
+
     const element: React.ReactElement<IRapprocBancaireProps> = React.createElement(
       RapprocBancaire,
       {
@@ -29,7 +40,8 @@ export default class RapprocBancaireWebPart extends BaseClientSideWebPart<IRappr
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         userDisplayName: this.context.pageContext.user.displayName,
-        siteAbsoluteUrl: this.context.pageContext.site.absoluteUrl
+        siteAbsoluteUrl: this.context.pageContext.site.absoluteUrl,
+        dataService: this._dataService
       }
     );
 

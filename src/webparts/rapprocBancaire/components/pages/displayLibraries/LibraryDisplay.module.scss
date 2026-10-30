@@ -1,0 +1,76 @@
+.libraryPage {
+  min-height: 500px;
+  padding: 0 12px 24px;
+  background-color: #faf9f7;
+  color: #323130;
+}
+
+.banner {
+  height: 72px;
+  margin-bottom: 12px;
+  background-position: center;
+  background-size: cover;
+}
+
+.backButton {
+  margin: 8px 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #0078d4;
+  font: inherit;
+  cursor: pointer;
+}
+
+.backButton:hover {
+  text-decoration: underline;
+}
+
+.title {
+  margin: 14px 0;
+  color: #323130;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.tableContainer {
+  overflow-x: auto;
+  background-color: #fff;
+}
+
+.listTable {
+  width: 100%;
+  border-collapse: collapse;
+  color: #323130;
+  font-size: 11px;
+  text-align: left;
+
+  th,
+  td {
+    padding: 8px 6px;
+    white-space: nowrap;
+  }
+
+  th {
+    border-bottom: 1px solid #888;
+    color: #d35a1b;
+    font-weight: 400;
+  }
+
+  td {
+    border-bottom: 1px solid #f0f0f0;
+  }
+}
+
+.emptyState {
+  padding: 24px 12px !important;
+  color: #605e5c;
+  text-align: center;
+}
+
+.errorState {
+  padding: 24px 12px !important;
+  color: #a4262c;
+  text-align: center;
+}

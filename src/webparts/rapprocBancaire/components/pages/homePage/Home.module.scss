@@ -31,11 +31,15 @@
   width: 184px;
   flex-direction: column;
   align-items: center;
+  padding: 0;
+  border: 0;
   background-color: #fff;
   color: "[theme:bodyText, default: #323130]";
   color: var(--bodyText);
+  font: inherit;
   text-decoration: none;
   text-align: center;
+  cursor: pointer;
 
   &:hover {
     text-decoration: underline;
